@@ -6,7 +6,7 @@ import launchFlipCoin from 'helpers/launchFlipCoin';
 class App extends Component {
 
   componentDidMount() {
-
+    alert('mounting');
     // Create an instance
     const myShakeEvent = new Shake({
       threshold: 15, // optional shake strength threshold
@@ -21,7 +21,8 @@ class App extends Component {
 
     // Dunction to call when shake event occurs
     function shakeEventDidOccur () {
-      launchFlipCoin();
+      alert('shaked');
+      launchFlipCoin(10, -15);
     }
   }
 
