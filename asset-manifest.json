@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/coin-decide/static/css/main.ddf7169d.chunk.css",
-    "main.js": "/coin-decide/static/js/main.72ea1db8.chunk.js",
-    "main.js.map": "/coin-decide/static/js/main.72ea1db8.chunk.js.map",
+    "main.js": "/coin-decide/static/js/main.e60c1e5b.chunk.js",
+    "main.js.map": "/coin-decide/static/js/main.e60c1e5b.chunk.js.map",
     "runtime~main.js": "/coin-decide/static/js/runtime~main.cf3ffb2c.js",
     "runtime~main.js.map": "/coin-decide/static/js/runtime~main.cf3ffb2c.js.map",
     "static/js/2.16610868.chunk.js": "/coin-decide/static/js/2.16610868.chunk.js",
     "static/js/2.16610868.chunk.js.map": "/coin-decide/static/js/2.16610868.chunk.js.map",
     "index.html": "/coin-decide/index.html",
-    "precache-manifest.73016101bb393eb0e14252867f5c67dc.js": "/coin-decide/precache-manifest.73016101bb393eb0e14252867f5c67dc.js",
+    "precache-manifest.a714d3926868f346ded925b0c10cbcb4.js": "/coin-decide/precache-manifest.a714d3926868f346ded925b0c10cbcb4.js",
     "service-worker.js": "/coin-decide/service-worker.js",
     "static/css/main.ddf7169d.chunk.css.map": "/coin-decide/static/css/main.ddf7169d.chunk.css.map"
   }
