@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.scss';
+// import Sprite from 'components/Coin/';
+class App extends Component {
 
-function App() {
-  return (
-    <div className="App">
+  render() {
 
-    </div>
-  );
+    return (
+      <div className="App">
+      </div>
+    )
+
+  }
 }
 
 export default App;
