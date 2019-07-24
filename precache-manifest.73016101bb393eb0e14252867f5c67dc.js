@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "bd2b99adc80d8526d2e537d0783b4e64",
+    "revision": "ecaed3aeec629fc637343ee5647dd72c",
     "url": "/coin-decide/index.html"
   },
   {
-    "revision": "895bdabea306e780e03f",
+    "revision": "0e10b7306f47019916dc",
     "url": "/coin-decide/static/css/main.ddf7169d.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/coin-decide/static/js/2.16610868.chunk.js"
   },
   {
-    "revision": "895bdabea306e780e03f",
-    "url": "/coin-decide/static/js/main.63d9d378.chunk.js"
+    "revision": "0e10b7306f47019916dc",
+    "url": "/coin-decide/static/js/main.72ea1db8.chunk.js"
   },
   {
     "revision": "b78251d90acc420129f1",
