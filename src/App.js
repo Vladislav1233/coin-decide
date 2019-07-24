@@ -16,7 +16,7 @@ class App extends Component {
         width: 1000,
         height: 100,
         numberOfFrames: 10,
-        ticksPerFrame: -10,
+        ticksPerFrame: -15,
     })
 
     return (

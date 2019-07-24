@@ -51,7 +51,7 @@ class Sprite {
       this.update();
       this.render();
 
-      if (this.countLoop <= 15) {
+      if (this.countLoop <= 20) {
         window.requestAnimationFrame(loop);
       }
     }
