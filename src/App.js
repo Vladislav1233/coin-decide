@@ -6,21 +6,17 @@ import launchFlipCoin from 'helpers/launchFlipCoin';
 class App extends Component {
 
   componentDidMount() {
-    alert('mounting');
-    // Create an instance
-    const myShakeEvent = new Shake({
-      threshold: 15 // optional shake strength threshold
+    //create a new instance of shake.js.
+    var myShakeEvent = new Shake({
+      threshold: 30
     });
-
-    // Start listening to device motion:
+    // start listening to device motion
     myShakeEvent.start();
-
-    // Register a `shake` event listener on `window` with your callback:
+    // register a shake event
     window.addEventListener('shake', shakeEventDidOccur, false);
-
-    // Dunction to call when shake event occurs
+    //shake event callback
     function shakeEventDidOccur () {
-      alert('shaked');
+      alert('shaking');
       launchFlipCoin(10, -15);
     }
   }
