@@ -9,8 +9,7 @@ class App extends Component {
     alert('mounting');
     // Create an instance
     const myShakeEvent = new Shake({
-      threshold: 15, // optional shake strength threshold
-      timeout: 1000 // optional, determines the frequency of event generation
+      threshold: 15 // optional shake strength threshold
     });
 
     // Start listening to device motion:
