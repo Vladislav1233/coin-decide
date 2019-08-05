@@ -26,10 +26,12 @@ class App extends Component {
     });
     // start listening to device motion
     myShakeEvent.start();
-    // register a shake event
-    window.addEventListener('shake', shakeEventDidOccur, false);
+
     //shake event callback
     const shakeEventDidOccur = () => launchFlipCoin(10, -15, this.stopFlipping);
+
+    // register a shake event
+    window.addEventListener('shake', shakeEventDidOccur, false);
   }
 
   render() {
