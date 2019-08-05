@@ -1,6 +1,6 @@
 import Sprite from 'components/Coin/';
 
-const launchFlipCoin = (numFrame, ticksFrame) => {
+const launchFlipCoin = (numFrame, ticksFrame, stopFlipping) => {
   let canvas = document.getElementById('canvas');
   canvas.width = 100;
   canvas.height = 100;
@@ -14,6 +14,7 @@ const launchFlipCoin = (numFrame, ticksFrame) => {
       height: 100,
       numberOfFrames: numFrame || 0, // Кол-во экранов
       ticksPerFrame: ticksFrame || 0,
+      stopAfterFlipping: stopFlipping
   });
 };
 

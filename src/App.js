@@ -14,7 +14,9 @@ class App extends Component {
   stopFlipping = () => {
     this.setState({
       isStopFlipping: true
-    })
+    });
+
+    document.getElementById('canvas').style.display='none';
   };
 
   componentDidMount() {
@@ -28,7 +30,7 @@ class App extends Component {
     window.addEventListener('shake', shakeEventDidOccur, false);
     //shake event callback
     function shakeEventDidOccur () {
-      launchFlipCoin(10, -15);
+      launchFlipCoin(10, -15, this.stopFlipping);
     }
   }
 
@@ -41,7 +43,7 @@ class App extends Component {
       <div className="App">
         {isStopFlipping 
           ? <Card />
-          : <ScreenCoin />
+          : <ScreenCoin stopFlipping={this.stopFlipping}/>
         }
       </div>
     )

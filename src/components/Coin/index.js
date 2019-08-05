@@ -13,6 +13,8 @@ class Sprite {
     this.width = options.width;
     this.height = options.height;
 
+    this.stopAfterFlipping = options.stopAfterFlipping; 
+
     this.start();
   }
 
@@ -54,9 +56,8 @@ class Sprite {
       if (this.countLoop <= 20) {
         window.requestAnimationFrame(loop);
       } else {
-        if(this.callStop) {
-          console.log(this.countLoop);
-          this.callStop() // Функция колбэк после того как остановился flip
+        if(this.stopAfterFlipping) {
+          this.stopAfterFlipping() // Функция колбэк после того как остановился flip
         }
       }
     }

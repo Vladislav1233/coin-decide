@@ -10,7 +10,7 @@ import './style.scss';
 class ScreenCoin extends Component {
 
   onClickFlip = () => {
-    launchFlipCoin(10, -15);
+    launchFlipCoin(10, -15, this.props.stopFlipping);
   }
   
   render() {
