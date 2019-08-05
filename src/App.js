@@ -33,13 +33,16 @@ class App extends Component {
   }
 
   render() {
+    const { isStopFlipping } = this.state;
 
     launchFlipCoin(0, 0);
 
     return (
       <div className="App">
-        <ScreenCoin />
-        <Card />
+        {isStopFlipping 
+          ? <Card />
+          : <ScreenCoin />
+        }
       </div>
     )
 
