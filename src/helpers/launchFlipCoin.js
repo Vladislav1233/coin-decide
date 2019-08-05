@@ -12,7 +12,7 @@ const launchFlipCoin = (numFrame, ticksFrame) => {
       image: coinImage,
       width: 1000,
       height: 100,
-      numberOfFrames: numFrame || 0,
+      numberOfFrames: numFrame || 0, // Кол-во экранов
       ticksPerFrame: ticksFrame || 0,
   });
 };

@@ -3,6 +3,7 @@ import './App.scss';
 import Shake from 'shake2.js';
 import launchFlipCoin from 'helpers/launchFlipCoin';
 import ScreenCoin from 'components/ScreenCoin';
+import Card from 'components/Card';
 
 class App extends Component {
 
@@ -17,18 +18,18 @@ class App extends Component {
     window.addEventListener('shake', shakeEventDidOccur, false);
     //shake event callback
     function shakeEventDidOccur () {
-      alert('shaking');
       launchFlipCoin(10, -15);
     }
   }
 
   render() {
 
-    launchFlipCoin();
+    launchFlipCoin(0, 0);
 
     return (
       <div className="App">
         <ScreenCoin />
+        <Card />
       </div>
     )
 

@@ -1,0 +1,40 @@
+.b-card {
+    text-align: left;
+    color: #EBDBCC;
+    border: 1px solid #EBDBCC;
+    max-width: 420px;
+
+    &__image {
+        max-width: 100%;
+    }
+
+    &__content {
+        padding: 20px;
+    }
+
+    &__name {
+        font-size: 32px;
+    }
+
+    &__feedback {
+        div {
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+
+    &__feedback-star {
+        margin-right: 10px;
+    }
+
+    &__icon {
+        width: 20px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+
+        svg {
+            fill: #00a680;
+        }
+    }
+}

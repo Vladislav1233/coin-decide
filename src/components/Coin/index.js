@@ -53,6 +53,11 @@ class Sprite {
 
       if (this.countLoop <= 20) {
         window.requestAnimationFrame(loop);
+      } else {
+        if(this.callStop) {
+          console.log(this.countLoop);
+          this.callStop() // Функция колбэк после того как остановился flip
+        }
       }
     }
 
