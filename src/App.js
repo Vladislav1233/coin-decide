@@ -7,6 +7,16 @@ import Card from 'components/Card';
 
 class App extends Component {
 
+  state = {
+    isStopFlipping: false
+  };
+
+  stopFlipping = () => {
+    this.setState({
+      isStopFlipping: true
+    })
+  };
+
   componentDidMount() {
     //create a new instance of shake.js.
     var myShakeEvent = new Shake({
