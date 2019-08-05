@@ -21,7 +21,7 @@ class App extends Component {
 
   componentDidMount() {
     //create a new instance of shake.js.
-    var myShakeEvent = new Shake({
+    const myShakeEvent = new Shake({
       threshold: 30
     });
     // start listening to device motion
@@ -29,9 +29,7 @@ class App extends Component {
     // register a shake event
     window.addEventListener('shake', shakeEventDidOccur, false);
     //shake event callback
-    function shakeEventDidOccur () {
-      launchFlipCoin(10, -15, this.stopFlipping);
-    }
+    const shakeEventDidOccur = () => launchFlipCoin(10, -15, this.stopFlipping);
   }
 
   render() {
