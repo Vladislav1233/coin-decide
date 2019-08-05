@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.scss';
 import Shake from 'shake2.js';
 import launchFlipCoin from 'helpers/launchFlipCoin';
+import ScreenCoin from 'components/ScreenCoin';
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
 
     return (
       <div className="App">
+        <ScreenCoin />
       </div>
     )
 

@@ -1,0 +1,24 @@
+.App {
+    padding: 0px 20px;
+}
+
+.b-page-wrapper {
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#root {
+    margin: auto 0px;
+}
+
+#canvas {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+}
