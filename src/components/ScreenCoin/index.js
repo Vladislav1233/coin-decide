@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { isMobileOnly } from 'react-device-detect';
+import launchFlipCoin from 'helpers/launchFlipCoin';
 
 // Note: components
 import Button from 'components/Button';
@@ -7,6 +8,10 @@ import Button from 'components/Button';
 import './style.scss';
 
 class ScreenCoin extends Component {
+
+  onClickFlip = () => {
+    launchFlipCoin(10, -15);
+  }
   
   render() {
     const text = isMobileOnly 
@@ -17,7 +22,7 @@ class ScreenCoin extends Component {
       <div className="b-screen-coin">
         {!isMobileOnly && 
           <div className="b-screen-coin__button">
-            <Button>Брось монетку</Button>
+            <Button onClick={this.onClickFlip}>Брось монетку</Button>
           </div>
         }
 
