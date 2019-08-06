@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
-import Shake from 'shake2.js';
+import Shake from 'helpers/shake';
 import launchFlipCoin from 'helpers/launchFlipCoin';
 import ScreenCoin from 'components/ScreenCoin';
 import Card from 'components/Card';
@@ -22,7 +22,7 @@ class App extends Component {
   componentDidMount() {
     //create a new instance of shake.js.
     const myShakeEvent = new Shake({
-      threshold: 30
+      threshold: 15
     });
     // start listening to device motion
     myShakeEvent.start();
