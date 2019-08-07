@@ -17,6 +17,10 @@
         transition-duration: 0.5s;
     }
 
+    &__image-wrapper {
+        min-height: 283px;
+    }
+
     &__image {
         max-width: 100%;
     }
