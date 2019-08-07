@@ -20,6 +20,19 @@
     font-size: 16px;
     letter-spacing: 3px;
     margin-bottom: 20px;
+
+    .b-screen-enter & {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    .b-screen-enter-active & {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: 1s;
+        transition-property: opacity, transform;
+        transition-duration: 0.5s;
+    }
 }
 
 #root {
@@ -31,4 +44,37 @@
     bottom: 50px;
     left: 50%;
     transform: translateX(-50%) rotate(-90deg);
+    transition-property: transform, opacity;
+    transition-duration: 0.5s;
+
+    &.hide {
+        transform: translateX(calc(-50% - 100px)) rotate(-90deg);
+        opacity: 0;
+    }
+}
+
+.b-screen {
+    &-enter {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    &-enter-active {
+        opacity: 1;
+        transform: translateX(0px);
+        transition-property: transform, opacity;
+        transition-duration: 0.5s;
+    }
+
+    &-exit {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    &-exit-active {
+        opacity: 0;
+        transition-property: transform, opacity;
+        transition-duration: 0.5s;
+        transform: translateX(-100px);
+    }
 }

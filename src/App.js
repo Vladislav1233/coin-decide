@@ -1,23 +1,35 @@
-import React, { Component, Fragment } from 'react';
-import './App.scss';
+import React, { Component } from 'react';
+import { CSSTransition } from 'react-transition-group';
+
 import Shake from 'helpers/shake';
 import launchFlipCoin from 'helpers/launchFlipCoin';
+
 import ScreenCoin from 'components/ScreenCoin';
 import Card from 'components/Card';
 import Sale from 'components/Sale';
 
+import './App.scss';
+
 class App extends Component {
 
   state = {
-    isStopFlipping: false
+    isStopFlipping: false,
+    showBar: false
   };
 
   stopFlipping = () => {
-    this.setState({
-      isStopFlipping: true
-    });
+    setTimeout(() => {
+      this.setState({
+        isStopFlipping: true
+      });
 
-    document.getElementById('canvas').style.display='none';
+      const canvasElem = document.getElementById('canvas');
+      canvasElem.classList='hide';
+
+      setTimeout(() => {
+        canvasElem.style.display="none";
+      }, 500);
+    }, 300);
   };
 
   componentDidMount() {
@@ -36,23 +48,39 @@ class App extends Component {
   }
 
   render() {
-    const { isStopFlipping } = this.state;
+    const { isStopFlipping, showBar } = this.state;
 
     launchFlipCoin(0, 0);
 
     return (
       <div className="App">
-        {isStopFlipping 
-          ? (
-            <Fragment>
-              <Sale />
-              <div className="b-title">
-                Скорее, тебя уже ждут здесь
-              </div>
-              <Card />
-            </Fragment>
-          ) : <ScreenCoin stopFlipping={this.stopFlipping}/>
-        }
+
+        {/* Первый экран: Монетка */}
+        <CSSTransition 
+          unmountOnExit 
+          in={!isStopFlipping} 
+          timeout={500} 
+          classNames='b-screen'
+          onExited={() => this.setState({ showBar: true })}
+        >
+          <ScreenCoin stopFlipping={this.stopFlipping}/>
+        </CSSTransition>
+
+        {/* Второй экран: Бар, скидка, промокод. */}
+        <CSSTransition 
+          unmountOnExit 
+          in={showBar} 
+          timeout={1500}
+          classNames='b-screen'
+        >
+          <div>
+            <Sale />
+            <div className="b-title">
+              Скорее, тебя уже ждут здесь
+            </div>
+            <Card />
+          </div>
+        </CSSTransition>
       </div>
     )
 

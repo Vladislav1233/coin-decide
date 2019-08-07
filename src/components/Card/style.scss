@@ -4,6 +4,19 @@
     border: 1px solid #EBDBCC;
     max-width: 420px;
 
+    .b-screen-enter & {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    .b-screen-enter-active & {
+        opacity: 1;
+        transform: translateX(0);
+        transition-delay: 1s;
+        transition-property: opacity, transform;
+        transition-duration: 0.5s;
+    }
+
     &__image {
         max-width: 100%;
     }
