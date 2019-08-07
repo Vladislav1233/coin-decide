@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import './App.scss';
 import Shake from 'helpers/shake';
 import launchFlipCoin from 'helpers/launchFlipCoin';
 import ScreenCoin from 'components/ScreenCoin';
 import Card from 'components/Card';
+import Sale from 'components/Sale';
 
 class App extends Component {
 
@@ -42,8 +43,15 @@ class App extends Component {
     return (
       <div className="App">
         {isStopFlipping 
-          ? <Card />
-          : <ScreenCoin stopFlipping={this.stopFlipping}/>
+          ? (
+            <Fragment>
+              <Sale />
+              <div className="b-title">
+                Скорее, тебя уже ждут здесь
+              </div>
+              <Card />
+            </Fragment>
+          ) : <ScreenCoin stopFlipping={this.stopFlipping}/>
         }
       </div>
     )
