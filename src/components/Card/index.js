@@ -14,7 +14,13 @@ class Card extends Component {
           <div className="b-card__name">69 Pints</div>
 
           <div className="b-card__feedback">
-            <div className="b-card__feedback-star">+++++</div>
+            <div className="b-card__feedback-star b-card__feedback-star--five">
+              {[...new Array(5)].map(() => (
+                <span className="b-card__feedback-dot">
+                  <span></span>
+                </span>
+              ))}
+            </div>
             <div className="b-card__feedback-count">45 отзывов</div>
           </div>
 

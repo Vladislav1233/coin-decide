@@ -36,6 +36,7 @@
 
     &__name {
         font-size: 32px;
+        margin-bottom: 30px;
     }
 
     &__feedback {
@@ -47,6 +48,40 @@
 
     &__feedback-star {
         margin-right: 10px;
+    }
+
+    &__feedback-dot {
+        display: inline-block;
+        border: 2px solid #00a680;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        position: relative;
+
+        &:not(:last-child) {
+            margin-right: 3px;
+        }
+
+        span {
+            display: block;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        
+            &:before {
+                content: "";
+                width: 8px;
+                height: 8px;
+                position: absolute;
+                top: 50%;
+                left: 2px;
+                transform: translateY(-50%);
+                background-color: #00a680;
+                border-radius: 50%;
+                display: inline-block;
+            }
+        }
     }
 
     &__icon {
