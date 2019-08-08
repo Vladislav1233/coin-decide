@@ -35,7 +35,7 @@ class App extends Component {
   componentDidMount() {
     //create a new instance of shake.js.
     const myShakeEvent = new Shake({
-      threshold: 15
+      threshold: 10
     });
     // start listening to device motion
     myShakeEvent.start();
