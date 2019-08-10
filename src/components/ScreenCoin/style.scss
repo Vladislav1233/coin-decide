@@ -1,16 +1,28 @@
+// @keyframes shadow {
+//     from {transform: rotate(0);}
+//     50% {transform: rotate(2deg);}
+//     to {transform: rotate(0);}
+// }
+
 .b-screen-coin {
     margin-bottom: 60px;
 
     &__text {
-        font-family: 'Pacifico', cursive;
         color: #EBDBCC;
-        max-width: 420px;
+        max-width: 432px;
         font-size: 18px;
-        line-height: 1.3;
-        letter-spacing: 3.5px;
+        margin-bottom: 48px;
     }
 
     &__button {
-        margin-bottom: 20px;
+        margin-bottom: 32px;
+    }
+
+    & svg {
+        // animation: shadow 2s ease-in-out 0.5s alternate, move 5s linear 2s;
+        animation-name: shadow;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
     }
 }
