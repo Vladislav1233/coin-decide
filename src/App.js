@@ -5,8 +5,7 @@ import Shake from 'helpers/shake';
 import launchFlipCoin from 'helpers/launchFlipCoin';
 
 import ScreenCoin from 'components/ScreenCoin';
-import Card from 'components/Card';
-import Sale from 'components/Sale';
+import ScreenBar from 'components/ScreenBar';
 
 import './App.scss';
 
@@ -73,13 +72,7 @@ class App extends Component {
           timeout={1500}
           classNames='b-screen'
         >
-          <div>
-            <Sale />
-            <div className="b-title">
-              Скорее, тебя уже ждут здесь
-            </div>
-            <Card />
-          </div>
+          <ScreenBar />
         </CSSTransition>
       </div>
     )
