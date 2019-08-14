@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://vladislav1233.github.io/coin-decide",
   "dependencies": {
+    "@material/react-tab-bar": "^0.15.0",
     "gh-pages": "^2.0.1",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",

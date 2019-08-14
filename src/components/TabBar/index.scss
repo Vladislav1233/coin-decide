@@ -1,0 +1,26 @@
+.b-tab-bar {
+    display: inline-block;
+
+    .mdc-tab-bar {
+        margin: 0px -5px;
+        width: auto;
+    }
+
+    .mdc-tab {
+        font-size: 16px;
+        letter-spacing: normal;
+        padding: 0px 3px;
+        flex: 0 0 auto;
+        margin: 0px 5px;
+        height: 36px;
+    }
+
+    .mdc-tab .mdc-tab__text-label {
+        color: #fff;
+        opacity: 1;
+    }
+
+    .mdc-tab-indicator > .mdc-tab-indicator__content--underline {
+        background-color: #fff;
+    }
+}

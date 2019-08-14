@@ -1,0 +1,33 @@
+.b-screen-bar {
+    &__nav {
+        display: flex;
+        align-items: center;
+        padding: 0px 16px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 15;
+        padding-top: 18px;
+    }
+
+    &__nav-arrow,
+    &__nav-share {
+        font-size: 0;
+        line-height: 0;
+        flex-shrink: 0;
+    }
+
+    &__nav-arrow {
+        text-align: left;
+    }
+
+    &__nav-share {
+        text-align: right;
+    }
+
+    &__nav-tab-bar {
+        flex-grow: 1;
+        text-align: center;
+    }
+}
