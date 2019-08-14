@@ -9,6 +9,16 @@
         width: 100%;
         z-index: 15;
         padding-top: 18px;
+
+        .b-screen-enter & {
+            opacity: 0;
+        }
+
+        .b-screen-enter-active & {
+            transition: opacity 0.5s;
+            transition-delay: 1.7s;
+            opacity: 1;
+        }
     }
 
     &__nav-arrow,
@@ -29,5 +39,18 @@
     &__nav-tab-bar {
         flex-grow: 1;
         text-align: center;
+    }
+
+    &__tab-content {
+
+        .b-screen-enter & {
+            opacity: 0;
+        }
+
+        .b-screen-enter-active & {
+            transition: opacity 0.5s;
+            transition-delay: 1.5s;
+            opacity: 1;
+        }
     }
 }

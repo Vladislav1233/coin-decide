@@ -69,7 +69,7 @@ class App extends Component {
         <CSSTransition 
           unmountOnExit 
           in={showBar} 
-          timeout={1500}
+          timeout={2300}
           classNames='b-screen'
         >
           <ScreenBar />

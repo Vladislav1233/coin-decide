@@ -10,7 +10,8 @@ html {
     flex-direction: column;
     align-items: center;
     position: relative;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 #root {
@@ -29,31 +30,5 @@ html {
     &.hide {
         transform: translateX(calc(-50% - 100px)) rotate(-90deg);
         opacity: 0;
-    }
-}
-
-.b-screen {
-    &-enter {
-        opacity: 0;
-        transform: translateX(100px);
-    }
-
-    &-enter-active {
-        opacity: 1;
-        transform: translateX(0px);
-        transition-property: transform, opacity;
-        transition-duration: 0.5s;
-    }
-
-    &-exit {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    &-exit-active {
-        opacity: 0;
-        transition-property: transform, opacity;
-        transition-duration: 0.5s;
-        transform: translateX(-100px);
     }
 }

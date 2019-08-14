@@ -25,4 +25,29 @@
         animation-iteration-count: infinite;
         animation-timing-function: linear;
     }
+
+    
+    &.b-screen-enter {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    &.b-screen-enter-active {
+        opacity: 1;
+        transform: translateX(0px);
+        transition-property: transform, opacity;
+        transition-duration: 0.5s;
+    }
+
+    &.b-screen-exit {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    &.b-screen-exit-active {
+        opacity: 0;
+        transition-property: transform, opacity;
+        transition-duration: 0.5s;
+        transform: translateX(-100px);
+    }
 }
