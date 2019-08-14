@@ -12,8 +12,8 @@ import './App.scss';
 class App extends Component {
 
   state = {
-    isStopFlipping: true,
-    showBar: true
+    isStopFlipping: false,
+    showBar: false
   };
 
   stopFlipping = () => {

@@ -3,11 +3,40 @@ import React, { Component } from 'react';
 import Card from 'components/Card';
 import TabBar from 'components/TabBar';
 import ArrowTo from 'components/ArrowTo';
+import Code from 'components/Code';
 
 import './index.scss';
 
 class ScreenBar extends Component {
+  state = {
+    tabIndex: 0
+  };
+
+  handleActiveIndexUpdate = (activeIndex) => {
+    this.setState({
+      tabIndex: activeIndex
+    })
+  };
+
   render() {
+    const { tabIndex } = this.state;
+
+    const TabContent = () => {
+      switch (tabIndex) {
+        case 0:
+          return <Code />
+
+        case 1:
+          return '1'
+
+        case 2: 
+          return '2'
+
+        default:
+          return <Code />
+      }
+    };
+
     return(
       <div className="b-screen-bar">
         <div className="b-screen-bar__nav">
@@ -16,6 +45,7 @@ class ScreenBar extends Component {
           </div>
           <div className="b-screen-bar__nav-tab-bar">
             <TabBar 
+              getTabIndex={this.handleActiveIndexUpdate}
               tabs={[
                 'Код',
                 'Отзывы',
@@ -37,6 +67,10 @@ class ScreenBar extends Component {
         </div>
 
         <Card />
+
+        <div className="b-screen-bar__tab-content">
+          <TabContent />
+        </div>
       </div>
     )
   }
