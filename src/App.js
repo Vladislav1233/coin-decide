@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
-import Shake from 'helpers/shake';
-import launchFlipCoin from 'helpers/launchFlipCoin';
+// import Shake from 'helpers/shake'; TODO: shake событие
+// import launchFlipCoin from 'helpers/launchFlipCoin';
 
 import ScreenCoin from 'components/ScreenCoin';
 import ScreenBar from 'components/ScreenBar';
@@ -16,40 +16,43 @@ class App extends Component {
     showBar: false
   };
 
-  stopFlipping = () => {
-    setTimeout(() => {
-      this.setState({
-        isStopFlipping: true
-      });
+  // TODO: shake событие
+  // stopFlipping = () => {
+  //   setTimeout(() => {
+  //     this.setState({
+  //       isStopFlipping: true
+  //     });
 
-      const canvasElem = document.getElementById('canvas');
-      canvasElem.classList='hide';
+  //     const canvasElem = document.getElementById('canvas');
+  //     canvasElem.classList='hide';
 
-      setTimeout(() => {
-        canvasElem.style.display="none";
-      }, 500);
-    }, 300);
-  };
+  //     setTimeout(() => {
+  //       canvasElem.style.display="none";
+  //     }, 500);
+  //   }, 300);
+  // };
 
   componentDidMount() {
-    //create a new instance of shake.js.
-    const myShakeEvent = new Shake({
-      threshold: 10
-    });
-    // start listening to device motion
-    myShakeEvent.start();
+    // TODO: shake событие
+    // //create a new instance of shake.js.
+    // const myShakeEvent = new Shake({
+    //   threshold: 10
+    // });
+    // // start listening to device motion
+    // myShakeEvent.start();
 
-    //shake event callback
-    const shakeEventDidOccur = () => launchFlipCoin(10, -15, this.stopFlipping);
+    // //shake event callback
+    // const shakeEventDidOccur = () => launchFlipCoin(10, -15, this.stopFlipping);
 
-    // register a shake event
-    window.addEventListener('shake', shakeEventDidOccur, false);
+    // // register a shake event
+    // window.addEventListener('shake', shakeEventDidOccur, false);
   }
 
   render() {
     const { isStopFlipping, showBar } = this.state;
 
-    launchFlipCoin(0, 0);
+    // TODO: shake событие
+    // launchFlipCoin(0, 0);
 
     return (
       <div className="App">
@@ -62,7 +65,7 @@ class App extends Component {
           classNames='b-screen'
           onExited={() => this.setState({ showBar: true })}
         >
-          <ScreenCoin stopFlipping={this.stopFlipping}/>
+          <ScreenCoin />
         </CSSTransition>
 
         {/* Второй экран: Бар, скидка, промокод. */}
