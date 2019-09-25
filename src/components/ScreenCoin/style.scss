@@ -188,11 +188,28 @@
             display: flex;
             margin: 0 -6px;
         }
+
+        &--right {
+            margin-left: auto;
+        }
     }
 
     &__icon {
         padding: 4px;
         margin-top: -4px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+
+        img {
+            max-height: 100%;
+        }
+
+        &--right {
+            img {
+                transform: rotate(180deg);
+            }
+        }
     }
 }
 

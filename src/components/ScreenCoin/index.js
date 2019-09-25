@@ -10,6 +10,7 @@ import v from 'images/coin-v.mp4';
 import settingIcon from 'images/setting.svg';
 import list from 'images/list.svg';
 import swipeImg from 'images/swipe.svg';
+import arrowSideIcon from 'images/arrow-side.svg';
 
 // Note: components
 import PromocodeList from 'components/PromocodeList';
@@ -45,7 +46,15 @@ class ScreenCoin extends Component {
       <div className="b-screen-coin">
         <Slider ref={c => (this.slider = c)} { ...sliderSetting }>
           <div className="b-screen-coin__slide">
-            wefrg wef wfw wef wrf wfw fwf wfwf 
+            <h2 className="b-screen-coin__title">Настройки</h2>
+
+            <div className="b-coin-head">
+              <div className="b-coin-head__item b-coin-head__item--right">
+                <div className="b-coin-head__icon b-coin-head__icon--right" onClick={this.nextSlide}>
+                  <img src={arrowSideIcon} alt="" />
+                </div>
+              </div>
+            </div>
           </div>
 
           <div className="b-screen-coin__slide">
@@ -80,8 +89,8 @@ class ScreenCoin extends Component {
 
             <div className="b-coin-head">
               <div className="b-coin-head__item">
-                <div className="b-coin-head__icon">
-                  <img src={settingIcon} alt="" />
+                <div className="b-coin-head__icon" onClick={this.previousSlide}>
+                  <img src={arrowSideIcon} alt="" />
                 </div>
               </div>
             </div>
