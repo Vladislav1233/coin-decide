@@ -23,6 +23,14 @@ class ScreenCoin extends Component {
   //   launchFlipCoin(10, -15, this.props.stopFlipping);
   // }
 
+  nextSlide = () => {
+    this.slider.slickNext();
+  };
+
+  previousSlide = () => {
+    this.slider.slickPrev();
+  };
+
   render() {
     const sliderSetting = {
       dots: true,
@@ -43,13 +51,13 @@ class ScreenCoin extends Component {
 
             <div className="b-coin-head">
               <div className="b-coin-head__item">
-                <div className="b-coin-head__icon">
+                <div className="b-coin-head__icon" onClick={this.previousSlide}>
                   <img src={settingIcon} alt="" />
                 </div>
               </div>
 
               <div className="b-coin-head__item">
-                <div className="b-coin-head__icon">
+                <div className="b-coin-head__icon" onClick={this.nextSlide}>
                   <img src={list} alt="" />
                 </div>
               </div>
