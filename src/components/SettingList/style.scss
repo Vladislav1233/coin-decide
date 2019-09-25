@@ -1,0 +1,47 @@
+.b-setting-list {
+    color: #fff;
+    text-align: left;
+
+    &__name {
+        font-size: 15px;
+        line-height: 18px;
+    }
+
+    &__description {
+        font-size: 12px;
+        line-height: 14px;
+        color: #555555;
+    }
+
+    &__item {
+        padding: 0 16px;
+        border-bottom: 8px solid #161616;
+        padding-bottom: 16px;
+        margin-bottom: 16px;
+    }
+
+    &__title {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    &__additional-title {
+        font-size: 12px;
+        line-height: 14px;
+        color: #555555;
+    }
+
+    &__head {
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    &__content {
+        padding: 4px 0;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid #555555;
+        }
+    }
+}

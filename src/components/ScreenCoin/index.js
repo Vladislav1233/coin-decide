@@ -14,6 +14,7 @@ import arrowSideIcon from 'images/arrow-side.svg';
 
 // Note: components
 import PromocodeList from 'components/PromocodeList';
+import SettingList from 'components/SettingList';
 // import Button from 'components/Button';
 
 import './style.scss';
@@ -55,10 +56,11 @@ class ScreenCoin extends Component {
                 </div>
               </div>
             </div>
+
+            <SettingList />
           </div>
 
           <div className="b-screen-coin__slide">
-
             <div className="b-coin-head">
               <div className="b-coin-head__item">
                 <div className="b-coin-head__icon" onClick={this.previousSlide}>
