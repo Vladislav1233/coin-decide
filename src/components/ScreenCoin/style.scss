@@ -78,6 +78,11 @@
 
     &__slide {
         position: relative;
+
+        &:focus {
+            border: none;
+            outline: none;
+        }
     }
 
     & svg {
@@ -124,6 +129,7 @@
     &-slide {
         display: inline-block;
         vertical-align: top;
+        float: left;
     }
 
     &-dots {
@@ -161,6 +167,7 @@
     }
 
     &-active {
+        z-index: 5;
         button {
             opacity: 1;
         }

@@ -40,7 +40,10 @@ class ScreenCoin extends Component {
       infinity: false,
       adaptiveHeight: true,
       initialSlide: 1,
-      arrows: false
+      arrows: false,
+      fade: true,
+      slidesToShow: 1,
+      slidesToScroll: 1
     };
 
     return(
