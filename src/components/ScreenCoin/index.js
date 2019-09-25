@@ -62,7 +62,6 @@ class ScreenCoin extends Component {
                   <img src={list} alt="" />
                 </div>
               </div>
-
             </div>
 
             <div className="b-screen-coin__control-image">
@@ -77,6 +76,16 @@ class ScreenCoin extends Component {
           </div>
 
           <div className="b-screen-coin__slide">
+            <h2 className="b-screen-coin__title">Мои промокоды</h2>
+
+            <div className="b-coin-head">
+              <div className="b-coin-head__item">
+                <div className="b-coin-head__icon">
+                  <img src={settingIcon} alt="" />
+                </div>
+              </div>
+            </div>
+
             <PromocodeList />
           </div>
         </Slider>

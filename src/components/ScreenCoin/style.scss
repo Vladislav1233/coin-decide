@@ -24,6 +24,15 @@
 
 .b-screen-coin {
 
+    &__title {
+        font-size: 14px;
+        line-height: 16px;
+        text-align: center;
+        color: #fff;
+        margin-top: 8px;
+        margin-bottom: 44px;
+    }
+
     &__control-image {
         position: absolute;
         left: 50%;
@@ -119,7 +128,7 @@
 
     &-dots {
         position: absolute;
-        top: 26px;
+        top: 30px;
         left: 50%;
         transform: translateX(-50%);
         z-index: 9;
@@ -160,7 +169,7 @@
 
 .b-coin-head {
     position: absolute;
-    top: 16px;
+    top: 20px;
     left: 0;
     z-index: 50;
     width: 100%;
