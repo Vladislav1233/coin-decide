@@ -12,6 +12,7 @@ import list from 'images/list.svg';
 import swipeImg from 'images/swipe.svg';
 
 // Note: components
+import PromocodeList from 'components/PromocodeList';
 // import Button from 'components/Button';
 
 import './style.scss';
@@ -76,7 +77,7 @@ class ScreenCoin extends Component {
           </div>
 
           <div className="b-screen-coin__slide">
-            wefrg wef wfw wef wrf wfw fwf wfwf
+            <PromocodeList />
           </div>
         </Slider>
       </div>
