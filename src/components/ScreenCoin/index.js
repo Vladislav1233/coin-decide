@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 import { Player, ControlBar } from 'video-react';
 import 'video-react/dist/video-react.css';
+import { Swipeable } from 'react-swipeable';
 // import launchFlipCoin from 'helpers/launchFlipCoin';
 
 // Note: media
@@ -21,6 +22,22 @@ import './style.scss';
 
 class ScreenCoin extends Component {
 
+  state = {
+    flipEnded: false,
+    isCoinToss: false
+  };
+
+  componentDidMount() {
+    // Note: subscribe state change on player
+    this.player.subscribeToStateChange(this.handleStateChange.bind(this));
+  };
+
+  handleStateChange(state, prevState) {
+    if (state.ended) {
+      this.props.stopFlipping();
+    }
+  };
+
   // TODO: shake событие
   // onClickFlip = () => {
   //   launchFlipCoin(10, -15, this.props.stopFlipping);
@@ -34,7 +51,16 @@ class ScreenCoin extends Component {
     this.slider.slickPrev();
   };
 
+  onSwipedUp = () => {
+    this.setState({
+      isCoinToss: true
+    });
+    this.player.play();
+  };
+
   render() {
+    const { isCoinToss } = this.state;
+
     const sliderSetting = {
       dots: true,
       infinity: false,
@@ -47,7 +73,7 @@ class ScreenCoin extends Component {
     };
 
     return(
-      <div className="b-screen-coin">
+      <div className={`b-screen-coin ${isCoinToss ? 'is-coin-toss' : ''}`}>
         <Slider ref={c => (this.slider = c)} { ...sliderSetting }>
           <div className="b-screen-coin__slide">
             <h2 className="b-screen-coin__title">Настройки</h2>
@@ -64,7 +90,7 @@ class ScreenCoin extends Component {
           </div>
 
           <div className="b-screen-coin__slide">
-            <div className="b-coin-head">
+            <div className={`b-coin-head ${isCoinToss ? 'is-hide' : ''}`}>
               <div className="b-coin-head__item">
                 <div className="b-coin-head__icon" onClick={this.previousSlide}>
                   <img src={settingIcon} alt="" />
@@ -78,15 +104,22 @@ class ScreenCoin extends Component {
               </div>
             </div>
 
-            <div className="b-screen-coin__control-image">
-              <img src={swipeImg} alt="" />
-              <div></div>
-            </div>
+            <Swipeable onSwipedUp={this.onSwipedUp} preventDefaultTouchmoveEvent={true}>
+              <div className={`b-screen-coin__control-image ${isCoinToss ? 'is-hide' : ''}`}>
+                <img src={swipeImg} alt="" />
+                <div></div>
+              </div>
 
-            <Player fluid={false} width="100%" height="100%">
-              <source src={v}/>
-              <ControlBar disableCompletely={true} />
-            </Player>
+              <Player 
+                ref={(player) => { this.player = player }} 
+                fluid={false} 
+                width="100%" 
+                height="100%"
+              >
+                <source src={v}/>
+                <ControlBar disableCompletely={true} />
+              </Player>
+            </Swipeable>
           </div>
 
           <div className="b-screen-coin__slide">

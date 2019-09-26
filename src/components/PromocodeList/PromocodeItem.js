@@ -12,7 +12,7 @@ class PromocodeItem extends Component {
     const { image, namePlace, namePrize, isCheck, date } =  this.props;
 
     return(
-      <a href="#" className="b-promocode-item" style={{ backgroundImage: `url(${image})` }}>
+      <a href="/" className="b-promocode-item" style={{ backgroundImage: `url(${image})` }}>
         {isCheck &&
           <div className="b-promocode-item__check-wrapper">
             <img src={checkCircle} alt="" />

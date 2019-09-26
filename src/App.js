@@ -16,6 +16,12 @@ class App extends Component {
     showBar: false
   };
 
+  stopFlipping = () => {
+    this.setState({
+      isStopFlipping: true
+    })
+  };
+
   // TODO: shake событие
   // stopFlipping = () => {
   //   setTimeout(() => {
@@ -65,7 +71,9 @@ class App extends Component {
           classNames='b-screen'
           onExited={() => this.setState({ showBar: true })}
         >
-          <ScreenCoin />
+          <ScreenCoin 
+            stopFlipping={this.stopFlipping}
+          />
         </CSSTransition>
 
         {/* Второй экран: Бар, скидка, промокод. */}

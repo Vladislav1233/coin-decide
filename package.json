@@ -12,6 +12,7 @@
     "react-dom": "^16.8.6",
     "react-scripts": "3.0.1",
     "react-slick": "^0.25.2",
+    "react-swipeable": "^5.4.0",
     "react-transition-group": "^4.2.2",
     "video-react": "^0.14.1"
   },
