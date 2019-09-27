@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import Card from 'components/Card';
 import TabBar from 'components/TabBar';
 import ArrowTo from 'components/ArrowTo';
 import Code from 'components/Code';
+import YMap from 'components/YMap';
 
 import './index.scss';
 
@@ -24,13 +25,18 @@ class ScreenBar extends Component {
     const TabContent = () => {
       switch (tabIndex) {
         case 0:
-          return <Code />
+          return <Fragment>
+            <Card />
+            <div className="b-screen-bar__tab-content">
+              <Code />
+            </div>
+          </Fragment>
 
         case 1:
-          return '1'
+          return <div className="b-screen-bar__tab-content">1</div>
 
         case 2: 
-          return '2'
+          return <div className="b-screen-bar__tab-content"><YMap /></div>
 
         default:
           return <Code />
@@ -65,12 +71,8 @@ class ScreenBar extends Component {
             </div>
           </div>
         </div>
-
-        <Card />
-
-        <div className="b-screen-bar__tab-content">
-          <TabContent />
-        </div>
+        
+        <TabContent />
       </div>
     )
   }
