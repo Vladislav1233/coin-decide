@@ -23,6 +23,7 @@
 }
 
 .b-screen-coin {
+    height: 100%;
 
     &__title {
         font-size: 14px;
@@ -85,11 +86,16 @@
 
     &__slide {
         position: relative;
+        height: 100%;
 
         &:focus {
             border: none;
             outline: none;
         }
+    }
+
+    &__swipeable {
+        height: 100%;
     }
 
     & svg {
@@ -128,15 +134,27 @@
 
 .slick {
 
+    &-track,
+    &-list {
+        height: 100% !important;
+    }
+
     &-slider {
         font-size: 0;
         line-height: 0;
+        height: 100%;
     }
     
     &-slide {
         display: inline-block;
         vertical-align: top;
         float: left;
+        height: 100%;
+        overflow: auto;
+
+        > div {
+            height: 100%;
+        }
     }
 
     &-dots {
@@ -238,10 +256,10 @@
 }
 
 .video-react {
-    height: 100vh !important;
+    height: 100% !important;
     
     &-video {
-        height: 100vh !important;
+        height: 100% !important;
         object-fit: cover;
         object-position: bottom center;
     }

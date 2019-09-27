@@ -104,7 +104,7 @@ class ScreenCoin extends Component {
               </div>
             </div>
 
-            <Swipeable onSwipedUp={this.onSwipedUp} preventDefaultTouchmoveEvent={true}>
+            <Swipeable className="b-screen-coin__swipeable" onSwipedUp={this.onSwipedUp} preventDefaultTouchmoveEvent={true}>
               <div className={`b-screen-coin__control-image ${isCoinToss ? 'is-hide' : ''}`}>
                 <img src={swipeImg} alt="" />
                 <div></div>
