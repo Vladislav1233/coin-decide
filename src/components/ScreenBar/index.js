@@ -5,6 +5,7 @@ import TabBar from 'components/TabBar';
 import ArrowTo from 'components/ArrowTo';
 import Code from 'components/Code';
 import YMap from 'components/YMap';
+import TaxiButton from 'components/TaxiButton';
 
 import './index.scss';
 
@@ -33,10 +34,16 @@ class ScreenBar extends Component {
           </Fragment>
 
         case 1:
-          return <div className="b-screen-bar__tab-content">1</div>
+          return <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">1</div>
 
         case 2: 
-          return <div className="b-screen-bar__tab-content"><YMap /></div>
+          return <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">
+            <h2 className="b-screen-bar__tab-title">69 pint house</h2>
+            <YMap />
+            <div className="b-screen-bar__taxi">
+              <TaxiButton />
+            </div>
+          </div>
 
         default:
           return <Code />

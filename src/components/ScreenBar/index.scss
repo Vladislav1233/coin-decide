@@ -1,4 +1,11 @@
+$screen-bar-offset-top:         80px;
+
 .b-screen-bar {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+
     &__nav {
         display: flex;
         align-items: center;
@@ -43,6 +50,11 @@
 
     &__tab-content {
 
+        &--full {
+            padding-top: $screen-bar-offset-top;
+            height: 100%;
+        }
+
         .b-screen-enter & {
             opacity: 0;
         }
@@ -52,5 +64,19 @@
             transition-delay: 1.5s;
             opacity: 1;
         }
+    }
+
+    &__tab-title {
+        font-size: 32px;
+        line-height: 37px;
+        text-align: left;
+        padding: 0 16px;
+        margin: 0 0 12px;
+    }
+
+    &__taxi {
+        margin-top: -50px;
+        position: relative;
+        z-index: 100;
     }
 }

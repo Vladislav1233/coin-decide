@@ -8,11 +8,13 @@ class YMap extends Component {
         <Map 
           defaultState={{
             center: [55.751574, 37.573856],
-            zoom: 5,
+            zoom: 15,
           }}
+          width="100%"
+          height="calc(100% - 49px)"
         >
           <Placemark 
-            geometry={[55.684758, 37.738521]}
+            geometry={[55.751574, 37.573856]}
           />
         </Map>
       </YMaps>
