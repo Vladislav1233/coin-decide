@@ -14,6 +14,7 @@ class Card extends Component {
           </div>
 
           <div className="b-card__info-bar">
+            <div className="b-card__address">Открыто до 23:00</div>
             <div className="b-card__address">ул. Красно-словянская, 72</div>
             <h1 className="b-card__name">69 pint house</h1>
           </div>

@@ -6,6 +6,11 @@
 * {
   box-sizing: border-box;
   font-weight: normal;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
 }
 
 html {

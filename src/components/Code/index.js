@@ -11,6 +11,16 @@ class Code extends Component {
         <div className="b-code__qr-wrapper">
           <img src={qrImage} alt="qr код" />
         </div>
+
+        <div className="b-code__footer">
+          <div className="b-code__note">
+            <span>Покажи QR-code, или продиктуй код бармену и получи скидку</span>
+          </div>
+
+          <a href="/" className="b-code__auth">
+            <span>Зарегистрируйся</span> чтобы не потерять!.
+          </a>
+        </div>
       </div>
     )
   }
