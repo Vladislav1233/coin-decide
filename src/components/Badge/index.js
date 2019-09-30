@@ -3,12 +3,12 @@ import React, { Component } from 'react';
 // Note: styles
 import './style.scss';
 
-class Default extends Component {
+class Badge extends Component {
   render() {
     return(
-      <div></div>
+      <div className="b-badge">{this.props.children}</div>
     )
   }
 }
 
-export default Default;
+export default Badge;
