@@ -12,8 +12,8 @@ import './App.scss';
 class App extends Component {
 
   state = {
-    isStopFlipping: true,
-    showBar: true
+    isStopFlipping: false,
+    showBar: false
   };
 
   stopFlipping = () => {
@@ -64,22 +64,22 @@ class App extends Component {
       <div className="App">
 
         {/* Первый экран: Монетка */}
-        <CSSTransition 
-          unmountOnExit 
-          in={!isStopFlipping} 
-          timeout={500} 
+        <CSSTransition
+          unmountOnExit
+          in={!isStopFlipping}
+          timeout={500}
           classNames='b-screen'
           onExited={() => this.setState({ showBar: true })}
         >
-          <ScreenCoin 
+          <ScreenCoin
             stopFlipping={this.stopFlipping}
           />
         </CSSTransition>
 
         {/* Второй экран: Бар, скидка, промокод. */}
-        <CSSTransition 
-          unmountOnExit 
-          in={showBar} 
+        <CSSTransition
+          unmountOnExit
+          in={showBar}
           timeout={2300}
           classNames='b-screen'
         >
