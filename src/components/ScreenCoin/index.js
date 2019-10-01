@@ -91,17 +91,17 @@ class ScreenCoin extends Component {
 
           <div className="b-screen-coin__slide">
             <div className={`b-coin-head ${isCoinToss ? 'is-hide' : ''}`}>
-              <div className="b-coin-head__item">
+              <button className="b-coin-head__item" type="button">
                 <div className="b-coin-head__icon" onClick={this.previousSlide}>
                   <img src={settingIcon} alt="" />
                 </div>
-              </div>
+              </button>
 
-              <div className="b-coin-head__item">
+              <button className="b-coin-head__item" type="button">
                 <div className="b-coin-head__icon" onClick={this.nextSlide}>
                   <img src={list} alt="" />
                 </div>
-              </div>
+              </button>
             </div>
 
             <Swipeable className="b-screen-coin__swipeable" onSwipedUp={this.onSwipedUp} preventDefaultTouchmoveEvent={true}>
@@ -110,10 +110,10 @@ class ScreenCoin extends Component {
                 <div></div>
               </div>
 
-              <Player 
-                ref={(player) => { this.player = player }} 
-                fluid={false} 
-                width="100%" 
+              <Player
+                ref={(player) => { this.player = player }}
+                fluid={false}
+                width="100%"
                 height="100%"
               >
                 <source src={v}/>
