@@ -5,16 +5,22 @@
   "homepage": "https://vladislav1233.github.io/coin-decide",
   "dependencies": {
     "@material/react-tab-bar": "^0.15.0",
+    "firebase": "^7.0.0",
     "gh-pages": "^2.0.1",
     "node-sass": "^4.12.0",
     "react": "^16.8.6",
     "react-device-detect": "^1.7.5",
     "react-dom": "^16.8.6",
+    "react-redux": "^7.1.1",
+    "react-redux-firebase": "^2.4.1",
     "react-scripts": "3.0.1",
     "react-slick": "^0.25.2",
     "react-swipeable": "^5.4.0",
     "react-transition-group": "^4.2.2",
     "react-yandex-maps": "^4.0.1",
+    "redux": "^4.0.4",
+    "redux-firestore": "^0.9.0",
+    "redux-thunk": "^2.3.0",
     "video-react": "^0.14.1"
   },
   "scripts": {
