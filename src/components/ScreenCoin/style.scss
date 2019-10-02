@@ -26,45 +26,44 @@
     height: 100%;
 
     &__title {
+        margin-top: 8px;
+        margin-bottom: 44px;
         font-size: 14px;
         line-height: 16px;
         text-align: center;
-        color: #fff;
-        margin-top: 8px;
-        margin-bottom: 44px;
+        color: #ffffff;
     }
 
     &__control-image {
         position: absolute;
-        left: 50%;
-        bottom: 50%;
-        transform: translate(-50%, -50%);
         z-index: 8;
+        bottom: 50%;
+        left: 50%;
+        height: 47px;
         font-size: 0;
         line-height: 0;
-
-        animation-name: swipe-start;
-        animation-duration: 0.5s;
-        animation-delay: 1s;
-        animation-fill-mode: backwards;
-        // animation-timing-function: cubic-bezier(.27,.01,.9,.14);
-        animation-timing-function: ease;
-        height: 47px;
+        transition-duration: .3s;
         transition-property: bottom, opacity;
-        transition-duration: 0.3s;
+        transform: translate(-50%, -50%);
+        animation-name: swipe-start;
+        animation-duration: .5s;
+// animation-timing-function: cubic-bezier(.27,.01,.9,.14);
+        animation-timing-function: ease;
+        animation-delay: 1s;
 
+        animation-fill-mode: backwards;
         div {
-            height: 55px;
             width: 2px;
-            background-color: #fff;
+            height: 55px;
             margin-left: 63px;
-
             animation-name: height-line;
-            animation-duration: 0.5s;
-            animation-delay: 1s;
-            animation-fill-mode: forwards;
-            // animation-timing-function: cubic-bezier(.27,.01,.9,.14);
+            animation-duration: .5s;
+// animation-timing-function: cubic-bezier(.27,.01,.9,.14);
             animation-timing-function: ease;
+            animation-delay: 1s;
+            background-color: #ffffff;
+
+            animation-fill-mode: forwards;
         }
 
         &.is-hide {
@@ -74,10 +73,10 @@
     }
 
     &__text {
-        color: #EBDBCC;
         max-width: 432px;
-        font-size: 18px;
         margin-bottom: 48px;
+        font-size: 18px;
+        color: #ebdbcc;
     }
 
     &__button {
@@ -102,55 +101,54 @@
         // animation: shadow 2s ease-in-out 0.5s alternate, move 5s linear 2s;
         animation-name: shadow;
         animation-duration: 2s;
-        animation-iteration-count: infinite;
         animation-timing-function: linear;
+        animation-iteration-count: infinite;
     }
 
-    
+
     &.b-screen-enter {
-        opacity: 0;
         transform: translateX(100px);
+        opacity: 0;
     }
 
     &.b-screen-enter-active {
-        opacity: 1;
-        transform: translateX(0px);
+        transition-duration: .5s;
         transition-property: transform, opacity;
-        transition-duration: 0.5s;
+        transform: translateX(0px);
+        opacity: 1;
     }
 
     &.b-screen-exit {
-        opacity: 1;
         transform: translateX(0);
+        opacity: 1;
     }
 
     &.b-screen-exit-active {
-        opacity: 0;
+        transition-duration: .5s;
         transition-property: transform, opacity;
-        transition-duration: 0.5s;
         transform: translateX(-100px);
+        opacity: 0;
     }
 }
 
 .slick {
-
     &-track,
     &-list {
         height: 100% !important;
     }
 
     &-slider {
+        height: 100%;
         font-size: 0;
         line-height: 0;
-        height: 100%;
     }
-    
+
     &-slide {
         display: inline-block;
-        vertical-align: top;
         float: left;
-        height: 100%;
         overflow: auto;
+        height: 100%;
+        vertical-align: top;
 
         > div {
             height: 100%;
@@ -159,36 +157,36 @@
 
     &-dots {
         position: absolute;
+        z-index: 9;
         top: 30px;
         left: 50%;
-        transform: translateX(-50%);
-        z-index: 9;
-        width: 70%;
-        padding: 0;
-        margin: 0;
         display: flex !important;
         justify-content: center;
-        transition: transform 0.3s;
-        
+        width: 70%;
+        margin: 0;
+        padding: 0;
+        transition: transform .3s;
+        transform: translateX(-50%);
+
         li {
-            list-style: none;
+            height: 6px;
             padding: 0 6px;
+            list-style: none;
             font-size: 0;
             line-height: 0;
-            height: 6px;
         }
 
         button {
-            text-indent: -999px;
-            border-radius: 50%;
             width: 6px;
             height: 6px;
-            background-color: #96A491;
-            opacity: 0.3;
             padding: 0;
+            transition: opacity .3s;
+            text-indent: -999px;
+            opacity: .3;
             border: none;
+            border-radius: 50%;
             outline: none;
-            transition: opacity 0.3s;
+            background-color: #96a491;
         }
 
         .is-coin-toss & {
@@ -206,21 +204,31 @@
 
 .b-coin-head {
     position: absolute;
-    top: 20px;
-    left: 0;
     z-index: 50;
-    width: 100%;
+    top: 12px;
+    left: 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
     padding: 0px 8px;
-    transition: transform 0.3s;
+    transition: transform .3s;
 
     &__item {
+        display: inline-flex;
+        width: 64px;
+        height: 64px;
         margin: 0;
         padding: 0;
         font-size: 0;
         line-height: 0;
+        border: none;
+        border-radius: 4px;
+        background: none;
+
+        &:hover {
+            background: rgba($color: #ffffff, $alpha: .1);
+        }
 
         &--list {
             display: flex;
@@ -233,11 +241,12 @@
     }
 
     &__icon {
-        padding: 4px;
-        margin-top: -4px;
-        height: 32px;
         display: flex;
         align-items: center;
+        height: 32px;
+        margin: auto;
+        margin-top: -4px;
+        padding: 4px;
 
         img {
             max-height: 100%;
@@ -257,10 +266,11 @@
 
 .video-react {
     height: 100% !important;
-    
+
     &-video {
         height: 100% !important;
         object-fit: cover;
+
         object-position: bottom center;
     }
 
