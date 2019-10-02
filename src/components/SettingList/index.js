@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // Note: style
 import './style.scss';
@@ -71,4 +72,11 @@ class SettingList extends Component {
   }
 }
 
-export default SettingList;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+
+  }
+};
+
+export default connect(mapStateToProps)(SettingList);

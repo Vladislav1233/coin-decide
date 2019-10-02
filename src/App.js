@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 // import Shake from 'helpers/shake'; TODO: shake событие
@@ -6,6 +6,7 @@ import { CSSTransition } from 'react-transition-group';
 
 import ScreenCoin from 'components/ScreenCoin';
 import ScreenBar from 'components/ScreenBar';
+import SignIn from 'components/SignIn';
 
 import './App.scss';
 
@@ -71,9 +72,12 @@ class App extends Component {
           classNames='b-screen'
           onExited={() => this.setState({ showBar: true })}
         >
-          <ScreenCoin
-            stopFlipping={this.stopFlipping}
-          />
+          <Fragment>
+            <ScreenCoin
+              stopFlipping={this.stopFlipping}
+            />
+            <SignIn />
+          </Fragment>
         </CSSTransition>
 
         {/* Второй экран: Бар, скидка, промокод. */}

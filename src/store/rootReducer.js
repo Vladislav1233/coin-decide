@@ -7,16 +7,21 @@ import {
   compose
 } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { reduxFirestore, getFirestore } from 'redux-firestore';
+import { reduxFirestore, getFirestore, firestoreReducer } from 'redux-firestore';
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
 import firebaseConfig from 'config/firebaseConfig';
+import { firebaseReducer } from 'react-redux-firebase';
 
 // Note: reducers
 import promocodes from './promocodes';
+import auth from './auth';
 
 export default function(initialState = {}) {
   const rootReducer = combineReducers({
-    promocodes
+    promocodes,
+    auth,
+    firestore: firestoreReducer,
+    firebase: firebaseReducer
   });
 
   return createStore(
