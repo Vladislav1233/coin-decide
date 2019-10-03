@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { CSSTransition } from 'react-transition-group';
+import { isMobile } from 'react-device-detect';
 
 // import Shake from 'helpers/shake'; TODO: shake событие
 // import launchFlipCoin from 'helpers/launchFlipCoin';
@@ -7,6 +8,7 @@ import { CSSTransition } from 'react-transition-group';
 import ScreenCoin from 'components/ScreenCoin';
 import ScreenBar from 'components/ScreenBar';
 import SignIn from 'components/SignIn';
+import DesktopScreen from 'components/DesktopScreen';
 
 import './App.scss';
 
@@ -63,32 +65,37 @@ class App extends Component {
 
     return (
       <div className="App">
+        {isMobile 
+          ? <Fragment>
+            {/* Первый экран: Монетка */}
+            <CSSTransition
+              unmountOnExit
+              in={!isStopFlipping}
+              timeout={500}
+              classNames='b-screen'
+              onExited={() => this.setState({ showBar: true })}
+            >
+              <Fragment>
+                <ScreenCoin
+                  stopFlipping={this.stopFlipping}
+                />
+                <SignIn />
+              </Fragment>
+            </CSSTransition>
 
-        {/* Первый экран: Монетка */}
-        <CSSTransition
-          unmountOnExit
-          in={!isStopFlipping}
-          timeout={500}
-          classNames='b-screen'
-          onExited={() => this.setState({ showBar: true })}
-        >
-          <Fragment>
-            <ScreenCoin
-              stopFlipping={this.stopFlipping}
-            />
-            <SignIn />
+            {/* Второй экран: Бар, скидка, промокод. */}
+            <CSSTransition
+              unmountOnExit
+              in={showBar}
+              timeout={2300}
+              classNames='b-screen'
+            >
+              <ScreenBar />
+            </CSSTransition>
           </Fragment>
-        </CSSTransition>
 
-        {/* Второй экран: Бар, скидка, промокод. */}
-        <CSSTransition
-          unmountOnExit
-          in={showBar}
-          timeout={2300}
-          classNames='b-screen'
-        >
-          <ScreenBar />
-        </CSSTransition>
+          : <DesktopScreen />
+        }
       </div>
     )
 
