@@ -7,7 +7,7 @@ import { isMobile } from 'react-device-detect';
 
 import ScreenCoin from 'components/ScreenCoin';
 import ScreenBar from 'components/ScreenBar';
-import SignIn from 'components/SignIn';
+import SignUp from 'components/SignUp';
 import DesktopScreen from 'components/DesktopScreen';
 
 import './App.scss';
@@ -65,7 +65,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        {isMobile 
+        {isMobile
           ? <Fragment>
             {/* Первый экран: Монетка */}
             <CSSTransition
@@ -79,7 +79,7 @@ class App extends Component {
                 <ScreenCoin
                   stopFlipping={this.stopFlipping}
                 />
-                <SignIn />
+                {/* <SignUp /> */}
               </Fragment>
             </CSSTransition>
 
