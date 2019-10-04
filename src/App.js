@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { CSSTransition } from 'react-transition-group';
 import { isMobile } from 'react-device-detect';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 // import Shake from 'helpers/shake'; TODO: shake событие
 // import launchFlipCoin from 'helpers/launchFlipCoin';
@@ -8,6 +9,7 @@ import { isMobile } from 'react-device-detect';
 import ScreenCoin from 'components/ScreenCoin';
 import ScreenBar from 'components/ScreenBar';
 import SignUp from 'components/SignUp';
+import SignIn from 'components/SignIn';
 import DesktopScreen from 'components/DesktopScreen';
 
 import './App.scss';
@@ -64,39 +66,46 @@ class App extends Component {
     // launchFlipCoin(0, 0);
 
     return (
-      <div className="App">
-        {isMobile
-          ? <Fragment>
-            {/* Первый экран: Монетка */}
-            <CSSTransition
-              unmountOnExit
-              in={!isStopFlipping}
-              timeout={500}
-              classNames='b-screen'
-              onExited={() => this.setState({ showBar: true })}
-            >
-              <Fragment>
-                <ScreenCoin
-                  stopFlipping={this.stopFlipping}
-                />
-                {/* <SignUp /> */}
-              </Fragment>
-            </CSSTransition>
+      <BrowserRouter>
+        <div className="App">
+          {isMobile
+            ? <Switch>
+              <Route exact path="/">
+                <Fragment>
+                  {/* Первый экран: Монетка */}
+                  <CSSTransition
+                    unmountOnExit
+                    in={!isStopFlipping}
+                    timeout={500}
+                    classNames='b-screen'
+                    onExited={() => this.setState({ showBar: true })}
+                  >
+                    <Fragment>
+                      <ScreenCoin
+                        stopFlipping={this.stopFlipping}
+                      />
+                    </Fragment>
+                  </CSSTransition>
 
-            {/* Второй экран: Бар, скидка, промокод. */}
-            <CSSTransition
-              unmountOnExit
-              in={showBar}
-              timeout={2300}
-              classNames='b-screen'
-            >
-              <ScreenBar />
-            </CSSTransition>
-          </Fragment>
+                  {/* Второй экран: Бар, скидка, промокод. */}
+                  <CSSTransition
+                    unmountOnExit
+                    in={showBar}
+                    timeout={2300}
+                    classNames='b-screen'
+                  >
+                    <ScreenBar />
+                  </CSSTransition>
+                </Fragment>
+              </Route>
+              <Route path="/signup" component={SignUp} />
+              <Route path="/signin" component={SignIn} />
+            </Switch>
 
-          : <DesktopScreen />
-        }
-      </div>
+            : <DesktopScreen />
+          }
+        </div>
+      </BrowserRouter>
     )
 
   }

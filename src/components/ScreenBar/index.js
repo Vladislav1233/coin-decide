@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 
 import Card from 'components/Card';
 import TabBar from 'components/TabBar';
@@ -22,6 +23,7 @@ class ScreenBar extends Component {
   };
 
   render() {
+    const { auth } = this.props;
     const { tabIndex } = this.state;
 
     const TabContent = () => {
@@ -30,7 +32,7 @@ class ScreenBar extends Component {
           return <Fragment>
             <Card />
             <div className="b-screen-bar__tab-content">
-              <Code />
+              <Code isAuth={!!auth.uid}/>
             </div>
           </Fragment>
 
@@ -40,7 +42,7 @@ class ScreenBar extends Component {
             <Review />
           </div>
 
-        case 2: 
+        case 2:
           return <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">
             <h2 className="b-screen-bar__tab-title">69 pint house</h2>
             <YMap />
@@ -61,7 +63,7 @@ class ScreenBar extends Component {
             <ArrowTo />
           </div>
           <div className="b-screen-bar__nav-tab-bar">
-            <TabBar 
+            <TabBar
               getTabIndex={this.handleActiveIndexUpdate}
               tabs={[
                 'Код',
@@ -82,11 +84,17 @@ class ScreenBar extends Component {
             </div>
           </div>
         </div>
-        
+
         <TabContent />
       </div>
     )
   }
 }
 
-export default ScreenBar;
+const mapStateToProps = ({ firebase }) => {
+  return {
+    auth: firebase.auth
+  }
+};
+
+export default connect(mapStateToProps)(ScreenBar);

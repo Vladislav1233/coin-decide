@@ -29,7 +29,7 @@ export default function(initialState = {}) {
     initialState,
     compose(
       applyMiddleware(thunkMiddleware.withExtraArgument({ getFirebase, getFirestore})),
-      reactReduxFirebase(firebaseConfig),
+      reactReduxFirebase(firebaseConfig, { attachAuthIsReady: true }),
       reduxFirestore(firebaseConfig)
     )
   );
