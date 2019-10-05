@@ -9,11 +9,11 @@ import './promocode-item.scss';
 class PromocodeItem extends Component {
 
   render() {
-    const { image, namePlace, namePrize, isCheck, date } =  this.props;
+    const { image, name_bar, prize, is_check, expiry_date } =  this.props;
 
     return(
       <a href="/" className="b-promocode-item" style={{ backgroundImage: `url(${image})` }}>
-        {isCheck &&
+        {is_check &&
           <div className="b-promocode-item__check-wrapper">
             <img src={checkCircle} alt="" />
           </div>
@@ -21,16 +21,16 @@ class PromocodeItem extends Component {
 
         <div className="b-promocode-item__head">
           <div className="b-promocode-item__name-place">
-            {namePlace}
+            {name_bar}
           </div>
           <div className="b-promocode-item__name-prize">
-            {namePrize}
+            {prize}
           </div>
         </div>
 
         <div className="b-promocode-item__footer">
           <div className="b-promocode-item__date">
-            {date}
+            Действует до {expiry_date}
           </div>
         </div>
       </a>

@@ -34,13 +34,14 @@ const data = [{
 
 class PromocodeList extends Component {
   render() {
-    console.log(this.props);
+    console.log(this.props)
+    const promocodes = this.props.promocodes ? this.props.promocodes.content : [];
     return(
       <ul className="b-promocode-list">
-        {data.map((item, index) => (
+        {promocodes.map((promocode, index) => (
           <li key={index} className="b-promocode-list__item">
             <PromocodeItem
-              {...item}
+              {...promocode}
             />
           </li>
         ))}
@@ -50,8 +51,9 @@ class PromocodeList extends Component {
 }
 
 const mapStateToProps = ({ firestore, firebase }) => {
+  console.log(firestore)
   return {
-    promocodes: firestore.ordered.promocodes,
+    promocodes: firestore.ordered.promocodes ? firestore.ordered.promocodes[0] : firestore.ordered.promocodes,
     auth: firebase.auth
   }
 }
