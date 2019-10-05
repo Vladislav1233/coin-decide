@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import phoneImg from "images/phones.png";
+import logo from "images/logo.png";
 
 // Note: styles
 import "./style.scss";
@@ -8,6 +9,7 @@ class DesktopScreen extends Component {
   render() {
     return (
       <div className="desktop-screen">
+        <img className="desktop-screen__logo" src={logo} />
         <div className="desktop-screen__center">
           <div className="desktop-screen__left">
             <img className="desktop-screen__img" src={phoneImg} alt="" />
@@ -20,7 +22,7 @@ class DesktopScreen extends Component {
               Закрути свою удачу и получи скидку в случайном баре
             </h2>
             <button className="desktop-screen__btn" type="button">
-              Запустите с телефона
+              Открыть на телефоне
             </button>
           </div>
         </div>
