@@ -2,7 +2,7 @@
 const CREATE_PROMOCODE = 'CREATE_PROMOCODE';
 
 // Note: Actions
-const createPromocode = (promocode) => {
+export const createPromocode = (promocode) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     dispatch({
       type: CREATE_PROMOCODE,
@@ -12,9 +12,7 @@ const createPromocode = (promocode) => {
 };
 
 // Reducers
-const initialState = {
-  promocodes: {}
-}
+const initialState = {}
 
 export default function(state = initialState, action) {
   switch (action.type) {

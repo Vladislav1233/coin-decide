@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import { compose } from 'redux';
+import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 // Note: Components
 import PromocodeItem from './PromocodeItem';
@@ -31,6 +34,7 @@ const data = [{
 
 class PromocodeList extends Component {
   render() {
+    console.log(this.props);
     return(
       <ul className="b-promocode-list">
         {data.map((item, index) => (
@@ -45,4 +49,20 @@ class PromocodeList extends Component {
   }
 }
 
-export default PromocodeList;
+const mapStateToProps = ({ firestore, firebase }) => {
+  return {
+    promocodes: firestore.ordered.promocodes,
+    auth: firebase.auth
+  }
+}
+
+export default compose(
+  connect(mapStateToProps),
+  // ref doc: https://github.com/prescottprue/redux-firestore#query-options%23query-options
+  firestoreConnect(props => {
+    return [{
+    collection: 'promocodes',
+    doc: props.auth.uid,
+    subcollections: [{ collection: 'content' }]
+  }]})
+)(PromocodeList);
