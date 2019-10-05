@@ -60,9 +60,13 @@ export default compose(
   connect(mapStateToProps),
   // ref doc: https://github.com/prescottprue/redux-firestore#query-options%23query-options
   firestoreConnect(props => {
-    return [{
-    collection: 'promocodes',
-    doc: props.auth.uid,
-    subcollections: [{ collection: 'content' }]
-  }]})
+    const dataQuery = [];
+    if (props.auth.uid) dataQuery.push({
+      collection: 'promocodes',
+      doc: props.auth.uid,
+      subcollections: [{ collection: 'content'}]
+    });
+
+    return dataQuery
+  })
 )(PromocodeList);
