@@ -1,8 +1,5 @@
-body {
-    background: linear-gradient(121.94deg, #09c883 3.28%, #086a29 96.88%);
-}
-
 // color - 2019 ff6d70
+
 .container {
     display: flex;
     max-width: 1500px;
@@ -11,6 +8,7 @@ body {
 }
 
 .desktop-screen {
+    background: linear-gradient(121.94deg, #09c883 3.28%, #086a29 96.88%);
     display: flex;
     align-items: center;
     justify-content: center;
