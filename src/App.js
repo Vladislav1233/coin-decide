@@ -68,7 +68,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          {isMobile
+          { isMobile
             ? <Switch>
               <Route exact path="/">
                 <Fragment>
