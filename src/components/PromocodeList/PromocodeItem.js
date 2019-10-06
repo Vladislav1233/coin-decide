@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // Note: images
 import checkCircle from 'images/check-circle.svg';
@@ -9,10 +10,32 @@ import './promocode-item.scss';
 class PromocodeItem extends Component {
 
   render() {
-    const { image, name_bar, prize, is_check, expiry_date } =  this.props;
+    const {
+      image,
+      name_bar,
+      prize,
+      is_check,
+      duration_action,
+      id,
+      bar_id,
+      code,
+      qr_code
+    } =  this.props;
 
     return(
-      <a href="/" className="b-promocode-item" style={{ backgroundImage: `url(${image})` }}>
+      <Link
+        to={{
+          pathname: `/promocode/${id}`,
+          state: {
+            barId: bar_id,
+            code: code,
+            qrCode: qr_code,
+            prize: prize
+          }
+        }}
+        className="b-promocode-item" 
+        style={{ backgroundImage: `url(${image})` }}
+      >
         {is_check &&
           <div className="b-promocode-item__check-wrapper">
             <img src={checkCircle} alt="" />
@@ -24,16 +47,17 @@ class PromocodeItem extends Component {
             {name_bar}
           </div>
           <div className="b-promocode-item__name-prize">
-            {prize}
+            {prize.description}
           </div>
         </div>
 
         <div className="b-promocode-item__footer">
           <div className="b-promocode-item__date">
-            Действует до {expiry_date}
+            {/* TODO */}
+            Действует до {duration_action}
           </div>
         </div>
-      </a>
+      </Link>
     )
   }
 }

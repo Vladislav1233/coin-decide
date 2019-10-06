@@ -4,11 +4,12 @@ import imgSrc from 'images/sale-icon/beer.svg';
 
 class Sale extends Component {
   render() {
+    const { description } = this.props;
 
     return(
-      <div class="b-sale">
+      <div className="b-sale">
         <div className="b-sale__info">
-          <div className="b-sale__name">Бесплатное светлое</div>
+          <div className="b-sale__name">{description}</div>
           <div className="b-sale__type">Приз</div>
         </div>
 

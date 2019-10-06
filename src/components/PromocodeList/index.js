@@ -35,7 +35,6 @@ const data = [{
 
 class PromocodeList extends Component {
   render() {
-    console.log(this.props)
     const { auth } = this.props;
     const promocodes = this.props.promocodes ? this.props.promocodes.content : [];
     return(

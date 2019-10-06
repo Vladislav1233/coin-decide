@@ -6,6 +6,8 @@ import './style.scss';
 
 class Card extends Component {
   render() {
+    const { endWorkTime, address, name, descriptionSale } = this.props;
+
     return(
       <div className="b-card">
         <div className="b-card__wrapper">
@@ -14,12 +16,14 @@ class Card extends Component {
           </div>
 
           <div className="b-card__info-bar">
-            <div className="b-card__address">Открыто до 23:00</div>
-            <div className="b-card__address">ул. Красно-словянская, 72</div>
-            <h1 className="b-card__name">69 pint house</h1>
+            <div className="b-card__address">Открыто до {endWorkTime}</div>
+            <div className="b-card__address">{address}</div>
+            <h1 className="b-card__name">{name}</h1>
           </div>
 
-          <Sale />
+          <Sale
+            description={descriptionSale}
+          />
         </div>
       </div>
     )
