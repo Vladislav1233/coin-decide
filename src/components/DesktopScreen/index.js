@@ -12,7 +12,7 @@ class DesktopScreen extends Component {
         <div className="desktop-screen">
           <header className="desktop-screen__header">
             <div className="container">
-              <img className="desktop-screen__logo" src={logo} />
+              <img className="desktop-screen__logo" src={logo} alt="beer-coin"/>
               <nav className="desktop-screen__nav">
                 <a className="desktop-screen__nav-link" href="http://">
                   Мои коды

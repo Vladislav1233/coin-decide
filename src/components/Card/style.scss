@@ -2,7 +2,7 @@
     width: 100%;
     text-align: left;
     border-bottom: 1px solid var(--borderColorSecondary);
-   
+
     &__wrapper {
         padding: 140px 16px 15px;
         position: relative;
@@ -20,7 +20,7 @@
         z-index: 1;
         top: 0;
         left: 0;
-        
+
         &::before {
             content: '';
             display: block;
@@ -29,7 +29,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: #000;
+            background-color: var(--gray-900);
             opacity: 0.3;
             z-index: 1;
         }
@@ -42,7 +42,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0.7) 5%,rgba(0,0,0,0) 15%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 70%,rgba(0,0,0,1) 100%); 
+            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0.7) 5%,rgba(0,0,0,0) 15%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 70%,rgba(0,0,0,1) 100%);
             z-index: 2;
         }
 
