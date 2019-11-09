@@ -1,13 +1,17 @@
+// Note:
+// Логический компонент, который после броска монетки
+// подбирает бар для пользователя.
+
 import React, { Component } from 'react';
-import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
+import { CSSTransition } from 'react-transition-group';
+// import { firestoreConnect } from 'react-redux-firebase';
 
 // Note: actions
 import { getRandomBar } from 'store/bars';
 
 // Note: helpers
-import randomInteger from 'helpers/randomInteger';
+import isEmptyObj from 'helpers/isEmptyObj';
 
 // Note: Components
 import ScreenBar from './ScreenBar';
@@ -18,23 +22,38 @@ class ScreenBarCreate extends Component {
   }
 
   render() {
-    return <ScreenBar 
-      isAuth={true}
-      code={'2222'}
-      qrCode={null}
-      endWorkTime={'22:30'}
-      address={'ул. Копылова, 10'}
-      geo={null}
-      name={'69 pints'}
-      prize={{description: '-10% шот'}}
-    />
+    const { bar, auth, showBar } = this.props;
+
+      if(isEmptyObj(bar)) {
+        return <div>'Загрузка...'</div>
+      }
+
+      return <CSSTransition
+        unmountOnExit
+        in={showBar}
+        timeout={2300}
+        classNames='b-screen'
+      >
+        <ScreenBar 
+          isAuth={!!auth.uid}
+          code={'2222'} // TODO
+          qrCode={null} // TODO
+          endWorkTime={bar.end_work_time}
+          address={bar.address}
+          geo={null} // TODO
+          name={bar.name}
+          prize={{description: '-10% шот'}}
+        />
+      </CSSTransition>
   }
 }
 
 const mapStateToProps = ({ firebase, firestore }) => {
-  console.log(firestore);
   return {
-    auth: firebase.auth
+    auth: firebase.auth,
+    bar: firestore.ordered.bars && firestore.ordered.bars.length > 0
+      ? firestore.ordered.bars[0]
+      : {}
   }
 };
 
@@ -44,11 +63,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect(props => (
-    [
-      { collection: 'bars_id', doc: 'moscow' } // TODO: doc id
-    ]
-  ))
-)(ScreenBarCreate);
+export default connect(mapStateToProps, mapDispatchToProps)(ScreenBarCreate);

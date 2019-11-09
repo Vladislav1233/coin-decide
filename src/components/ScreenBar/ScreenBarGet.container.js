@@ -1,3 +1,7 @@
+// Note:
+// Логический компонент, который рендерит бар
+// по нажатию на промокоды пользователя.
+
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';

@@ -88,14 +88,7 @@ class App extends Component {
                   </CSSTransition>
 
                   {/* Второй экран: Бар, скидка, промокод. */}
-                  <CSSTransition
-                    unmountOnExit
-                    in={showBar}
-                    timeout={2300}
-                    classNames='b-screen'
-                  >
-                    <ScreenBarCreate />
-                  </CSSTransition>
+                  <ScreenBarCreate showBar={showBar} />
                 </Fragment>
               </Route>
               <Route path="/signup" component={SignUp} />
