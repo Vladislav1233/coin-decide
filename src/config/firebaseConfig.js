@@ -13,7 +13,7 @@ const firebaseConfig = {
   authDomain: "coin-deside.firebaseapp.com",
   databaseURL: "https://coin-deside.firebaseio.com",
   projectId: "coin-deside",
-  storageBucket: "",
+  storageBucket: "gs://coin-deside.appspot.com",
   messagingSenderId: "969560591836",
   appId: "1:969560591836:web:d7f6536285ceca72bcd319",
   measurementId: "G-YZF710RMCN"
