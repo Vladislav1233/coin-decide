@@ -1,7 +1,7 @@
 import randomInteger from 'helpers/randomInteger';
+import getRandomObjectKey from 'helpers/getRandomObjectKey';
 
 // Note: variables
-const   GET_BARS_ID_SUCCESS =       'GET_BARS_ID_SUCCESS';
 
 // Note: actions
 export const getBar = (barId) => {
@@ -9,6 +9,17 @@ export const getBar = (barId) => {
     const firestore = getFirestore();
 
     firestore.get({ collection: 'bars', doc: barId })
+      .then(() => {
+        const availablePrizes = getState().firestore.ordered.bars[0].available_prizes,
+              prizeId = getRandomObjectKey(availablePrizes),
+              typePrize = prizeId.split('_');
+
+        if(typePrize[0] === 'common') {
+          firestore.get({ collection: 'common_prizes', doc: prizeId });
+        } else {
+          firestore.get({ collection: 'unique_prizes', doc: typePrize[1] });
+        }
+      })
   }
 }
 

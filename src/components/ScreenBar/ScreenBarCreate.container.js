@@ -12,6 +12,7 @@ import { getRandomBar } from 'store/bars';
 
 // Note: helpers
 import isEmptyObj from 'helpers/isEmptyObj';
+import randomInteger from 'helpers/randomInteger';
 
 // Note: Components
 import ScreenBar from './ScreenBar';
@@ -22,9 +23,10 @@ class ScreenBarCreate extends Component {
   }
 
   render() {
-    const { bar, auth, showBar } = this.props;
+    const { bar, auth, showBar, prize } = this.props;
+    console.log(prize ? prize[0].description : '')
 
-      if(isEmptyObj(bar)) {
+      if(isEmptyObj(bar) && !!prize) {
         return <div>'Загрузка...'</div>
       }
 
@@ -36,24 +38,30 @@ class ScreenBarCreate extends Component {
       >
         <ScreenBar 
           isAuth={!!auth.uid}
-          code={'2222'} // TODO
+          code={randomInteger(9999, 1000)} // TODO: узнать как работать с промокодом. Он будет генериться один на приз или один на пользователя?
           qrCode={null} // TODO
           endWorkTime={bar.end_work_time}
           address={bar.address}
           geo={null} // TODO
           name={bar.name}
-          prize={{description: '-10% шот'}}
+          prize={prize ? prize[0] : {}}
         />
       </CSSTransition>
   }
 }
 
 const mapStateToProps = ({ firebase, firestore }) => {
+  console.log(firestore)
   return {
     auth: firebase.auth,
     bar: firestore.ordered.bars && firestore.ordered.bars.length > 0
       ? firestore.ordered.bars[0]
-      : {}
+      : {},
+    prize: firestore.ordered.unique_prizes
+      ? firestore.ordered.unique_prizes
+      : firestore.ordered.common_prizes
+        ? firestore.ordered.common_prizes
+        : null
   }
 };
 

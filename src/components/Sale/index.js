@@ -14,6 +14,7 @@ class Sale extends Component {
         </div>
 
         <div className="b-sale__icon">
+          {/* TODO: Интегрировать иконку. Должна быть икона общая для приза в случае если нет иконки в базе. */}
           <img src={imgSrc} alt='Бокал пива' />
         </div>
       </div>
