@@ -24,7 +24,6 @@ class ScreenBarCreate extends Component {
 
   render() {
     const { bar, auth, showBar, prize, barImageUrl } = this.props;
-    console.log(prize ? prize[0].description : '')
 
       if(isEmptyObj(bar) && !!prize) {
         return <div>'Загрузка...'</div>
