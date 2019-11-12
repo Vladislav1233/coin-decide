@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 // Note: Components
 import PromocodeItem from './PromocodeItem';
 
-// Note: images
-import SixtyNinePint from 'images/bar/69pint.jpg';
-
 // Note: styles
 import './style.scss';
 
