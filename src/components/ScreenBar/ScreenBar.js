@@ -44,7 +44,8 @@ class ScreenBar extends Component {
       prize,
       code,
       qrCode,
-      review
+      review,
+      urlImage
     } = this.props;
     const { tabIndex } = this.state;
 
@@ -55,6 +56,7 @@ class ScreenBar extends Component {
           address={address}
           endWorkTime={endWorkTime}
           descriptionSale={prize.description}
+          urlImage={urlImage}
         />
         <div className="b-screen-bar__tab-content">
           <Code isAuth={isAuth} code={code} qrCode={qrCode} />

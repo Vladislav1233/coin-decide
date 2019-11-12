@@ -6,13 +6,13 @@ import './style.scss';
 
 class Card extends Component {
   render() {
-    const { endWorkTime, address, name, descriptionSale } = this.props;
+    const { endWorkTime, address, name, descriptionSale, urlImage } = this.props;
 
     return(
       <div className="b-card">
         <div className="b-card__wrapper">
           <div className="b-card__image-wrapper">
-            <img className="b-card__image" src="https://media-cdn.tripadvisor.com/media/photo-w/12/a0/59/c9/69-pints-craft-pub-tverskaya.jpg" alt="Фото бара" />
+            <img className="b-card__image" src={urlImage} alt={`Фото ${name}`} />
           </div>
 
           <div className="b-card__info-bar">

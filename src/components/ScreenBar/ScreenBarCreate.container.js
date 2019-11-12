@@ -23,7 +23,7 @@ class ScreenBarCreate extends Component {
   }
 
   render() {
-    const { bar, auth, showBar, prize } = this.props;
+    const { bar, auth, showBar, prize, barImageUrl } = this.props;
     console.log(prize ? prize[0].description : '')
 
       if(isEmptyObj(bar) && !!prize) {
@@ -45,12 +45,13 @@ class ScreenBarCreate extends Component {
           geo={null} // TODO
           name={bar.name}
           prize={prize ? prize[0] : {}}
+          urlImage={barImageUrl}
         />
       </CSSTransition>
   }
 }
 
-const mapStateToProps = ({ firebase, firestore }) => {
+const mapStateToProps = ({ firebase, firestore, bars }) => {
   console.log(firestore)
   return {
     auth: firebase.auth,
@@ -61,7 +62,8 @@ const mapStateToProps = ({ firebase, firestore }) => {
       ? firestore.ordered.unique_prizes
       : firestore.ordered.common_prizes
         ? firestore.ordered.common_prizes
-        : null
+        : null,
+    barImageUrl: bars.barImageUrl
   }
 };
 
