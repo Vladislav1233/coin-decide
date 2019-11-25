@@ -9,21 +9,6 @@ const GET_URL_BAR_IMAGE_SUCCESS = 'GET_URL_BAR_IMAGE_SUCCESS',
 export const getBar = (barId) => {
   return (dispatch, getState, { getFirestore, getFirebase }) => {
     const firestore = getFirestore();
-    const storageRef = getFirebase().storage().ref();
-    const barImageRef = storageRef.child('images/69-pints-craft-pub-tverskaya.jpg');
-
-    barImageRef.getDownloadURL()
-      .then((url) => {
-        dispatch({
-          type: GET_URL_BAR_IMAGE_SUCCESS,
-          payload: url
-        })
-      }, err => {
-        dispatch({
-          type: GET_URL_BAR_IMAGE_ERROR,
-          payload: err
-        })
-      })
 
     firestore.get({ collection: 'bars', doc: barId })
       .then(() => {
@@ -31,10 +16,32 @@ export const getBar = (barId) => {
               prizeId = getRandomObjectKey(availablePrizes),
               typePrize = prizeId.split('_');
 
+        const getImageForThisBar = (imagePath) => {
+          const storageRef = getFirebase().storage().ref();
+          const barImageRef = storageRef.child(imagePath);
+
+          barImageRef.getDownloadURL()
+            .then((url) => {
+              dispatch({
+                type: GET_URL_BAR_IMAGE_SUCCESS,
+                payload: url
+              })
+            }, err => {
+              dispatch({
+                type: GET_URL_BAR_IMAGE_ERROR,
+                payload: err
+              })
+            })
+        };
+
         if(typePrize[0] === 'common') {
-          firestore.get({ collection: 'common_prizes', doc: prizeId });
+          firestore.get({ collection: 'common_prizes', doc: prizeId }).then(() => {
+            getImageForThisBar(getState().firestore.ordered.bars[0].photo)
+          });
         } else {
-          firestore.get({ collection: 'unique_prizes', doc: typePrize[1] });
+          firestore.get({ collection: 'unique_prizes', doc: typePrize[1] }).then(() => {
+            getImageForThisBar(getState().firestore.ordered.bars[0].photo)
+          });
         }
       })
   }
