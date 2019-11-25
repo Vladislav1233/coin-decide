@@ -32,7 +32,7 @@ class PromocodeList extends Component {
                   name_bar={promocode.name_bar}
                   prize={promocode.prize}
                   is_check={promocode.is_check}
-                  duration_action={promocode.duration_action}
+                  duration_action={promocode.prize.expires}
                   id={promocode.id}
                   bar_id={promocode.bar_id}
                   code={promocode.code}
