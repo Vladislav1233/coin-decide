@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { getFirebase } from 'react-redux-firebase';
 
 // Note: images
 import checkCircle from 'images/check-circle.svg';
@@ -9,9 +10,26 @@ import './promocode-item.scss';
 
 class PromocodeItem extends Component {
 
+  state = {
+    imageUrl: ''
+  }
+
+  componentDidMount() {
+    const storageRef = getFirebase().storage().ref();
+    const barImageRef = storageRef.child(this.props.photo);
+
+    barImageRef.getDownloadURL()
+      .then((url) => {
+        this.setState({
+          imageUrl: url
+        })
+      }, err => {
+        console.log('Promocode Item Error Download Image')
+      })
+  }
+
   render() {
     const {
-      image,
       name_bar,
       prize,
       is_check,
@@ -19,8 +37,11 @@ class PromocodeItem extends Component {
       id,
       bar_id,
       code,
-      qr_code
-    } =  this.props;
+      qr_code,
+      photo
+    } = this.props;
+
+    const { imageUrl } = this.state;
 
     return(
       <Link
@@ -34,7 +55,7 @@ class PromocodeItem extends Component {
           }
         }}
         className="b-promocode-item" 
-        style={{ backgroundImage: `url(${image})` }}
+        style={{ backgroundImage: `url(${imageUrl})` }}
       >
         {is_check &&
           <div className="b-promocode-item__check-wrapper">
