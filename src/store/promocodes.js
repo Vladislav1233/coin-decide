@@ -1,21 +1,10 @@
 // Note: Variables
-const CREATE_PROMOCODE = 'CREATE_PROMOCODE';
-
 const GET_PROMOCODES_FOR_USER_SUCCESS = 'GET_PROMOCODES_FOR_USER_SUCCESS',
       GET_PROMOCODES_FOR_USER_ERROR = 'GET_PROMOCODES_FOR_USER_ERROR';
 
 const GET_PROMOCODES_BAR_IMAGE_SUCCESS = 'GET_PROMOCODES_BAR_IMAGE_SUCCESS';
 
 // Note: Actions
-export const createPromocode = (promocode) => {
-  return (dispatch, getState, { getFirebase, getFirestore }) => {
-    dispatch({
-      type: CREATE_PROMOCODE,
-      promocode
-    })
-  }
-};
-
 export const getPromocodesForUser = (uidUser) => {
   // ref documentation https://github.com/prescottprue/redux-firestore#query-options%23query-options
   return (dispatch, getState, { getFirestore, getFirebase }) => {

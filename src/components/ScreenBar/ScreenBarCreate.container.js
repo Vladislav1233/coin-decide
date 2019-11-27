@@ -5,6 +5,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
+import Pt from 'prop-types';
 // import { firestoreConnect } from 'react-redux-firebase';
 
 // Note: actions
@@ -18,8 +19,20 @@ import randomInteger from 'helpers/randomInteger';
 import ScreenBar from './ScreenBar';
 
 class ScreenBarCreate extends Component {
+  static propTypes = {
+    showBar: Pt.bool
+  }
+
   componentDidMount() {
     this.props.getRandomBar();
+  }
+
+  componentDidUpdate(prevProps) {
+
+    if(this.props.showBar !== prevProps.showBar && this.props.showBar) {
+
+    }
+
   }
 
   render() {
