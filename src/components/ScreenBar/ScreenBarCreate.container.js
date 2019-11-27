@@ -33,26 +33,30 @@ class ScreenBarCreate extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { 
-      showBar, 
-      savePromocode, 
-      auth, 
+    const {
+      showBar,
+      savePromocode,
+      auth,
       bar,
       prize
     } = this.props;
 
     if(showBar !== prevProps.showBar && showBar) {
-      const promocodeData = {
-        bar_id: bar.id,
-        code: this.state.code,
-        is_check: false,
-        name_bar: bar.name,
-        photo: bar.photo,
-        prize: prize.length > 0 ? prize[0] : {},
-        qr_code: null // TODO
-      };
+      // Note: Промокод сохраняем только в том случае если он вообще есть.
+      // т.е. если есть приз или какая-то скидка в этом баре.
+      if(prize && prize.length > 0) {
+        const promocodeData = {
+          bar_id: bar.id,
+          code: this.state.code,
+          is_check: false,
+          name_bar: bar.name,
+          photo: bar.photo,
+          prize: prize.length > 0 ? prize[0] : {},
+          qr_code: null // TODO
+        };
 
-      savePromocode(auth.uid, promocodeData)
+        savePromocode(auth.uid, promocodeData);
+      }
     }
 
   }
@@ -60,7 +64,6 @@ class ScreenBarCreate extends Component {
   render() {
     const { bar, auth, showBar, prize, barImageUrl } = this.props;
     const { code } = this.state;
-    console.log(this.props);
 
       if(isEmptyObj(bar) && !!prize) {
         return <div>'Загрузка...'</div>
