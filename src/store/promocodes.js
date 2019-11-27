@@ -5,6 +5,7 @@ const GET_PROMOCODES_FOR_USER_SUCCESS = 'GET_PROMOCODES_FOR_USER_SUCCESS',
 const GET_PROMOCODES_BAR_IMAGE_SUCCESS = 'GET_PROMOCODES_BAR_IMAGE_SUCCESS';
 
 // Note: Actions
+// Note: Получаем все промокоды юзера.
 export const getPromocodesForUser = (uidUser) => {
   // ref documentation https://github.com/prescottprue/redux-firestore#query-options%23query-options
   return (dispatch, getState, { getFirestore, getFirebase }) => {
@@ -28,9 +29,24 @@ export const getPromocodesForUser = (uidUser) => {
       }
     )
   }
-}
+};
 
-// Reducers
+// Note: Сохраняем выпавший промокод юзеру.
+export const savePromocode = (userUID, promocodeData) => {
+  return (dispatch, getState, { getFirestore, getFirebase }) => {
+    const firestore = getFirestore();
+
+    firestore.add({
+      collection: 'promocodes',
+      doc: userUID,
+      subcollections: [{ collection: 'content'}]
+    },
+      promocodeData
+    )
+  }
+};
+
+//Note: Reducers
 const initialState = {
   promocodesForUser: []
 }

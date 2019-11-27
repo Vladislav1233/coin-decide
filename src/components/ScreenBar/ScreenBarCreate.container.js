@@ -10,6 +10,7 @@ import Pt from 'prop-types';
 
 // Note: actions
 import { getRandomBar } from 'store/bars';
+import { savePromocode } from 'store/promocodes';
 
 // Note: helpers
 import isEmptyObj from 'helpers/isEmptyObj';
@@ -23,20 +24,43 @@ class ScreenBarCreate extends Component {
     showBar: Pt.bool
   }
 
+  state = {
+    code: randomInteger(9999, 1000)
+  }
+
   componentDidMount() {
     this.props.getRandomBar();
   }
 
   componentDidUpdate(prevProps) {
+    const { 
+      showBar, 
+      savePromocode, 
+      auth, 
+      bar,
+      prize
+    } = this.props;
 
-    if(this.props.showBar !== prevProps.showBar && this.props.showBar) {
+    if(showBar !== prevProps.showBar && showBar) {
+      const promocodeData = {
+        bar_id: bar.id,
+        code: this.state.code,
+        is_check: false,
+        name_bar: bar.name,
+        photo: bar.photo,
+        prize: prize.length > 0 ? prize[0] : {},
+        qr_code: null // TODO
+      };
 
+      savePromocode(auth.uid, promocodeData)
     }
 
   }
 
   render() {
     const { bar, auth, showBar, prize, barImageUrl } = this.props;
+    const { code } = this.state;
+    console.log(this.props);
 
       if(isEmptyObj(bar) && !!prize) {
         return <div>'Загрузка...'</div>
@@ -50,7 +74,7 @@ class ScreenBarCreate extends Component {
       >
         <ScreenBar 
           isAuth={!!auth.uid}
-          code={randomInteger(9999, 1000)} // TODO: узнать как работать с промокодом. Он будет генериться один на приз или один на пользователя?
+          code={code} // TODO: узнать как работать с промокодом. Он будет генериться один на приз или один на пользователя?
           qrCode={null} // TODO
           endWorkTime={bar.end_work_time}
           address={bar.address}
@@ -80,7 +104,8 @@ const mapStateToProps = ({ firebase, firestore, bars }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getRandomBar: () => dispatch(getRandomBar())
+    getRandomBar: () => dispatch(getRandomBar()),
+    savePromocode: (userUID, promocodeData) => dispatch(savePromocode(userUID, promocodeData))
   }
 }
 
