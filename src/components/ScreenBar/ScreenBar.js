@@ -45,7 +45,8 @@ class ScreenBar extends Component {
       code,
       qrCode,
       review,
-      urlImage
+      urlImage,
+      backToStartScreen
     } = this.props;
     const { tabIndex } = this.state;
 
@@ -93,7 +94,7 @@ class ScreenBar extends Component {
       <div className="b-screen-bar">
         <div className="b-screen-bar__nav">
           <div className="b-screen-bar__nav-arrow">
-            <ArrowTo />
+            <ArrowTo onClick={backToStartScreen} />
           </div>
           <div className="b-screen-bar__nav-tab-bar">
             <TabBar

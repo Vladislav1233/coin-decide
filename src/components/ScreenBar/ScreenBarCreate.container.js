@@ -62,7 +62,7 @@ class ScreenBarCreate extends Component {
   }
 
   render() {
-    const { bar, auth, showBar, prize, barImageUrl } = this.props;
+    const { bar, auth, showBar, prize, barImageUrl, backToStartScreen } = this.props;
     const { code } = this.state;
 
       if(isEmptyObj(bar) && !!prize) {
@@ -85,6 +85,7 @@ class ScreenBarCreate extends Component {
           name={bar.name}
           prize={prize ? prize[0] : {}}
           urlImage={barImageUrl}
+          backToStartScreen={backToStartScreen}
         />
       </CSSTransition>
   }

@@ -27,6 +27,14 @@ class App extends Component {
     })
   };
 
+  backToStartScreen = () => {
+
+    this.setState({
+      isStopFlipping: false,
+      showBar: false
+    })
+  };
+
   // TODO: shake событие
   // stopFlipping = () => {
   //   setTimeout(() => {
@@ -88,7 +96,7 @@ class App extends Component {
                   </CSSTransition>
 
                   {/* Второй экран: Бар, скидка, промокод. */}
-                  <ScreenBarCreate showBar={showBar} />
+                  <ScreenBarCreate showBar={showBar} backToStartScreen={this.backToStartScreen} />
                 </Fragment>
               </Route>
               <Route path="/signup" component={SignUp} />
