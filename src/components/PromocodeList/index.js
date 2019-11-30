@@ -24,7 +24,7 @@ class PromocodeList extends Component {
 
     return(
       <ul className="b-promocode-list">
-        {promocodes.length > 0
+        {promocodes && promocodes.length > 0
           ? !!auth.uid
             ? promocodes.map((promocode, index) => {
               return <li key={index} className="b-promocode-list__item">

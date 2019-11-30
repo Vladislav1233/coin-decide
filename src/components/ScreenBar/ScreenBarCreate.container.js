@@ -41,7 +41,7 @@ class ScreenBarCreate extends Component {
       prize
     } = this.props;
 
-    if(showBar !== prevProps.showBar && showBar) {
+    if(!!auth.uid && showBar !== prevProps.showBar && showBar) {
       // Note: Промокод сохраняем только в том случае если он вообще есть.
       // т.е. если есть приз или какая-то скидка в этом баре.
       if(prize && prize.length > 0) {
