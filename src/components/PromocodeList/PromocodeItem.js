@@ -37,8 +37,7 @@ class PromocodeItem extends Component {
       id,
       bar_id,
       code,
-      qr_code,
-      photo
+      qr_code
     } = this.props;
 
     const { imageUrl } = this.state;
@@ -51,7 +50,8 @@ class PromocodeItem extends Component {
             barId: bar_id,
             code: code,
             qrCode: qr_code,
-            prize: prize
+            prize: prize,
+            imageUrl: imageUrl
           }
         }}
         className="b-promocode-item" 

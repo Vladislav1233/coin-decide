@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { withRouter } from "react-router";
 
 // Note: helpers
 import isEmptyObj from 'helpers/isEmptyObj';
@@ -15,8 +16,8 @@ import ScreenBar from './ScreenBar';
 
 class ScreenBarGet extends Component {
   render() {
-    const { auth, location, barInfo } = this.props;
-    console.log(this.props);
+    const { auth, location, bars } = this.props;
+    const barInfo = !!bars ? bars[location.state.barId] ? bars[location.state.barId] : {} : {};
 
     return <ScreenBar
       isAuth={!!auth.uid}
@@ -27,6 +28,7 @@ class ScreenBarGet extends Component {
       geo={isEmptyObj(barInfo) ? null : barInfo.geo}
       name={isEmptyObj(barInfo) ? '' : barInfo.name}
       prize={location.state.prize}
+      urlImage={location.state.imageUrl}
       // review
     />
   }
@@ -35,18 +37,17 @@ class ScreenBarGet extends Component {
 
 const mapStateToProps = ({ firebase, firestore }) => {
 
-  console.log(firestore);
   return {
     auth: firebase.auth,
-    barInfo: !!firestore.ordered.bars ? firestore.ordered.bars[0] : {}
+    bars: firestore.data.bars
   }
 };
 
 export default compose(
-  connect(mapStateToProps),
-  firestoreConnect(props => (
-    [
-      { collection: 'bars', doc: props.barId }
+  firestoreConnect(props => {
+    return [
+      { collection: 'bars', doc: props.location.state.barId }
     ]
-  ))
-)(ScreenBarGet);
+  }),
+  connect(mapStateToProps)
+)(withRouter(ScreenBarGet));
