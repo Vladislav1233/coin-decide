@@ -16,7 +16,8 @@ import ScreenBar from './ScreenBar';
 
 class ScreenBarGet extends Component {
   render() {
-    const { auth, location, bars } = this.props;
+    console.log(this.props)
+    const { auth, location, bars, history } = this.props;
     const barInfo = !!bars ? bars[location.state.barId] ? bars[location.state.barId] : {} : {};
 
     return <ScreenBar
@@ -29,6 +30,7 @@ class ScreenBarGet extends Component {
       name={isEmptyObj(barInfo) ? '' : barInfo.name}
       prize={location.state.prize}
       urlImage={location.state.imageUrl}
+      backToStartScreen={() => history.goBack()}
       // review
     />
   }
