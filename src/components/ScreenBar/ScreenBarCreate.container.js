@@ -92,6 +92,7 @@ class ScreenBarCreate extends Component {
 }
 
 const mapStateToProps = ({ firebase, firestore, bars }) => {
+  console.log(bars)
   return {
     auth: firebase.auth,
     bar: firestore.ordered.bars && firestore.ordered.bars.length > 0

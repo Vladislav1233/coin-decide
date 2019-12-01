@@ -12,10 +12,6 @@ export const getBar = (barId) => {
 
     firestore.get({ collection: 'bars', doc: barId })
       .then(() => {
-        const availablePrizes = getState().firestore.ordered.bars[0].available_prizes,
-              prizeId = getRandomObjectKey(availablePrizes),
-              typePrize = prizeId.split('_');
-
         const getImageForThisBar = (imagePath) => {
           const storageRef = getFirebase().storage().ref();
           const barImageRef = storageRef.child(imagePath);
@@ -34,14 +30,22 @@ export const getBar = (barId) => {
             })
         };
 
-        if(typePrize[0] === 'common') {
-          firestore.get({ collection: 'common_prizes', doc: prizeId }).then(() => {
-            getImageForThisBar(getState().firestore.ordered.bars[0].photo)
-          });
+        if(getState().firestore.ordered.bars[0].available_prizes) {
+          const availablePrizes = getState().firestore.ordered.bars[0].available_prizes,
+              prizeId = getRandomObjectKey(availablePrizes),
+              typePrize = prizeId.split('_');
+
+          if(typePrize[0] === 'common') {
+            firestore.get({ collection: 'common_prizes', doc: prizeId }).then(() => {
+              getImageForThisBar(getState().firestore.ordered.bars[0].photo)
+            });
+          } else {
+            firestore.get({ collection: 'unique_prizes', doc: typePrize[1] }).then(() => {
+              getImageForThisBar(getState().firestore.ordered.bars[0].photo)
+            });
+          }
         } else {
-          firestore.get({ collection: 'unique_prizes', doc: typePrize[1] }).then(() => {
-            getImageForThisBar(getState().firestore.ordered.bars[0].photo)
-          });
+          getImageForThisBar(getState().firestore.ordered.bars[0].photo)
         }
       })
   }
@@ -56,6 +60,7 @@ export const getRandomBar = (nameCity = 'moscow') => { // TODO: nameCity
         const barsId = getState().firestore.ordered.bars_id[0].content,
               numberBarInCollection = randomInteger(barsId.length - 1),
               barId = barsId[numberBarInCollection].bar_id;
+              console.log(barId)
 
         dispatch(getBar(barId));
       })

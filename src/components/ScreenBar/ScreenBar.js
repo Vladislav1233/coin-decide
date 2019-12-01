@@ -9,6 +9,9 @@ import YMap from 'components/YMap';
 import TaxiButton from 'components/TaxiButton';
 import Review from 'components/Review';
 
+// helpers
+import isEmptyObj from 'helpers/isEmptyObj';
+
 import './index.scss';
 
 class ScreenBar extends Component {
@@ -18,7 +21,7 @@ class ScreenBar extends Component {
     geo: PropTypes.array.isRequired,
     name: PropTypes.string.isRequired,
     prize: PropTypes.shape({
-      description: PropTypes.string.isRequired
+      description: PropTypes.string
     }),
     code: PropTypes.string.isRequired,
     isAuth: PropTypes.bool.isRequired
@@ -60,7 +63,10 @@ class ScreenBar extends Component {
           urlImage={urlImage}
         />
         <div className="b-screen-bar__tab-content">
-          <Code isAuth={isAuth} code={code} qrCode={qrCode} />
+          {!isEmptyObj(prize)
+            ? <Code isAuth={isAuth} code={code} qrCode={qrCode} />
+            : <div style="margin-top: 30px">Тебя уже ждут здесь, приходи!</div>
+          }
         </div>
       </Fragment>
     )

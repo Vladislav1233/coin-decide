@@ -20,10 +20,11 @@ class Card extends Component {
             <div className="b-card__address">{address}</div>
             <h1 className="b-card__name">{name}</h1>
           </div>
-
-          <Sale
-            description={descriptionSale}
-          />
+          {!!descriptionSale &&
+            <Sale
+              description={descriptionSale}
+            />
+          }
         </div>
       </div>
     )
