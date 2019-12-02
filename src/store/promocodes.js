@@ -4,7 +4,8 @@ const GET_PROMOCODES_FOR_USER_SUCCESS = 'GET_PROMOCODES_FOR_USER_SUCCESS',
 
 const GET_PROMOCODES_BAR_IMAGE_SUCCESS = 'GET_PROMOCODES_BAR_IMAGE_SUCCESS';
 
-const SAVE_WINNING_PROMOCODE_IN_STORE = 'SAVE_WINNING_PROMOCODE_IN_STORE';
+const SAVE_WINNING_PROMOCODE_IN_STORE = 'SAVE_WINNING_PROMOCODE_IN_STORE',
+      CLEAR_WON_PROMOCODE = 'CLEAR_WON_PROMOCODE';
 
 // Note: Actions
 // Note: Получаем все промокоды юзера.
@@ -44,7 +45,9 @@ export const savePromocode = (userUID, promocodeData) => {
       subcollections: [{ collection: 'content'}]
     },
       promocodeData
-    )
+    ).then(() => {
+      clearWonPromocode();
+    });
   }
 };
 
@@ -57,6 +60,10 @@ export const saveWinningPromocodeInStore = (data) => {
     })
   }
 }
+
+export const clearWonPromocode = () => dispatch => { dispatch({
+  type: CLEAR_WON_PROMOCODE
+})}
 
 //Note: Reducers
 const initialState = {
@@ -78,6 +85,12 @@ export default function(state = initialState, action) {
           ...state,
           promocodeWon: action.payload
         }
+
+    case CLEAR_WON_PROMOCODE:
+      return {
+        ...state,
+        promocodeWon: {}
+      }
 
     default: {
       return state;

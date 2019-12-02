@@ -63,16 +63,23 @@ export const signUp = (newUser) => {
     firebase.auth().createUserWithEmailAndPassword(
       newUser.email,
       newUser.password
-    ).then((resp) => { // Note: Записываем юзера в database
+    ).then((resp) => {
+      // Note: Сохраняем выпавший неавторизованному юзеру промокод в базу.
+      const promocodeWon = getState().promocodes.promocodeWon;
+      if(!isEmptyObj(promocodeWon)) {
+        dispatch(savePromocode(resp.user.uid, promocodeWon));
+      };
+
+      // Note: Записываем юзера в database
       return firestore.collection('users').doc(resp.user.uid).set({
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         initials: `${newUser.firstName[0]}${newUser.lastName[0]}`
-      })
+      });
     }).then(() => {
       dispatch({
         type: SIGNUP_SUCCESS
-      })
+      });
     }).catch((err) => {
       dispatch({
         type: SIGNUP_ERROR,
