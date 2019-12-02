@@ -65,7 +65,7 @@ class ScreenBar extends Component {
         <div className="b-screen-bar__tab-content">
           {!isEmptyObj(prize)
             ? <Code isAuth={isAuth} code={code} qrCode={qrCode} />
-            : <div style="margin-top: 30px">Тебя уже ждут здесь, приходи!</div>
+            : <div style={{ marginTop: '30px' }}>Тебя уже ждут здесь, приходи!</div>
           }
         </div>
       </Fragment>

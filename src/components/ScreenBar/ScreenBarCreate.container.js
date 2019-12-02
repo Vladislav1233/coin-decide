@@ -10,7 +10,7 @@ import Pt from 'prop-types';
 
 // Note: actions
 import { getRandomBar } from 'store/bars';
-import { savePromocode } from 'store/promocodes';
+import { savePromocode, saveWinningPromocodeInStore } from 'store/promocodes';
 
 // Note: helpers
 import isEmptyObj from 'helpers/isEmptyObj';
@@ -38,13 +38,14 @@ class ScreenBarCreate extends Component {
       savePromocode,
       auth,
       bar,
-      prize
+      prize,
+      saveWinningPromocodeInStore
     } = this.props;
 
-    if(!!auth.uid && showBar !== prevProps.showBar && showBar) {
-      // Note: Промокод сохраняем только в том случае если он вообще есть.
-      // т.е. если есть приз или какая-то скидка в этом баре.
+    if(showBar !== prevProps.showBar && showBar) {
       if(prize && prize.length > 0) {
+        // Note: Промокод сохраняем только в том случае если он вообще есть.
+        // т.е. если есть приз или какая-то скидка в этом баре.
         const promocodeData = {
           bar_id: bar.id,
           code: this.state.code,
@@ -55,7 +56,15 @@ class ScreenBarCreate extends Component {
           qr_code: null // TODO
         };
 
-        savePromocode(auth.uid, promocodeData);
+        if(!!auth.uid) {
+          // Note: Если авторизован юзер то промокод сохраняем сразу в базе.
+          savePromocode(auth.uid, promocodeData);
+        } else {
+          // Note: Если не авторизован юзер то отправляем промокод в store
+          // до момента пока юзер не авторизуется, чтобы сохранить промокод
+          // в базу прикрепив его к юзеру.
+          saveWinningPromocodeInStore(promocodeData);
+        }
       }
     }
 
@@ -110,7 +119,8 @@ const mapStateToProps = ({ firebase, firestore, bars }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     getRandomBar: () => dispatch(getRandomBar()),
-    savePromocode: (userUID, promocodeData) => dispatch(savePromocode(userUID, promocodeData))
+    savePromocode: (userUID, promocodeData) => dispatch(savePromocode(userUID, promocodeData)),
+    saveWinningPromocodeInStore: (data) => dispatch(saveWinningPromocodeInStore(data))
   }
 }
 

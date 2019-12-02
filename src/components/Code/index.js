@@ -32,7 +32,7 @@ class Code extends Component {
           </div>
 
           {!isAuth
-            && <Link to="/signup" className="b-code__auth">
+            && <Link to="/signin" className="b-code__auth">
               <span>Зарегистрируйся</span> чтобы не потерять!.
             </Link>
           }

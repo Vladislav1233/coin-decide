@@ -1,3 +1,6 @@
+import { savePromocode } from 'store/promocodes';
+import isEmptyObj from 'helpers/isEmptyObj';
+
 // Note: variables
 const   // LOGIN_START = 'LOGIN_START',
         LOGIN_SUCCESS = 'LOGIN_SUCCESS',
@@ -17,10 +20,16 @@ export const signIn = (credentials) => {
     firebase.auth().signInWithEmailAndPassword(
       credentials.email,
       credentials.password
-    ).then(() => {
+    ).then((res) => {
       dispatch({
         type: LOGIN_SUCCESS
-      })
+      });
+
+      // Note: Сохраняем выпавший неавторизованному юзеру промокод в базу.
+      const promocodeWon = getState().promocodes.promocodeWon;
+      if(!isEmptyObj(promocodeWon)) {
+        dispatch(savePromocode(res.user.uid, promocodeWon));
+      };
     }).catch((err) => {
       dispatch({
         type: LOGIN_ERROR,
