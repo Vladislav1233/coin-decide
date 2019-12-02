@@ -27,7 +27,7 @@
 
     &__title {
         margin-top: 8px;
-        margin-bottom: 44px;
+        margin-bottom: 70px;
         font-size: 14px;
         line-height: 16px;
         text-align: center;
@@ -160,7 +160,7 @@
     &-dots {
         position: absolute;
         z-index: 9;
-        top: 30px;
+        top: 42px;
         left: 50%;
         display: flex !important;
         justify-content: center;
@@ -228,6 +228,7 @@
         border: none;
         border-radius: 4px;
         background: none;
+        outline: none;
 
         &:hover {
             background: rgba($color: #ffffff, $alpha: .1);
@@ -248,7 +249,6 @@
         align-items: center;
         height: 32px;
         margin: auto;
-        margin-top: -4px;
         padding: 4px;
 
         img {
