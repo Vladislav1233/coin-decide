@@ -16,15 +16,15 @@ import './index.scss';
 
 class ScreenBar extends Component {
   static propTypes = {
-    endWorkTime: PropTypes.string.isRequired,
-    address: PropTypes.string.isRequired,
-    geo: PropTypes.array.isRequired,
-    name: PropTypes.string.isRequired,
+    endWorkTime: PropTypes.string,
+    address: PropTypes.string,
+    // geo: PropTypes.array, TODO
+    name: PropTypes.string,
     prize: PropTypes.shape({
       description: PropTypes.string
     }),
-    code: PropTypes.string.isRequired,
-    isAuth: PropTypes.bool.isRequired
+    code: PropTypes.string,
+    isAuth: PropTypes.bool
   };
 
   state = {
@@ -85,7 +85,9 @@ class ScreenBar extends Component {
         case 2:
           return <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">
             <h2 className="b-screen-bar__tab-title">{name}</h2>
-            <YMap />
+            <YMap 
+              geo={geo}
+            />
             <div className="b-screen-bar__taxi">
               <TaxiButton />
             </div>

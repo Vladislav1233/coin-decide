@@ -73,6 +73,7 @@ class ScreenBarCreate extends Component {
   render() {
     const { bar, auth, showBar, prize, barImageUrl, backToStartScreen } = this.props;
     const { code } = this.state;
+    console.log(this.props)
 
       if(isEmptyObj(bar) && !!prize) {
         return <div>'Загрузка...'</div>
@@ -90,7 +91,7 @@ class ScreenBarCreate extends Component {
           qrCode={null} // TODO
           endWorkTime={bar.end_work_time}
           address={bar.address}
-          geo={null} // TODO
+          geo={bar.geo} // TODO
           name={bar.name}
           prize={prize ? prize[0] : {}}
           urlImage={barImageUrl}
