@@ -7,20 +7,22 @@ class YMap extends Component {
     const { geo } = this.props;
 
     return(
-      <YMaps>
-        <Map
-          defaultState={{
-            center: [geo.latitude, geo.longitude],
-            zoom: 15,
-          }}
-          width="100%"
-          height="calc(100% - 49px)"
-        >
-          <Placemark
-            geometry={[geo.latitude, geo.longitude]}
-          />
-        </Map>
-      </YMaps>
+      <div style={{ height: "calc(100% - 49px)" }}>
+        <YMaps>
+          <Map
+            defaultState={{
+              center: [geo.latitude, geo.longitude],
+              zoom: 15,
+            }}
+            width="100%"
+            height="100%"
+          >
+            <Placemark
+              geometry={[geo.latitude, geo.longitude]}
+            />
+          </Map>
+        </YMaps>
+      </div>
     )
   }
 }
