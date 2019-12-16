@@ -70,7 +70,7 @@ class ScreenCoin extends Component {
       adaptiveHeight: true,
       initialSlide: 1,
       arrows: false,
-      fade: false,
+      fade: true, // TODO: Сделать не fade но чтобы запускалась монетка, а то неясно почему монетка не работает.
       slidesToShow: 1,
       slidesToScroll: 1
     };
