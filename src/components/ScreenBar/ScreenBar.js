@@ -47,9 +47,10 @@ class ScreenBar extends Component {
       prize,
       code,
       qrCode,
-      review,
+      reviews,
       urlImage,
-      backToStartScreen
+      backToStartScreen,
+      barId
     } = this.props;
     const { tabIndex } = this.state;
 
@@ -79,7 +80,7 @@ class ScreenBar extends Component {
         case 1:
           return <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">
             <h2 className="b-screen-bar__tab-title">{name}</h2>
-            <Review />
+            <Review reviews={reviews} barId={barId} />
           </div>
 
         case 2:

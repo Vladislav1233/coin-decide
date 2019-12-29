@@ -6,7 +6,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import Pt from 'prop-types';
-// import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
 
 // Note: actions
 import { getRandomBar } from 'store/bars';
@@ -71,9 +72,8 @@ class ScreenBarCreate extends Component {
   }
 
   render() {
-    const { bar, auth, showBar, prize, barImageUrl, backToStartScreen } = this.props;
+    const { bar, auth, showBar, prize, barImageUrl, backToStartScreen, reviews } = this.props;
     const { code } = this.state;
-    console.log(this.props)
 
       if(isEmptyObj(bar) && !!prize) {
         return <div>'Загрузка...'</div>
@@ -96,13 +96,14 @@ class ScreenBarCreate extends Component {
           prize={prize ? prize[0] : {}}
           urlImage={barImageUrl}
           backToStartScreen={backToStartScreen}
+          reviews={reviews}
+          barId={bar.id}
         />
       </CSSTransition>
   }
 }
 
 const mapStateToProps = ({ firebase, firestore, bars }) => {
-  console.log(bars)
   return {
     auth: firebase.auth,
     bar: firestore.ordered.bars && firestore.ordered.bars.length > 0
@@ -113,7 +114,8 @@ const mapStateToProps = ({ firebase, firestore, bars }) => {
       : firestore.ordered.common_prizes
         ? firestore.ordered.common_prizes
         : null,
-    barImageUrl: bars.barImageUrl
+    barImageUrl: bars.barImageUrl,
+    reviews: firestore.ordered.reviews ? firestore.ordered.reviews : []
   }
 };
 
@@ -125,4 +127,13 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ScreenBarCreate);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect(props => {
+    const query = [];
+    if(props.bar.id) {
+      query.push({ collection: 'reviews', doc: props.bar.id });
+    };
+    return query
+  })
+)(ScreenBarCreate);

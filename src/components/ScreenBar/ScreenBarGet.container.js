@@ -16,7 +16,7 @@ import ScreenBar from './ScreenBar';
 
 class ScreenBarGet extends Component {
   render() {
-    const { auth, location, bars, history } = this.props;
+    const { auth, location, bars, history, reviews } = this.props;
     const barInfo = !!bars ? bars[location.state.barId] ? bars[location.state.barId] : {} : {};
 
     return <ScreenBar
@@ -30,24 +30,27 @@ class ScreenBarGet extends Component {
       prize={location.state.prize}
       urlImage={location.state.imageUrl}
       backToStartScreen={() => history.goBack()}
-      // review
+      reviews={reviews}
+      barId={location.state.barId}
     />
   }
 }
 
 
 const mapStateToProps = ({ firebase, firestore }) => {
-
   return {
     auth: firebase.auth,
-    bars: firestore.data.bars
+    bars: firestore.data.bars,
+    reviews: firestore.ordered.reviews ? firestore.ordered.reviews : []
   }
 };
 
 export default compose(
   firestoreConnect(props => {
+    const barId = props.location.state.barId;
     return [
-      { collection: 'bars', doc: props.location.state.barId }
+      { collection: 'bars', doc: barId },
+      { collection: 'reviews', doc: barId }
     ]
   }),
   connect(mapStateToProps)
