@@ -21,6 +21,7 @@ class PromocodeList extends Component {
 
   render() {
     const { auth, promocodes } = this.props;
+    console.log(promocodes)
 
     return(
       <ul className="b-promocode-list">
@@ -40,7 +41,7 @@ class PromocodeList extends Component {
                   photo={promocode.photo}
                 />
               </li>
-            }) : <div>У вас нет промокодов</div>
+            }) : <li className="b-promocode-list__empty">У вас ещё нет промокодов. Бросьте монетку, чтобы выиграть скидку в баре.</li>
 
           : <li className="b-promocode-list__registration">
             <Link to='/signin'>Войдите</Link>
