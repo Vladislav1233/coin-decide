@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
+
+// Note: components
+import SettingItem from 'components/SettingList/SettingItem';
 
 // Note: actions
 import { signOut } from 'store/auth';
@@ -8,61 +13,49 @@ import { signOut } from 'store/auth';
 // Note: style
 import './style.scss';
 
-const dataSignedIn = [{
-  content: [{
-    name: 'Луи Дагер',
-    description: 'Изменить имя'
-  }]
-}, {
-  head: {
-    title: 'General'
-  },
-  content: [{
-    name: 'Ульяновск',
-    description: 'Изменить ваш город'
-  }, {
-    name: '+7 (902) 009-09-09',
-    description: 'Tap to change your phone number'
-  }]
-}, {
-  head: {
-    title: 'О приложении',
-    additional: 'v0.12.817-a'
-  },
-  content: [{
-    name: 'Как это работает?',
-    description: 'Информация о приложении'
-  }, {
-    name: 'Список баров',
-    description: 'Посмотреть бары учавствующие в игре'
-  }]
-}];
-
-let data = dataSignedIn;
-
 class SettingList extends Component {
+
   render() {
-    const { auth, signOut } = this.props;
-    console.log(auth);
+    const { auth, signOut, userData } = this.props;
+    console.log(userData)
+
     return(
       <div className="b-setting-list">
-        {data.map((item, index) => (
-          <div key={`setting-${index}`} className="b-setting-list__item">
-            {item.head
-              ? <div className="b-setting-list__head">
-                {!!item.head.title && <div className="b-setting-list__title">{item.head.title}</div>}
-                {!!item.head.additional && <div className="b-setting-list__additional-title">{item.head.additional}</div>}
-              </div>
-              : null
-            }
-            {!!item.content.length && item.content.map((contentItem, contentIndex) => (
-              <div key={`settingContent-${contentIndex}`} className="b-setting-list__content">
-                {!!contentItem.name && <div className="b-setting-list__name">{contentItem.name}</div>}
-                {!!contentItem.description && <div className="b-setting-list__description">{contentItem.description}</div>}
-              </div>
-            ))}
-          </div>
-        ))}
+        {!!auth.uid &&
+          <SettingItem
+            content={[{
+              name: `${!!userData.length ? userData[0].firstName : ''} ${!!userData.length ? userData[0].lastName : ''}`,
+              description:'Изменить имя'
+            }]}
+          />
+        }
+
+        <SettingItem 
+          head={{
+            title: 'General'
+          }}
+          content={[{
+            name: !!userData.length ? userData[0].default_city.name : '',
+            description:'Изменить город'
+          }, {
+            name:'+7 (902) 009-09-09',
+            description:'Tap to change your phone number'
+          }]}
+        />
+
+        <SettingItem 
+          head={{
+            title: 'О приложении',
+            additional: 'v0.12.817-a'
+          }}
+          content={[{
+            name:'Как это работает?',
+            description:'Информация о приложении'
+          }, {
+            name:'Список баров',
+            description:'Посмотреть бары учавствующие в игре'
+          }]}
+        />
         {auth.uid
           ? <button className="b-setting-list__logout" onClick={signOut}>
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,9 +82,12 @@ class SettingList extends Component {
   }
 }
 
-const mapStateToProps = ({ firebase }) => {
+const mapStateToProps = ({ firebase, firestore }) => {
   return {
-    auth: firebase.auth
+    auth: firebase.auth,
+    userData: !!firestore.ordered.users 
+                && !!firestore.ordered.users.length 
+                && firestore.ordered.users.filter(item => firebase.auth.uid === item.id)
   }
 };
 
@@ -101,4 +97,9 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingList);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  firestoreConnect(props => ([
+      { collection: 'users', doc: props.auth.uid }
+    ]))
+)(SettingList);

@@ -21,7 +21,6 @@ class PromocodeList extends Component {
 
   render() {
     const { auth, promocodes } = this.props;
-    console.log(promocodes)
 
     return(
       <ul className="b-promocode-list">
