@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -24,8 +24,8 @@ class PromocodeList extends Component {
 
     return(
       <ul className="b-promocode-list">
-        {promocodes && promocodes.length > 0
-          ? !!auth.uid
+        {!!auth.uid
+          ? promocodes && promocodes.length > 0
             ? promocodes.map((promocode, index) => {
               return <li key={index} className="b-promocode-list__item">
                 <PromocodeItem
@@ -40,11 +40,12 @@ class PromocodeList extends Component {
                   photo={promocode.photo}
                 />
               </li>
-            }) : <li className="b-promocode-list__registration">
-              <Link to='/signin'>Войдите</Link>
-              <div className="b-promocode-list__help">чтобы видеть все свои промокоды</div>
-            </li>
-          : <div>У вас нет промокодов</div>
+            }) : <div>У вас нет промокодов</div>
+
+          : <li className="b-promocode-list__registration">
+            <Link to='/signin'>Войдите</Link>
+            <div className="b-promocode-list__help">чтобы видеть все свои промокоды</div>
+          </li>
         }
       </ul>
     )
