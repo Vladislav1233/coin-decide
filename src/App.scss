@@ -1,11 +1,10 @@
 html {
-    font-family: 'Roboto', serif;
+    font-family: -apple-system, 'Roboto', 'Apple Color Emoji', sans-serif;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-size: 16px;
 }
-
-// *:focus {
-//     outline: none;
-// }
 
 .b-page-wrapper {
     text-align: center;
