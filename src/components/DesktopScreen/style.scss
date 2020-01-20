@@ -73,6 +73,7 @@
         margin: 0 0 48px;
         font-size: 60px;
         font-weight: bold;
+        line-height: 1em;
     }
 
     &__h2 {
@@ -112,6 +113,13 @@
         text-transform: uppercase;
     }
 
+    &__logo-main {
+        position: absolute;
+        top: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     &__search {
         margin-left: auto;
         padding: 0 50px 0 20px;
@@ -132,6 +140,7 @@
 
     &__img {
         max-width: 100%;
+        max-height: 450px;
     }
 
     &__cookies {

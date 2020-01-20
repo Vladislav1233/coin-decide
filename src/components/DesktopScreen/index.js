@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import phoneImg from "images/phones.png";
 import logo from "images/logo.png";
+import logoNew from "images/LogoNew.svg";
 
 // Note: styles
 import "./style.scss";
@@ -36,6 +37,7 @@ class DesktopScreen extends Component {
           </header> */}
 
           <div className="desktop-screen__center">
+            <img className="desktop-screen__logo-main" src={logoNew} alt="BeerCoin"/>
             <div className="desktop-screen__left">
               <img className="desktop-screen__img" src={phoneImg} alt="" />
             </div>
