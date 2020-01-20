@@ -10,7 +10,7 @@ class DesktopScreen extends Component {
     return (
       <>
         <div className="desktop-screen">
-          <header className="desktop-screen__header">
+          {/* <header className="desktop-screen__header">
             <div className="container">
               <img className="desktop-screen__logo" src={logo} alt="beer-coin"/>
               <nav className="desktop-screen__nav">
@@ -33,7 +33,7 @@ class DesktopScreen extends Component {
                 placeholder="Coming soon"
               />
             </div>
-          </header>
+          </header> */}
 
           <div className="desktop-screen__center">
             <div className="desktop-screen__left">
@@ -41,25 +41,26 @@ class DesktopScreen extends Component {
             </div>
             <div className="desktop-screen__right">
               <h1 className="desktop-screen__h1">
-                Бросай монетку и пей бесплатно!
+                Подкинь монетку и пей бесплатно!
               </h1>
               <h2 className="desktop-screen__h2">
-                Закрути свою удачу и получи скидку в случайном баре. "Beer coin
-                - for your awesome night"
+                Закрути свою удачу и получи скидку в случайном баре.
+                {/* "Beer coin - for your awesome night" */}
               </h2>
-              <button className="desktop-screen__btn" type="button">
+              {/* <button className="desktop-screen__btn" type="button">
                 Открыть на телефоне
-              </button>
+              </button> */}
+              <h3 className="desktop-screen__go-to">Открой на телефоне</h3>
             </div>
           </div>
         </div>
-        <footer className="desktop-screen__footer">
+        {/* <footer className="desktop-screen__footer">
           <div className="desktop-screen__cookies">
             We use cookies - by using this site you agree to ourApple Privacy
             Policy
           </div>
           <div>© Copyright 2019 Beer Coin</div>
-        </footer>
+        </footer> */}
       </>
     );
   }
