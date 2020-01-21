@@ -35,10 +35,14 @@
     margin: 0 0 16px;
   }
 
+  &__form {
+    position: relative;
+    margin-right: 32px;
+  }
+
   &__inputGroup {
     display: flex;
     flex-direction: column;
-    margin-right: 32px;
   }
 
   &__input {
@@ -59,6 +63,24 @@
 
     &:last-child {
       border-bottom-right-radius: 56px;
+    }
+  }
+
+  &__goBtn {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: 75%;
+    background-color: #27AE60;
+    padding: 0;
+    top: 50%;
+    right: 0;
+    transform: translate(40%, -50%);
+
+    & svg {
+      margin: 6px;
+      display: block;
     }
   }
 }
