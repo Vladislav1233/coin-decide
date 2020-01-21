@@ -9,6 +9,7 @@ import SettingItem from 'components/SettingList/SettingItem';
 
 // Note: actions
 import { signOut } from 'store/auth';
+import { changeCity } from 'store/users';
 
 // Note: style
 import './style.scss';
@@ -16,7 +17,7 @@ import './style.scss';
 class SettingList extends Component {
 
   render() {
-    const { auth, signOut, userData } = this.props;
+    const { auth, signOut, userData, changeCity } = this.props;
     console.log(userData)
 
     return(
@@ -38,11 +39,12 @@ class SettingList extends Component {
             name:'+7 (902) 009-09-09',
             description:'Tap to change your phone number'
           }]}
-          select={[{
+          select={{
             name: !!userData.length ? userData[0].default_city.name : '',
             value: !!userData.length ? userData[0].default_city.name_id : '',
             description:'Изменить город'
-          }]}
+          }}
+          changeCity={changeCity}
         />
 
         <SettingItem 
@@ -95,7 +97,8 @@ const mapStateToProps = ({ firebase, firestore }) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signOut: () => dispatch(signOut())
+    signOut: () => dispatch(signOut()),
+    changeCity: (name, nameId) => dispatch(changeCity(name, nameId))
   }
 }
 

@@ -1,9 +1,38 @@
 import React, { Component } from 'react';
 
 class SettingItem extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      valueCity: !!props.select ? props.select.value : ''
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    const { select } = this.props;
+
+    if(!!select && select.value !== prevProps.select.value) {
+      this.setState({
+        valueCity: select.value
+      })
+    };
+  }
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    const index = event.nativeEvent.target.selectedIndex;
+
+    this.setState({
+      [name]: value
+    });
+
+    this.props.changeCity(event.nativeEvent.target[index].text, value);
+  }
 
   render() {
     const { head, content, select } = this.props;
+    const { valueCity } = this.state;
 
     return (
       <div className="b-setting-list__item">
@@ -23,18 +52,16 @@ class SettingItem extends Component {
             : null
           ))
         }
-        {!!select && !!select.length &&
-          select.map((item) => (
-            <div key={`settingSelect-${item.value}`} className="b-setting-list__content">
-              <select className="b-setting-list__name b-setting-list__name--select">
-                <option value="moscow">Москва</option>
-                <option value="saint-petersburg">Санкт-Петербург</option>
-                <option value="ul'anovsk">Ульяновск</option>
-                <option value="kharkov">Харьков</option>
-              </select>
-              {!!item.description && <div className="b-setting-list__description">{item.description}</div>}
-            </div>
-          ))
+        {!!select &&
+          <div className="b-setting-list__content">
+            <select name='valueCity' value={valueCity} className="b-setting-list__name b-setting-list__name--select" onChange={this.handleChange}>
+              <option value="saint-petersburg">Санкт-Петербург</option>
+              <option value="ul'anovsk">Ульяновск</option>
+              <option value="kharkov">Харьков</option>
+              <option value="moscow">Москва</option>
+            </select>
+            {!!select.description && <div className="b-setting-list__description">{select.description}</div>}
+          </div>
         }
       </div>
     )
