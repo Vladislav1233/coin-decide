@@ -17,7 +17,7 @@ import './style.scss';
 class SettingList extends Component {
 
   render() {
-    const { auth, signOut, userData, changeCity } = this.props;
+    const { auth, signOut, userData, changeCity, valueCity } = this.props;
     console.log(userData)
 
     return(
@@ -45,6 +45,7 @@ class SettingList extends Component {
             description:'Изменить город'
           }}
           changeCity={changeCity}
+          valueCity={valueCity}
         />
 
         <SettingItem 
@@ -86,12 +87,13 @@ class SettingList extends Component {
   }
 }
 
-const mapStateToProps = ({ firebase, firestore }) => {
+const mapStateToProps = ({ firebase, firestore, users }) => {
   return {
     auth: firebase.auth,
     userData: !!firestore.ordered.users 
                 && !!firestore.ordered.users.length 
-                && firestore.ordered.users.filter(item => firebase.auth.uid === item.id)
+                && firestore.ordered.users.filter(item => firebase.auth.uid === item.id),
+    valueCity: users.valueCity
   }
 };
 

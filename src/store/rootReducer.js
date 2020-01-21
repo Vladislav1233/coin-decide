@@ -16,12 +16,14 @@ import { firebaseReducer } from 'react-redux-firebase';
 import promocodes from './promocodes';
 import auth from './auth';
 import bars from './bars';
+import users from './users';
 
 export default function(initialState = {}) {
   const rootReducer = combineReducers({
     promocodes,
     auth,
     bars,
+    users,
     firestore: firestoreReducer,
     firebase: firebaseReducer
   });

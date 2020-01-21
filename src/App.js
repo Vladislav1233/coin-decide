@@ -1,10 +1,14 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { isMobile } from 'react-device-detect';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 // import Shake from 'helpers/shake'; TODO: shake событие
 // import launchFlipCoin from 'helpers/launchFlipCoin';
+
+// Note: actions
+import { changeCity } from 'store/users';
 
 import ScreenCoin from 'components/ScreenCoin';
 import { ScreenBarGet, ScreenBarCreate } from 'components/ScreenBar';
@@ -67,8 +71,15 @@ class App extends Component {
     // window.addEventListener('shake', shakeEventDidOccur, false);
   }
 
+  componentDidUpdate(prevProps) {
+    if(this.props.auth && this.props.userData && !prevProps.userData) {
+      this.props.changeCity(this.props.userData[0].default_city.name, this.props.userData[0].default_city.name_id)
+    }
+  }
+
   render() {
     const { isStopFlipping, showBar } = this.state;
+    console.log(this.props)
 
     // TODO: shake событие
     // launchFlipCoin(0, 0);
@@ -114,4 +125,19 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = ({ firebase, firestore }) => {
+  return {
+    auth: firebase.auth,
+    userData: !!firestore.ordered.users 
+                && !!firestore.ordered.users.length 
+                && firestore.ordered.users.filter(item => firebase.auth.uid === item.id)
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeCity: (name, nameId) => dispatch(changeCity(name, nameId))
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

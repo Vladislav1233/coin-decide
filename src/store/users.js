@@ -1,7 +1,7 @@
 // Note: Variables
-// const CHANGE_CITY_START = 'CHANGE_CITY_START',
-//       CHANGE_CITY_SUCCESS = 'CHANGE_CITY_SUCCESS',
-//       CHANGE_CITY_ERROR = 'CHANGE_CITY_ERROR';
+const CHANGE_CITY_START = 'CHANGE_CITY_START',
+      CHANGE_CITY_SUCCESS = 'CHANGE_CITY_SUCCESS',
+      CHANGE_CITY_ERROR = 'CHANGE_CITY_ERROR';
 
 // Note: actions
 
@@ -19,6 +19,37 @@ export const changeCity = (name, nameId) => {
         name: name,
         name_id: nameId
       }
-    })
+    });
+
+    dispatch({
+      type: CHANGE_CITY_SUCCESS,
+      payload: {
+        nameCity: name,
+        valueCity: nameId
+      }
+    });
   };
 };
+
+// Note: reducer
+const initialState = {
+  nameCity: 'Москва',
+  valueCity: 'moscow'
+};
+
+const users = (state = initialState, action) => {
+  switch (action.type) {
+
+    case CHANGE_CITY_SUCCESS:
+      return {
+        ...state,
+        nameCity: action.payload.nameCity,
+        valueCity: action.payload.valueCity
+      }
+
+    default:
+      return state
+  }
+};
+
+export default users;

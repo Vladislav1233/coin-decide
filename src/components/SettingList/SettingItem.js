@@ -1,38 +1,16 @@
 import React, { Component } from 'react';
 
 class SettingItem extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      valueCity: !!props.select ? props.select.value : ''
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    const { select } = this.props;
-
-    if(!!select && select.value !== prevProps.select.value) {
-      this.setState({
-        valueCity: select.value
-      })
-    };
-  }
 
   handleChange = (event) => {
-    const { name, value } = event.target;
+    const { value } = event.target;
     const index = event.nativeEvent.target.selectedIndex;
-
-    this.setState({
-      [name]: value
-    });
 
     this.props.changeCity(event.nativeEvent.target[index].text, value);
   }
 
   render() {
-    const { head, content, select } = this.props;
-    const { valueCity } = this.state;
+    const { head, content, select, valueCity } = this.props;
 
     return (
       <div className="b-setting-list__item">
