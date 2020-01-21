@@ -1,0 +1,15 @@
+.sign {
+  &__bg {
+    position: fixed;
+
+    &--top {
+      top: 0;
+      left: 0;
+    }
+
+    &--bottom {
+      bottom: 0;
+      right: 0;
+    }
+  }
+}
