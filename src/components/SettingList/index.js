@@ -35,11 +35,13 @@ class SettingList extends Component {
             title: 'General'
           }}
           content={[{
-            name: !!userData.length ? userData[0].default_city.name : '',
-            description:'Изменить город'
-          }, {
             name:'+7 (902) 009-09-09',
             description:'Tap to change your phone number'
+          }]}
+          select={[{
+            name: !!userData.length ? userData[0].default_city.name : '',
+            value: !!userData.length ? userData[0].default_city.name_id : '',
+            description:'Изменить город'
           }]}
         />
 
