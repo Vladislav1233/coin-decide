@@ -5,13 +5,22 @@ import getRandomObjectKey from 'helpers/getRandomObjectKey';
 const GET_URL_BAR_IMAGE_SUCCESS = 'GET_URL_BAR_IMAGE_SUCCESS',
       GET_URL_BAR_IMAGE_ERROR = 'GET_URL_BAR_IMAGE_ERROR';
 
+const SAVE_BAR_ID_QUERY = 'SAVE_BAR_ID_QUERY';
+
 // Note: actions
 export const getBar = (barId) => {
   return (dispatch, getState, { getFirestore, getFirebase }) => {
     const firestore = getFirestore();
+    dispatch({
+      type: SAVE_BAR_ID_QUERY,
+      payload: {
+        targetBarId: barId
+      }
+    });
 
     firestore.get({ collection: 'bars', doc: barId })
-      .then(() => {
+      .then((res) => {
+        console.log(res)
         const getImageForThisBar = (imagePath) => {
           const storageRef = getFirebase().storage().ref();
           const barImageRef = storageRef.child(imagePath);
@@ -29,38 +38,44 @@ export const getBar = (barId) => {
               })
             })
         };
+        const targetBar = getState().firestore.ordered.bars.filter(tarItem => {
+          return tarItem.id === barId
+        });
 
-        if(getState().firestore.ordered.bars[0].available_prizes) {
-          const availablePrizes = getState().firestore.ordered.bars[0].available_prizes,
+        if(targetBar[0].available_prizes) {
+          const availablePrizes = targetBar[0].available_prizes,
               prizeId = getRandomObjectKey(availablePrizes),
               typePrize = prizeId.split('_');
 
           if(typePrize[0] === 'common') {
             firestore.get({ collection: 'common_prizes', doc: prizeId }).then(() => {
-              getImageForThisBar(getState().firestore.ordered.bars[0].photo)
+              getImageForThisBar(targetBar[0].photo)
             });
           } else {
             firestore.get({ collection: 'unique_prizes', doc: typePrize[1] }).then(() => {
-              getImageForThisBar(getState().firestore.ordered.bars[0].photo)
+              getImageForThisBar(targetBar[0].photo)
             });
           }
         } else {
-          getImageForThisBar(getState().firestore.ordered.bars[0].photo)
+          getImageForThisBar(targetBar[0].photo)
         }
       })
   }
 }
 
-export const getRandomBar = (nameCity = 'moscow') => { // TODO: nameCity
+export const getRandomBar = (nameCity) => { // TODO: nameCity
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
 
     firestore.get({ collection: 'bars_id', doc: nameCity })
       .then(() => {
-        const barsId = getState().firestore.ordered.bars_id[0].content,
+        const targetBarsId = getState().firestore.ordered.bars_id.filter((item) => (
+          item.id === nameCity
+        ));
+        const barsId = targetBarsId[0].content,
               numberBarInCollection = randomInteger(barsId.length - 1),
               barId = barsId[numberBarInCollection].bar_id;
-              console.log(barId)
+        console.log(barId)
 
         dispatch(getBar(barId));
       })
@@ -69,7 +84,8 @@ export const getRandomBar = (nameCity = 'moscow') => { // TODO: nameCity
 
 // Note: reducer
 const initialState = {
-  barImageUrl: null
+  barImageUrl: null,
+  targetBarId: null
 };
 
 const bars = (state = initialState, action) => {
@@ -77,8 +93,15 @@ const bars = (state = initialState, action) => {
 
     case GET_URL_BAR_IMAGE_SUCCESS:
       return {
+        ...state,
         barImageUrl: action.payload
       }
+
+    case SAVE_BAR_ID_QUERY:
+        return {
+          ...state,
+          targetBarId: action.payload.targetBarId
+        }
 
     default:
       return state

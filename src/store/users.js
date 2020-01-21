@@ -33,8 +33,8 @@ export const changeCity = (name, nameId) => {
 
 // Note: reducer
 const initialState = {
-  nameCity: 'Москва',
-  valueCity: 'moscow'
+  nameCity: '',
+  valueCity: ''
 };
 
 const users = (state = initialState, action) => {

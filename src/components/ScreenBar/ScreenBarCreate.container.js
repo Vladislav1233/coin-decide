@@ -30,7 +30,9 @@ class ScreenBarCreate extends Component {
   }
 
   componentDidMount() {
-    this.props.getRandomBar();
+    if(!this.props.auth) {
+      this.props.getRandomBar('moscow'); // moscow по дефолту (если не зареган юзер).
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -42,6 +44,10 @@ class ScreenBarCreate extends Component {
       prize,
       saveWinningPromocodeInStore
     } = this.props;
+
+    if(prevProps.dataCity.valueCity !== this.props.dataCity.valueCity) {
+      this.props.getRandomBar(this.props.dataCity.valueCity);
+    }
 
     if(showBar !== prevProps.showBar && showBar) {
       if(prize && prize.length > 0) {
@@ -75,7 +81,15 @@ class ScreenBarCreate extends Component {
     const { bar, auth, showBar, prize, barImageUrl, backToStartScreen, reviews } = this.props;
     const { code } = this.state;
 
-      if(isEmptyObj(bar) && !!prize) {
+      if(typeof(bar) === 'object' && isEmptyObj(bar) && !!prize) {
+        return <div>'Загрузка...'</div>
+      }
+
+      if(!bar && Array.isArray(bar) && bar.length <= 0) {
+        return <div>'Загрузка...'</div>
+      }
+
+      if(!bar) {
         return <div>'Загрузка...'</div>
       }
 
@@ -103,37 +117,45 @@ class ScreenBarCreate extends Component {
   }
 }
 
-const mapStateToProps = ({ firebase, firestore, bars }) => {
+const mapStateToProps = ({ firebase, firestore, bars, users }) => {
+  const targetBarId = firestore.ordered.bars && firestore.ordered.bars.length > 0
+    ? firestore.ordered.bars.filter(item => {
+      return item.id === bars.targetBarId
+    })
+    : {};
+
   return {
     auth: firebase.auth,
-    bar: firestore.ordered.bars && firestore.ordered.bars.length > 0
-      ? firestore.ordered.bars[0]
-      : {},
+    bar: Array.isArray(targetBarId) ? targetBarId[0] : targetBarId,
     prize: firestore.ordered.unique_prizes
       ? firestore.ordered.unique_prizes
       : firestore.ordered.common_prizes
         ? firestore.ordered.common_prizes
         : null,
     barImageUrl: bars.barImageUrl,
-    reviews: firestore.ordered.reviews ? firestore.ordered.reviews : []
+    reviews: firestore.ordered.reviews ? firestore.ordered.reviews : [],
+    dataCity: {
+      valueCity: users.valueCity,
+      nameCity: users.nameCity
+    }
   }
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getRandomBar: () => dispatch(getRandomBar()),
+    getRandomBar: (nameCity) => dispatch(getRandomBar(nameCity)),
     savePromocode: (userUID, promocodeData) => dispatch(savePromocode(userUID, promocodeData)),
     saveWinningPromocodeInStore: (data) => dispatch(saveWinningPromocodeInStore(data))
   }
 }
 
 export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
   firestoreConnect(props => {
     const query = [];
-    if(props.bar.id) {
+    if(props.bar && props.bar.id) {
       query.push({ collection: 'reviews', doc: props.bar.id });
     };
     return query
-  })
+  }),
+  connect(mapStateToProps, mapDispatchToProps)
 )(ScreenBarCreate);

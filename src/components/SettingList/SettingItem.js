@@ -34,7 +34,7 @@ class SettingItem extends Component {
           <div className="b-setting-list__content">
             <select name='valueCity' value={valueCity} className="b-setting-list__name b-setting-list__name--select" onChange={this.handleChange}>
               <option value="saint-petersburg">Санкт-Петербург</option>
-              <option value="ul'anovsk">Ульяновск</option>
+              <option value="ulyanovsk">Ульяновск</option>
               <option value="kharkov">Харьков</option>
               <option value="moscow">Москва</option>
             </select>
