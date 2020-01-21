@@ -6,7 +6,7 @@ import bem from "config/bem";
 // Note: styles
 import "./style.scss";
 
-const bemClass = bem('sign')
+const bemClass = bem("sign");
 
 class SignIn extends Component {
   state = {
@@ -30,7 +30,7 @@ class SignIn extends Component {
     return (
       <main className={bemClass()}>
         <svg
-          className={bemClass('bg', {top: true})}
+          className={bemClass("bg", { top: true })}
           width="353"
           height="202"
           viewBox="0 0 353 202"
@@ -63,21 +63,37 @@ class SignIn extends Component {
           </defs>
         </svg>
 
+        <button className={bemClass("switchPageBtn")} type="button">
+          Регистрация
+        </button>
+
+        <h1 className={bemClass("heading")}>Вход</h1>
+
         <form onSubmit={this.handleSubmit}>
-          <div>
-            <label>Email</label>
-            <input type="email" id="email" onChange={this.handleChange} />
+          <div className={bemClass("inputGroup")}>
+            <input
+              className={bemClass("input")}
+              type="email"
+              id="email"
+              placeholder="Email"
+              onChange={this.handleChange}
+            />
+            <input
+              className={bemClass("input")}
+              type="password"
+              id="password"
+              placeholder="Password"
+              onChange={this.handleChange}
+            />
           </div>
-          <div>
-            <label>Password</label>
-            <input type="password" id="password" onChange={this.handleChange} />
-          </div>
+
+          <span>Забыли пароль?</span>
 
           <button>Sign in</button>
         </form>
 
         <svg
-          className={bemClass('bg', {bottom: true})}
+          className={bemClass("bg", { bottom: true })}
           width="280"
           height="173"
           viewBox="0 0 280 173"
