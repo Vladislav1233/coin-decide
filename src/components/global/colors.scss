@@ -10,6 +10,13 @@
     --gray-700: #444;
     --gray-800: #222;
     --gray-900: #050505;
+
+    --green-500: #32D35E;
+}
+
+// naming
+:root {
+  --accent: var(--green-500)
 }
 
 // borders

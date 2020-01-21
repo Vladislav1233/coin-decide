@@ -31,9 +31,9 @@ class SettingList extends Component {
           />
         }
 
-        <SettingItem 
+        <SettingItem
           head={{
-            title: 'General'
+            title: 'Аккаунт'
           }}
           content={[{
             name:'+7 (902) 009-09-09',
@@ -47,7 +47,7 @@ class SettingList extends Component {
           changeCity={changeCity}
         />
 
-        <SettingItem 
+        <SettingItem
           head={{
             title: 'О приложении',
             additional: 'v0.12.817-a'
@@ -89,8 +89,8 @@ class SettingList extends Component {
 const mapStateToProps = ({ firebase, firestore }) => {
   return {
     auth: firebase.auth,
-    userData: !!firestore.ordered.users 
-                && !!firestore.ordered.users.length 
+    userData: !!firestore.ordered.users
+                && !!firestore.ordered.users.length
                 && firestore.ordered.users.filter(item => firebase.auth.uid === item.id)
   }
 };
