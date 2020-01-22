@@ -82,6 +82,7 @@ class ScreenBarCreate extends Component {
   render() {
     const { bar, auth, showBar, prize, barImageUrl, backToStartScreen, reviews } = this.props;
     const { code } = this.state;
+    console.log(prize)
 
       if(typeof(bar) === 'object' && isEmptyObj(bar) && !!prize) {
         return <div>'Загрузка...'</div>
@@ -109,7 +110,7 @@ class ScreenBarCreate extends Component {
           address={bar.address}
           geo={bar.geo} // TODO
           name={bar.name}
-          prize={prize ? prize[0] : {}}
+          prize={prize && Array.isArray(prize) && !!prize.length ? prize[0] : {}}
           urlImage={barImageUrl}
           backToStartScreen={backToStartScreen}
           reviews={reviews}
@@ -125,15 +126,15 @@ const mapStateToProps = ({ firebase, firestore, bars, users }) => {
       return item.id === bars.targetBarId
     })
     : {};
+  console.log(firestore.ordered)
+  console.log(bars)
 
   return {
     auth: firebase.auth,
     bar: Array.isArray(targetBarId) ? targetBarId[0] : targetBarId,
-    prize: firestore.ordered.unique_prizes
-      ? firestore.ordered.unique_prizes
-      : firestore.ordered.common_prizes
-        ? firestore.ordered.common_prizes
-        : null,
+    prize: firestore.ordered.unique_prizes ? firestore.ordered.unique_prizes.filter(item => (
+      item.id === bars.typePrize[1]
+    )) : null,
     barImageUrl: bars.barImageUrl,
     reviews: firestore.ordered.reviews ? firestore.ordered.reviews : [],
     dataCity: {
