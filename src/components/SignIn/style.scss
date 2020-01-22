@@ -1,0 +1,87 @@
+.sign {
+  padding: 112px 0 0 0;
+  display: flex;
+  flex-direction: column;
+
+  &__bg {
+    position: fixed;
+    pointer-events: none;
+
+    &--top {
+      top: 0;
+      left: 0;
+    }
+
+    &--bottom {
+      right: 0;
+      bottom: 0;
+    }
+  }
+
+  &__switchPageBtn {
+    background: #161616;
+    border-radius: 50px 0 0 50px;
+    padding: 16px 38px;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    margin-left: auto;
+    margin-bottom: 52px;
+    text-decoration: none;
+  }
+
+  &__heading {
+    font-weight: bold;
+    text-align: center;
+    margin: 0 0 16px;
+  }
+
+  &__form {
+    position: relative;
+    margin-right: 32px;
+  }
+
+  &__inputGroup {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__input {
+    padding: 18px 32px;
+    border: none;
+    border-radius: 0px;
+    background: #161616;
+    color: #fff;
+    font-size: 18px;
+
+    &:not(:last-child) {
+      margin-bottom: 1px;
+    }
+
+    &:first-child {
+      border-top-right-radius: 56px;
+    }
+
+    &:last-child {
+      border-bottom-right-radius: 56px;
+    }
+  }
+
+  &__goBtn {
+    position: absolute;
+    width: 56px;
+    height: 56px;
+    border: none;
+    border-radius: 75%;
+    background-color: #27AE60;
+    padding: 0;
+    top: 50%;
+    right: 0;
+    transform: translate(40%, -50%);
+
+    & svg {
+      margin: 6px;
+      display: block;
+    }
+  }
+}

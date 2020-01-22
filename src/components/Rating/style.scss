@@ -1,0 +1,17 @@
+.b-rating {
+    unicode-bidi: bidi-override;
+    direction: rtl;
+    color: #f7c70a;
+    font-size: 24px;
+    line-height: 1;
+
+    span {
+        display: inline-block;
+        position: relative;
+        
+        &.checked::before {
+            content: "\2605";
+            position: absolute;
+        }
+    }
+}

@@ -1,0 +1,73 @@
+.b-setting-list {
+    color: #fff;
+    text-align: left;
+
+    &__name {
+        font-size: 15px;
+        line-height: 18px;
+
+        &--select {
+            background: #050505;
+            color: #fff;
+            border: none;
+            padding: 0;
+        }
+    }
+
+    &__description {
+        font-size: 12px;
+        line-height: 14px;
+        color: var(--gray-500);
+    }
+
+    &__item {
+        padding: 0 0 16px 16px;
+        border-bottom: 8px solid #161616;
+        margin-bottom: 16px;
+    }
+
+    &__title {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
+    &__additional-title {
+        font-size: 12px;
+        line-height: 14px;
+        color: var(--gray-500);
+    }
+
+    &__head {
+        margin-bottom: 16px;
+        padding-right: 16px;
+        display: flex;
+        justify-content: space-between;
+        color: var(--accent);
+    }
+
+    &__content {
+        padding: 6px 0;
+        display: block;
+
+        &:not(:last-child) {
+            border-bottom: 1px solid var(--gray-700);
+        }
+    }
+
+    &__logout {
+        font-size: 12px;
+        line-height: 14px;
+        color: #96A491;
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        margin: 0 16px;
+
+        span {
+            padding-left: 4px;
+        }
+    }
+}

@@ -1,0 +1,212 @@
+.container {
+    display: flex;
+    max-width: 1500px;
+    margin: auto;
+    padding: 0 90px;
+}
+
+.desktop-screen {
+    background: linear-gradient(109.32deg, #09C883, #086A29);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    min-height: 100%;
+    padding: 80px 40px 40px 40px;
+    text-align: left;
+
+    &__header {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        height: 72px;
+        padding: 16px;
+        // transition: .7s;
+        background: rgba(255, 255, 255, 1);
+    }
+
+    &__nav {
+        display: flex;
+    }
+
+    &__nav-link {
+        padding: 15px 20px;
+        font-size: 14px;
+        font-weight: 400;
+        vertical-align: middle;
+        text-decoration: none;
+        // letter-spacing: .5px;
+        text-transform: uppercase;
+        color: #242424;
+        border: 1px solid transparent;
+
+        &:hover {
+            color: #006528;
+            border: 1px solid #02903b;
+            border-radius: 4px;
+        }
+    }
+
+    &__logo {
+        position: fixed;
+        top: -6px;
+        left: 0;
+        height: 72px;
+        // background: radial-gradient(#fff 47%, transparent 72%);
+    }
+
+    &__center {
+        display: flex;
+    }
+
+    &__right {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-direction: column;
+        max-width: 570px;
+        padding-left: 140px;
+    }
+
+    &__h1 {
+        margin: 0 0 48px;
+        font-size: 60px;
+        font-weight: bold;
+        line-height: 1em;
+    }
+
+    &__h2 {
+        margin: 0 0 48px;
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    &__btn {
+        padding: 20px;
+        padding: 16px 18px;
+        font-size: 18px;
+        font-weight: 500;
+        cursor: pointer;
+        color: #006528;
+        border: none;
+        border-radius: 4px;
+        background: #ffffff;
+
+        &:hover {
+            box-shadow: 0 2px 2px 0 rgba(0,0,0,.24), 0 0 2px 0 rgba(0,0,0,.12);
+        }
+
+        &:active {
+            box-shadow: 0 0 8px 0 rgba(0,0,0,.12), 0 8px 8px 0 rgba(0,0,0,.24);
+        }
+    }
+
+    &__go-to {
+        width: 100%;
+        text-align: center;
+        background: transparent;
+        padding: 32px;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        color: #fff;
+        text-transform: uppercase;
+    }
+
+    &__logo-main {
+        position: absolute;
+        top: 32px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &__search {
+        margin-left: auto;
+        padding: 0 50px 0 20px;
+        font-size: 14px;
+        transition: opacity .3s ease-in-out, box-shadow .3s ease-in-out;
+        color: #0088ff;
+        border: none;
+        border-radius: 8px;
+        outline: 0;
+        line-height: 40px;
+        height: 40px;
+        background-color: #f4f4f4;
+        text-shadow: 0 0 0 var(--gray-900);
+        appearance: none;
+        -webkit-text-fill-color: transparent;
+        opacity: .5;
+    }
+
+    &__img {
+        max-width: 100%;
+        max-height: 450px;
+    }
+
+    &__cookies {
+        background-color: #5A5A5A;
+        padding: 8px;
+        text-align: center;
+        font-size: 12px;
+        margin-bottom: 100px;
+    }
+
+    &__footer {
+        background-color: #141414;
+        height: 300px;
+    }
+}
+
+@media (max-width: 1280px) {
+    .desktop-screen {
+        &__right {
+            max-width: 450px;
+            padding-left: 80px;
+        }
+
+        &__left {
+            width: 400px;
+        }
+
+        &__h1 {
+            font-size: 50px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-screen {
+        &__right {
+            padding-left: 40px;
+            // max-width: 300px;
+        }
+
+        &__left {
+            flex: 0 0 auto;
+            width: 300px;
+        }
+
+        &__h1 {
+            margin: 0 0 24px;
+            font-size: 30px;
+        }
+
+        &__h2 {
+            margin: 0 0 24px;
+        }
+    }
+}
+
+@media (max-width: 560px) {
+    .desktop-screen {
+        padding: 8px;
+
+        &__center {
+            flex-direction: column;
+        }
+
+        &__left {
+            margin-bottom: 24px;
+        }
+    }
+}

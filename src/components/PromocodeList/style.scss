@@ -1,0 +1,44 @@
+.b-promocode-list {
+    padding: 0;
+
+    &__item {
+        list-style-type: none;
+
+        &:not(:last-child) {
+            margin-bottom: 8px;
+        }
+    }
+
+    &__date {
+        color: #DDDDDD;
+    }
+
+    &__registration {
+        padding: 0 30px;
+
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            line-height: 16px;
+            background: #27AE60;
+            color: #fff;
+            display: block;
+            padding: 12px 16px;
+        }
+    }
+
+    &__help {
+        font-size: 10px;
+        line-height: 12px;
+        color: #999999;
+        display: block;
+        padding-top: 8px;
+    }
+
+    &__empty {
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 0 30px;
+    }
+}

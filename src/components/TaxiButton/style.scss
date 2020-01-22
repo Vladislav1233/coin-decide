@@ -1,0 +1,23 @@
+.b-taxi-button {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 16px;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px 14px 9px;
+    font-size: 0;
+    line-height: 0;
+    display: inline-block;
+
+    &__icon-taxi {
+        margin-right: 6px;
+    }
+
+    &__text {
+        font-size: 11px;
+        line-height: 13px;
+    }
+
+    > * {
+        vertical-align: middle;
+    }
+}
