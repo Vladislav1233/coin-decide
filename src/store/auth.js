@@ -38,6 +38,7 @@ export const signIn = (credentials) => {
         type: LOGIN_ERROR,
         payload: err
       })
+      alert('Ошибка, что-то пошло не так');
     })
   }
 };
@@ -54,6 +55,7 @@ export const signOut = () => {
       dispatch({
         type: LOGOUT_ERROR
       })
+      alert('Ошибка, что-то пошло не так');
     })
   }
 };
@@ -78,17 +80,23 @@ export const signUp = (newUser) => {
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
+        default_city: {
+          name: "Москва",
+          name_id: 'moscow'
+        },
         photo: null // TODO
       });
     }).then(() => {
       dispatch({
         type: SIGNUP_SUCCESS
       });
+      history.push('/');
     }).catch((err) => {
       dispatch({
         type: SIGNUP_ERROR,
         payload: err
       })
+      alert('Ошибка, что-то пошло не так');
     })
   }
 }
