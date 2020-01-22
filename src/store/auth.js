@@ -1,5 +1,6 @@
 import { savePromocode } from 'store/promocodes';
 import isEmptyObj from 'helpers/isEmptyObj';
+import { history } from "helpers/history";
 
 // Note: variables
 const   // LOGIN_START = 'LOGIN_START',
@@ -24,6 +25,8 @@ export const signIn = (credentials) => {
       dispatch({
         type: LOGIN_SUCCESS
       });
+
+      history.push('/');
 
       // Note: Сохраняем выпавший неавторизованному юзеру промокод в базу.
       const promocodeWon = getState().promocodes.promocodeWon;

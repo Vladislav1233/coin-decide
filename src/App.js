@@ -2,7 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
 import { isMobile } from 'react-device-detect';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router-dom';
+import { history } from 'helpers/history';
 
 // import Shake from 'helpers/shake'; TODO: shake событие
 // import launchFlipCoin from 'helpers/launchFlipCoin';
@@ -84,7 +85,7 @@ class App extends Component {
     // launchFlipCoin(0, 0);
 
     return (
-      <BrowserRouter>
+      <Router history={history}>
         <div className="App">
           {/* { isMobile */}
           { true
@@ -118,7 +119,7 @@ class App extends Component {
             : <DesktopScreen />
           }
         </div>
-      </BrowserRouter>
+      </Router>
     )
 
   }
