@@ -1,15 +1,28 @@
 {
   "files": {
-    "main.css": "/coin-decide/static/css/main.617584ac.chunk.css",
-    "main.js": "/coin-decide/static/js/main.6e5d0cd9.chunk.js",
-    "main.js.map": "/coin-decide/static/js/main.6e5d0cd9.chunk.js.map",
+    "main.css": "/coin-decide/static/css/main.44e57216.chunk.css",
+    "main.js": "/coin-decide/static/js/main.22470a64.chunk.js",
+    "main.js.map": "/coin-decide/static/js/main.22470a64.chunk.js.map",
     "runtime~main.js": "/coin-decide/static/js/runtime~main.cf3ffb2c.js",
     "runtime~main.js.map": "/coin-decide/static/js/runtime~main.cf3ffb2c.js.map",
-    "static/js/2.474bb2f6.chunk.js": "/coin-decide/static/js/2.474bb2f6.chunk.js",
-    "static/js/2.474bb2f6.chunk.js.map": "/coin-decide/static/js/2.474bb2f6.chunk.js.map",
+    "static/css/2.3e4da761.chunk.css": "/coin-decide/static/css/2.3e4da761.chunk.css",
+    "static/js/2.a97aa0ce.chunk.js": "/coin-decide/static/js/2.a97aa0ce.chunk.js",
+    "static/js/2.a97aa0ce.chunk.js.map": "/coin-decide/static/js/2.a97aa0ce.chunk.js.map",
     "index.html": "/coin-decide/index.html",
-    "precache-manifest.de13030cf0bc56d039c29abb8ff06f12.js": "/coin-decide/precache-manifest.de13030cf0bc56d039c29abb8ff06f12.js",
+    "precache-manifest.44d6104b9dd64ecdf1fe153bcb7668b1.js": "/coin-decide/precache-manifest.44d6104b9dd64ecdf1fe153bcb7668b1.js",
     "service-worker.js": "/coin-decide/service-worker.js",
-    "static/css/main.617584ac.chunk.css.map": "/coin-decide/static/css/main.617584ac.chunk.css.map"
+    "static/css/2.3e4da761.chunk.css.map": "/coin-decide/static/css/2.3e4da761.chunk.css.map",
+    "static/css/main.44e57216.chunk.css.map": "/coin-decide/static/css/main.44e57216.chunk.css.map",
+    "static/media/LogoNew.svg": "/coin-decide/static/media/LogoNew.62fb5b06.svg",
+    "static/media/arrow-side.svg": "/coin-decide/static/media/arrow-side.e9d09256.svg",
+    "static/media/beer.svg": "/coin-decide/static/media/beer.e65ac4db.svg",
+    "static/media/check-circle.svg": "/coin-decide/static/media/check-circle.173488c1.svg",
+    "static/media/coin-v.mp4": "/coin-decide/static/media/coin-v.35d26585.mp4",
+    "static/media/list.svg": "/coin-decide/static/media/list.b5aef68f.svg",
+    "static/media/logo.png": "/coin-decide/static/media/logo.0cf28634.png",
+    "static/media/phones.png": "/coin-decide/static/media/phones.8506d38a.png",
+    "static/media/setting.svg": "/coin-decide/static/media/setting.d44eaef0.svg",
+    "static/media/swipe.svg": "/coin-decide/static/media/swipe.0aa7b3f9.svg",
+    "static/media/taxi.svg": "/coin-decide/static/media/taxi.6dadf5e7.svg"
   }
 }
