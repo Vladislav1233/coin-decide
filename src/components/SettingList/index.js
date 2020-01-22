@@ -35,10 +35,10 @@ class SettingList extends Component {
           head={{
             title: 'Аккаунт'
           }}
-          content={[{
-            name:`${!!auth.uid ? '+7 (902) 009-09-09' : ''}`,
-            description:`${!!auth.uid ? 'Tap to change your phone number' : ''}`
-          }]}
+          // content={[{
+          //   name:`${!!auth.uid ? '+7 (902) 009-09-09' : ''}`,
+          //   description:`${!!auth.uid ? 'Tap to change your phone number' : ''}`
+          // }]} // TODO: интегрировать номер телефона для зареганого юзера.
           select={{
             description:'Изменить город'
           }}
