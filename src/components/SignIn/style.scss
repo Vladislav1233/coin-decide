@@ -1,5 +1,5 @@
 .sign {
-  padding: 112px 0 0 0;
+  padding: 112px 0 100px 0;
   display: flex;
   flex-direction: column;
 
@@ -8,6 +8,7 @@
     pointer-events: none;
 
     &--top {
+      z-index: 1;
       top: 0;
       left: 0;
     }
@@ -15,6 +16,7 @@
     &--bottom {
       right: 0;
       bottom: 0;
+      z-index: 5;
     }
   }
 
@@ -28,17 +30,20 @@
     margin-left: auto;
     margin-bottom: 52px;
     text-decoration: none;
+    z-index: 3;
   }
 
   &__heading {
     font-weight: bold;
     text-align: center;
     margin: 0 0 16px;
+    z-index: 3;
   }
 
   &__form {
     position: relative;
     margin-right: 32px;
+    z-index: 3;
   }
 
   &__inputGroup {
@@ -83,5 +88,13 @@
       margin: 6px;
       display: block;
     }
+  }
+
+  &__backLink {
+    padding: 4px;
+    color: var(--gray-200);
+    margin: 56px auto 0;
+    text-decoration: none;
+    z-index: 3;
   }
 }
