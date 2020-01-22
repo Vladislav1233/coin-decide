@@ -36,8 +36,8 @@ class SettingList extends Component {
             title: 'Аккаунт'
           }}
           content={[{
-            name:'+7 (902) 009-09-09',
-            description:'Tap to change your phone number'
+            name:`${!!auth.uid ? '+7 (902) 009-09-09' : ''}`,
+            description:`${!!auth.uid ? 'Tap to change your phone number' : ''}`
           }]}
           select={{
             description:'Изменить город'
