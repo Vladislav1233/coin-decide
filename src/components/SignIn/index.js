@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { signIn } from "store/auth";
 import bem from "config/bem";
+import { Link } from 'react-router-dom';
 
 // Note: styles
 import "./style.scss";
@@ -63,9 +64,9 @@ class SignIn extends Component {
           </defs>
         </svg>
 
-        <button className={bemClass("switchPageBtn")} type="button">
+        <Link to="/signup" className={bemClass("switchPageBtn")} type="button">
           Регистрация
-        </button>
+        </Link>
 
         <h1 className={bemClass("heading")}>Вход</h1>
 
@@ -87,7 +88,7 @@ class SignIn extends Component {
             />
           </div>
 
-          <button type="button" className={bemClass("goBtn")}>
+          <button type="submit" className={bemClass("goBtn")}>
             <svg
               width="44"
               height="44"
