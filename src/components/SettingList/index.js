@@ -40,8 +40,6 @@ class SettingList extends Component {
             description:'Tap to change your phone number'
           }]}
           select={{
-            name: !!userData.length ? userData[0].default_city.name : '',
-            value: !!userData.length ? userData[0].default_city.name_id : '',
             description:'Изменить город'
           }}
           changeCity={changeCity}

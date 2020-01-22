@@ -12,6 +12,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 // Note: actions
 import { getRandomBar } from 'store/bars';
 import { savePromocode, saveWinningPromocodeInStore } from 'store/promocodes';
+import { changeCity } from 'store/users';
 
 // Note: helpers
 import isEmptyObj from 'helpers/isEmptyObj';
@@ -30,8 +31,9 @@ class ScreenBarCreate extends Component {
   }
 
   componentDidMount() {
-    if(!this.props.auth) {
+    if(this.props.auth.isEmpty) {
       this.props.getRandomBar('moscow'); // moscow по дефолту (если не зареган юзер).
+      this.props.changeCity('Москва', 'moscow');
     }
   }
 
@@ -145,7 +147,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getRandomBar: (nameCity) => dispatch(getRandomBar(nameCity)),
     savePromocode: (userUID, promocodeData) => dispatch(savePromocode(userUID, promocodeData)),
-    saveWinningPromocodeInStore: (data) => dispatch(saveWinningPromocodeInStore(data))
+    saveWinningPromocodeInStore: (data) => dispatch(saveWinningPromocodeInStore(data)),
+    changeCity: (name, nameId) => dispatch(changeCity(name, nameId))
   }
 }
 

@@ -64,6 +64,7 @@ export const getBar = (barId) => {
 }
 
 export const getRandomBar = (nameCity) => { // TODO: nameCity
+  console.log(nameCity)
   return (dispatch, getState, { getFirestore }) => {
     const firestore = getFirestore();
 

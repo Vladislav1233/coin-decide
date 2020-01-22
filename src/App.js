@@ -72,14 +72,13 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if(this.props.auth && this.props.userData && !prevProps.userData) {
+    if(!this.props.auth.isEmpty && !!this.props.userData.length && !prevProps.userData) {
       this.props.changeCity(this.props.userData[0].default_city.name, this.props.userData[0].default_city.name_id)
     }
   }
 
   render() {
     const { isStopFlipping, showBar } = this.state;
-    console.log(this.props)
 
     // TODO: shake событие
     // launchFlipCoin(0, 0);

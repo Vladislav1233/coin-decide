@@ -11,15 +11,17 @@ export const changeCity = (name, nameId) => {
     const firestore = getFirestore();
     const state = getState();
 
-    firestore.update({
-      collection: 'users',
-      doc: state.firebase.auth.uid
-    }, {
-      default_city: {
-        name: name,
-        name_id: nameId
-      }
-    });
+    if(state.firebase.auth.uid) {
+      firestore.update({
+        collection: 'users',
+        doc: state.firebase.auth.uid
+      }, {
+        default_city: {
+          name: name,
+          name_id: nameId
+        }
+      });
+    }
 
     dispatch({
       type: CHANGE_CITY_SUCCESS,
