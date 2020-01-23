@@ -28,12 +28,12 @@ class Code extends Component {
 
         <div className="b-code__footer">
           <div className="b-code__note">
-            <span>Покажи QR-code, или продиктуй код бармену и получи скидку</span>
+            <span>Покажи QR-code или продиктуй код бармену и получи скидку</span>
           </div>
 
           {!isAuth
             && <Link to="/signup" className="b-code__auth">
-              <span>Зарегистрируйся</span> чтобы не потерять!.
+              <span>Зарегистрируйся,</span> чтобы не потерять!
             </Link>
           }
         </div>

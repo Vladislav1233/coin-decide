@@ -46,14 +46,14 @@ class SignIn extends Component {
                 className={bemClass("input")}
                 type="email"
                 id="email"
-                placeholder="Email"
+                placeholder="Почта"
                 onChange={this.handleChange}
               />
               <input
                 className={bemClass("input")}
                 type="password"
                 id="password"
-                placeholder="Password"
+                placeholder="Пароль"
                 onChange={this.handleChange}
               />
             </div>
