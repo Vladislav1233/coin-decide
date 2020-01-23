@@ -12,7 +12,8 @@ class Card extends Component {
       <div className="b-card">
         <div className="b-card__wrapper">
           <div className="b-card__image-wrapper">
-            <img className="b-card__image" src={urlImage} alt={`Фото ${name}`} />
+            {/* alt={`Фото ${name}`} */}
+            <img className="b-card__image" src={urlImage} alt='' />
           </div>
 
           <div className="b-card__info-bar">

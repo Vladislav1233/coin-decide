@@ -45,32 +45,32 @@ class SignUp extends Component {
       >
         <form onSubmit={this.handleSubmit} className={bemClass("form")}>
           <div className={bemClass("inputGroup")}>
-            <input 
+            <input
               className={bemClass("input")}
-              placeholder="Email"
-              type="email" 
-              id="email" 
-              onChange={this.handleChange} 
+              placeholder="Почта"
+              type="email"
+              id="email"
+              onChange={this.handleChange}
             />
-            <input 
+            <input
               className={bemClass("input")}
-              placeholder="Password"
-              type="password" id="password" 
-              onChange={this.handleChange} 
+              placeholder="Пароль"
+              type="password" id="password"
+              onChange={this.handleChange}
             />
-            <input 
+            <input
               className={bemClass("input")}
-              placeholder="First Name"
-              type="text" 
-              id="firstName" 
-              onChange={this.handleChange} 
+              placeholder="Имя"
+              type="text"
+              id="firstName"
+              onChange={this.handleChange}
             />
-            <input 
+            <input
               className={bemClass("input")}
-              placeholder="Last Name"
-              type="text" 
-              id="lastName" 
-              onChange={this.handleChange} 
+              placeholder="Фамилия"
+              type="text"
+              id="lastName"
+              onChange={this.handleChange}
             />
           </div>
           <button type="submit" className={bemClass("goBtn")}>
