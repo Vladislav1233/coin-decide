@@ -32,8 +32,8 @@ class ScreenBarCreate extends Component {
 
   componentDidMount() {
     if(this.props.auth.isEmpty) {
-      this.props.getRandomBar('moscow'); // moscow по дефолту (если не зареган юзер).
-      this.props.changeCity('Москва', 'moscow');
+      this.props.getRandomBar('ulyanovsk'); // ulyanovsk по дефолту (если не зареган юзер).
+      this.props.changeCity('Ульяновск', 'ulyanovsk');
     }
   }
 
@@ -102,7 +102,7 @@ class ScreenBarCreate extends Component {
         timeout={2300}
         classNames='b-screen'
       >
-        <ScreenBar 
+        <ScreenBar
           isAuth={!!auth.uid}
           code={code} // TODO: узнать как работать с промокодом. Он будет генериться один на приз или один на пользователя?
           qrCode={null} // TODO
