@@ -87,8 +87,7 @@ class App extends Component {
     return (
       <Router history={history}>
         <div className="App">
-          {/* { isMobile */}
-          { true
+          {isMobile
             ? <Switch>
               <Route exact path="/">
                 <Fragment>
