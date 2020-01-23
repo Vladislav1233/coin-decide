@@ -50,7 +50,9 @@ class AuthFormUi extends Component {
 
         {children}
 
-        <a href="sad">todoНАЗАД</a>
+        <Link
+        className={bemClass('backLink')}
+        to="/">Назад</Link>
 
         <svg
           className={bemClass("bg", { bottom: true })}

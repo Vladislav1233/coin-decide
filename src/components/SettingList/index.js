@@ -1,46 +1,52 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
+import { firestoreConnect } from "react-redux-firebase";
+import { compose } from "redux";
 
 // Note: components
-import SettingItem from 'components/SettingList/SettingItem';
+import SettingItem from "components/SettingList/SettingItem";
 
 // Note: actions
-import { signOut } from 'store/auth';
-import { changeCity } from 'store/users';
+import { signOut } from "store/auth";
+import { changeCity } from "store/users";
 
 // Note: style
-import './style.scss';
+import "./style.scss";
 
 class SettingList extends Component {
-
   render() {
     const { auth, signOut, userData, changeCity, valueCity } = this.props;
-    console.log(userData)
+    console.log(userData);
 
-    return(
+    return (
       <div className="b-setting-list">
-        {!!auth.uid &&
+        {!!auth.uid && (
           <SettingItem
-            content={[{
-              name: `${!!userData.length ? userData[0].firstName : ''} ${!!userData.length ? userData[0].lastName : ''}`,
-              description:'Изменить имя'
-            }]}
+            head={{
+              title: "Аккаунт"
+            }}
+            content={[
+              {
+                name: `${!!userData.length ? userData[0].firstName : ""} ${
+                  !!userData.length ? userData[0].lastName : ""
+                }`,
+                description: "Изменить имя"
+              }
+            ]}
           />
-        }
+        )}
 
         <SettingItem
           head={{
-            title: 'Аккаунт'
+            title: "Основное"
           }}
           // content={[{
           //   name:`${!!auth.uid ? '+7 (902) 009-09-09' : ''}`,
           //   description:`${!!auth.uid ? 'Tap to change your phone number' : ''}`
           // }]} // TODO: интегрировать номер телефона для зареганого юзера.
           select={{
-            description:'Изменить город'
+            description: "Изменить город"
           }}
           changeCity={changeCity}
           valueCity={valueCity}
@@ -48,63 +54,91 @@ class SettingList extends Component {
 
         <SettingItem
           head={{
-            title: 'О приложении',
-            additional: 'v0.12.817-a'
+            title: "О приложении",
+            additional: "v0.12.817-a"
           }}
-          content={[{
-            name:'Как это работает?',
-            description:'Информация о приложении'
-          }, {
-            name:'Список баров',
-            description:'Посмотреть бары учавствующие в игре'
-          }]}
+          content={[
+            {
+              name: "Как это работает?",
+              description: "Информация о приложении"
+            },
+            {
+              name: "Список баров",
+              description: "Посмотреть бары учавствующие в игре"
+            }
+          ]}
         />
-        {auth.uid
-          ? <button className="b-setting-list__logout" onClick={signOut}>
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fillRule="evenodd" clipRule="evenodd" d="M5 4C4.73478 4 4.48043 4.10536 4.29289 4.29289C4.10536 4.48043 4 4.73478 4 5V19C4 19.2652 4.10536 19.5196 4.29289 19.7071C4.48043 19.8946 4.73478 20 5 20H9C9.55228 20 10 20.4477 10 21C10 21.5523 9.55228 22 9 22H5C4.20435 22 3.44129 21.6839 2.87868 21.1213C2.31607 20.5587 2 19.7957 2 19V5C2 4.20435 2.31607 3.44129 2.87868 2.87868C3.44129 2.31607 4.20435 2 5 2H9C9.55228 2 10 2.44772 10 3C10 3.55228 9.55228 4 9 4H5Z" fill="#96A491"/>
-              <path fillRule="evenodd" clipRule="evenodd" d="M15.2929 6.29289C15.6834 5.90237 16.3166 5.90237 16.7071 6.29289L21.7071 11.2929C22.0976 11.6834 22.0976 12.3166 21.7071 12.7071L16.7071 17.7071C16.3166 18.0976 15.6834 18.0976 15.2929 17.7071C14.9024 17.3166 14.9024 16.6834 15.2929 16.2929L19.5858 12L15.2929 7.70711C14.9024 7.31658 14.9024 6.68342 15.2929 6.29289Z" fill="#96A491"/>
-              <path fillRule="evenodd" clipRule="evenodd" d="M8 12C8 11.4477 8.44772 11 9 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H9C8.44772 13 8 12.5523 8 12Z" fill="#96A491"/>
+        {auth.uid ? (
+          <button className="b-setting-list__logout" onClick={signOut}>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M5 4C4.73478 4 4.48043 4.10536 4.29289 4.29289C4.10536 4.48043 4 4.73478 4 5V19C4 19.2652 4.10536 19.5196 4.29289 19.7071C4.48043 19.8946 4.73478 20 5 20H9C9.55228 20 10 20.4477 10 21C10 21.5523 9.55228 22 9 22H5C4.20435 22 3.44129 21.6839 2.87868 21.1213C2.31607 20.5587 2 19.7957 2 19V5C2 4.20435 2.31607 3.44129 2.87868 2.87868C3.44129 2.31607 4.20435 2 5 2H9C9.55228 2 10 2.44772 10 3C10 3.55228 9.55228 4 9 4H5Z"
+                fill="#96A491"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M15.2929 6.29289C15.6834 5.90237 16.3166 5.90237 16.7071 6.29289L21.7071 11.2929C22.0976 11.6834 22.0976 12.3166 21.7071 12.7071L16.7071 17.7071C16.3166 18.0976 15.6834 18.0976 15.2929 17.7071C14.9024 17.3166 14.9024 16.6834 15.2929 16.2929L19.5858 12L15.2929 7.70711C14.9024 7.31658 14.9024 6.68342 15.2929 6.29289Z"
+                fill="#96A491"
+              />
+              <path
+                fillRule="evenodd"
+                clipRule="evenodd"
+                d="M8 12C8 11.4477 8.44772 11 9 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H9C8.44772 13 8 12.5523 8 12Z"
+                fill="#96A491"
+              />
             </svg>
 
             <span>Выйти из профиля</span>
           </button>
+        ) : (
+          <div className="b-setting-list__registration">
+            <Link to="/signin">Войти</Link>
+          </div>
+        )
 
-          : <Link to="/signin" className="b-setting-list__logout">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fillRule="evenodd" clipRule="evenodd" d="M5 4C4.73478 4 4.48043 4.10536 4.29289 4.29289C4.10536 4.48043 4 4.73478 4 5V19C4 19.2652 4.10536 19.5196 4.29289 19.7071C4.48043 19.8946 4.73478 20 5 20H9C9.55228 20 10 20.4477 10 21C10 21.5523 9.55228 22 9 22H5C4.20435 22 3.44129 21.6839 2.87868 21.1213C2.31607 20.5587 2 19.7957 2 19V5C2 4.20435 2.31607 3.44129 2.87868 2.87868C3.44129 2.31607 4.20435 2 5 2H9C9.55228 2 10 2.44772 10 3C10 3.55228 9.55228 4 9 4H5Z" fill="#96A491"/>
-              <path fillRule="evenodd" clipRule="evenodd" d="M15.2929 6.29289C15.6834 5.90237 16.3166 5.90237 16.7071 6.29289L21.7071 11.2929C22.0976 11.6834 22.0976 12.3166 21.7071 12.7071L16.7071 17.7071C16.3166 18.0976 15.6834 18.0976 15.2929 17.7071C14.9024 17.3166 14.9024 16.6834 15.2929 16.2929L19.5858 12L15.2929 7.70711C14.9024 7.31658 14.9024 6.68342 15.2929 6.29289Z" fill="#96A491"/>
-              <path fillRule="evenodd" clipRule="evenodd" d="M8 12C8 11.4477 8.44772 11 9 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H9C8.44772 13 8 12.5523 8 12Z" fill="#96A491"/>
-            </svg>
+        // : <Link to="/signin" className="b-setting-list__logout">
+        //   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        //     <path fillRule="evenodd" clipRule="evenodd" d="M5 4C4.73478 4 4.48043 4.10536 4.29289 4.29289C4.10536 4.48043 4 4.73478 4 5V19C4 19.2652 4.10536 19.5196 4.29289 19.7071C4.48043 19.8946 4.73478 20 5 20H9C9.55228 20 10 20.4477 10 21C10 21.5523 9.55228 22 9 22H5C4.20435 22 3.44129 21.6839 2.87868 21.1213C2.31607 20.5587 2 19.7957 2 19V5C2 4.20435 2.31607 3.44129 2.87868 2.87868C3.44129 2.31607 4.20435 2 5 2H9C9.55228 2 10 2.44772 10 3C10 3.55228 9.55228 4 9 4H5Z" fill="#96A491"/>
+        //     <path fillRule="evenodd" clipRule="evenodd" d="M15.2929 6.29289C15.6834 5.90237 16.3166 5.90237 16.7071 6.29289L21.7071 11.2929C22.0976 11.6834 22.0976 12.3166 21.7071 12.7071L16.7071 17.7071C16.3166 18.0976 15.6834 18.0976 15.2929 17.7071C14.9024 17.3166 14.9024 16.6834 15.2929 16.2929L19.5858 12L15.2929 7.70711C14.9024 7.31658 14.9024 6.68342 15.2929 6.29289Z" fill="#96A491"/>
+        //     <path fillRule="evenodd" clipRule="evenodd" d="M8 12C8 11.4477 8.44772 11 9 11H21C21.5523 11 22 11.4477 22 12C22 12.5523 21.5523 13 21 13H9C8.44772 13 8 12.5523 8 12Z" fill="#96A491"/>
+        //   </svg>
 
-            <span>Войти</span>
-          </Link>
+        //   <span>Войти</span>
+        // </Link>
         }
       </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = ({ firebase, firestore, users }) => {
   return {
     auth: firebase.auth,
-    userData: !!firestore.ordered.users 
-                && !!firestore.ordered.users.length 
-                && firestore.ordered.users.filter(item => firebase.auth.uid === item.id),
+    userData:
+      !!firestore.ordered.users &&
+      !!firestore.ordered.users.length &&
+      firestore.ordered.users.filter(item => firebase.auth.uid === item.id),
     valueCity: users.valueCity
-  }
+  };
 };
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     signOut: () => dispatch(signOut()),
     changeCity: (name, nameId) => dispatch(changeCity(name, nameId))
-  }
-}
+  };
+};
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  firestoreConnect(props => ([
-      { collection: 'users', doc: props.auth.uid }
-    ]))
+  firestoreConnect(props => [{ collection: "users", doc: props.auth.uid }])
 )(SettingList);
