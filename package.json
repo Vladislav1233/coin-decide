@@ -1,8 +1,6 @@
 {
   "name": "coin-decide",
   "version": "0.2.2",
-  "private": true,
-  "homepage": "https://vladislav1233.github.io/coin-decide",
   "dependencies": {
     "@bem-react/classname": "^1.5.6",
     "@material/react-tab-bar": "^0.15.0",
