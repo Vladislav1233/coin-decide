@@ -33,6 +33,8 @@ class ScreenCoin extends Component {
   componentDidMount() {
     // Note: subscribe state change on player
     this.player.subscribeToStateChange(this.handleStateChange.bind(this));
+    this.player.play();
+    this.player.pause();
   }
 
   handleStateChange(state, prevState) {
@@ -139,8 +141,12 @@ class ScreenCoin extends Component {
                 fluid={false}
                 width="100%"
                 height="100%"
+                playsInline
+                type='video/mp4'
+                preload="auto"
+                src={v}
               >
-                <source src={v} />
+                {/* <source src={v} /> */}
                 <ControlBar disableCompletely={true} />
               </Player>
             </Swipeable>
