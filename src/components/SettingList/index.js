@@ -55,7 +55,7 @@ class SettingList extends Component {
         <SettingItem
           head={{
             title: "О приложении",
-            additional: "v0.12.817-a"
+            additional: "v0.2.56 beta"
           }}
           content={[
             {
