@@ -17,6 +17,7 @@ import { changeCity } from 'store/users';
 // Note: helpers
 import isEmptyObj from 'helpers/isEmptyObj';
 import randomInteger from 'helpers/randomInteger';
+import defineCity from 'helpers/defineCity';
 
 // Note: Components
 import ScreenBar from './ScreenBar';
@@ -31,10 +32,11 @@ class ScreenBarCreate extends Component {
   }
 
   componentDidMount() {
-    if(this.props.auth.isEmpty) {
-      this.props.getRandomBar('ulyanovsk'); // ulyanovsk по дефолту (если не зареган юзер).
-      this.props.changeCity('Ульяновск', 'ulyanovsk');
-    }
+    defineCity()
+      .then(res => {
+        this.props.getRandomBar(res.name_id);
+        this.props.changeCity(res.name, res.name_id);
+      });
   }
 
   componentDidUpdate(prevProps) {

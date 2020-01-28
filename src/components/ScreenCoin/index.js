@@ -20,10 +20,6 @@ import SettingList from "components/SettingList";
 
 import "./style.scss";
 
-navigator.geolocation.getCurrentPosition(pos => {
-  console.log(pos);
-});
-
 class ScreenCoin extends Component {
   state = {
     flipEnded: false,

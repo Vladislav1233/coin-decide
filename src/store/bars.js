@@ -43,7 +43,7 @@ export const getBar = (barId) => {
         });
         console.log(targetBar)
 
-        if(targetBar[0].available_prizes) {
+        if(!!targetBar.length && targetBar[0].available_prizes) {
           const availablePrizes = targetBar[0].available_prizes,
               prizeId = getRandomObjectKey(availablePrizes),
               typePrize = prizeId.split('_');
@@ -63,7 +63,7 @@ export const getBar = (barId) => {
               getImageForThisBar(targetBar[0].photo)
             });
           }
-        } else {
+        } else if(!!targetBar.length && !targetBar[0].available_prizes) {
           getImageForThisBar(targetBar[0].photo);
           dispatch({
             type: SAVE_TYPE_PRIZE,
