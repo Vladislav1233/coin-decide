@@ -17,7 +17,6 @@ import "./style.scss";
 class SettingList extends Component {
   render() {
     const { auth, signOut, userData, changeCity, valueCity } = this.props;
-    console.log(userData);
 
     return (
       <div className="b-setting-list">

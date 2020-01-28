@@ -12,7 +12,7 @@ class YMap extends Component {
           <Map
             defaultState={{
               center: [geo.latitude, geo.longitude],
-              zoom: 15,
+              zoom: 17,
             }}
             width="100%"
             height="100%"

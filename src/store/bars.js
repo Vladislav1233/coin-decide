@@ -20,8 +20,7 @@ export const getBar = (barId) => {
     });
 
     firestore.get({ collection: 'bars', doc: barId })
-      .then((res) => {
-        console.log(res)
+      .then(() => {
         const getImageForThisBar = (imagePath) => {
           const storageRef = getFirebase().storage().ref();
           const barImageRef = storageRef.child(imagePath);

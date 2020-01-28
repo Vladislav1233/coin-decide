@@ -82,7 +82,6 @@ class ScreenBarCreate extends Component {
   render() {
     const { bar, auth, showBar, prize, barImageUrl, backToStartScreen, reviews } = this.props;
     const { code } = this.state;
-    console.log(prize)
 
       if(typeof(bar) === 'object' && isEmptyObj(bar) && !!prize) {
         return <div>'Загрузка...'</div>
@@ -126,8 +125,6 @@ const mapStateToProps = ({ firebase, firestore, bars, users }) => {
       return item.id === bars.targetBarId
     })
     : {};
-  console.log(firestore.ordered)
-  console.log(bars)
 
   return {
     auth: firebase.auth,
