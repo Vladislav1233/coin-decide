@@ -81,8 +81,8 @@ export const signUp = (newUser) => {
         lastName: newUser.lastName,
         initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
         default_city: {
-          name: "Москва",
-          name_id: 'moscow'
+          name: "Ульяновск",
+          name_id: 'ulyanovsk'
         },
         photo: null // TODO
       });
