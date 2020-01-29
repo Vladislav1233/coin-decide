@@ -4,6 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import { isMobile } from 'react-device-detect';
 import { Router, Switch, Route } from 'react-router-dom';
 import { history } from 'helpers/history';
+import defineCity from 'helpers/defineCity';
 
 // import Shake from 'helpers/shake'; TODO: shake событие
 // import launchFlipCoin from 'helpers/launchFlipCoin';
@@ -57,6 +58,12 @@ class App extends Component {
   // };
 
   componentDidMount() {
+    navigator.geolocation.getCurrentPosition(pos => {
+      defineCity(pos.coords.latitude, pos.coords.longitude)
+        .then(res => {
+          this.props.changeCity(res.name, res.name_id);
+        });
+    });
     // TODO: shake событие
     // //create a new instance of shake.js.
     // const myShakeEvent = new Shake({

@@ -32,11 +32,13 @@ class ScreenBarCreate extends Component {
   }
 
   componentDidMount() {
-    defineCity()
-      .then(res => {
-        this.props.getRandomBar(res.name_id);
-        this.props.changeCity(res.name, res.name_id);
-      });
+    navigator.geolocation.getCurrentPosition(pos => {
+      defineCity(pos.coords.latitude, pos.coords.longitude)
+        .then(res => {
+          this.props.getRandomBar(res.name_id);
+          this.props.changeCity(res.name, res.name_id);
+        });
+    });
   }
 
   componentDidUpdate(prevProps) {

@@ -76,14 +76,15 @@ export const signUp = (newUser) => {
       };
 
       // Note: Записываем юзера в database
+      const defaultCity = {
+        name: getState().users.nameCity,
+        name_id: getState().users.valueCity
+      };
       return firestore.collection('users').doc(resp.user.uid).set({
         firstName: newUser.firstName,
         lastName: newUser.lastName,
         initials: `${newUser.firstName[0]}${newUser.lastName[0]}`,
-        default_city: {
-          name: "Ульяновск",
-          name_id: 'ulyanovsk'
-        },
+        default_city: defaultCity,
         photo: null // TODO
       });
     }).then(() => {
