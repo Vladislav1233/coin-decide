@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "coin-deside"
+    "default": "coin-deside",
+    "production": "beercoin12"
   }
 }
