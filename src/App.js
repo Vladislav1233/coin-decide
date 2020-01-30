@@ -17,6 +17,7 @@ import { ScreenBarGet, ScreenBarCreate } from 'components/ScreenBar';
 import SignUp from 'components/SignUp';
 import SignIn from 'components/SignIn';
 import DesktopScreen from 'components/DesktopScreen';
+import Admin from 'components/Admin';
 
 import './App.scss';
 
@@ -86,7 +87,9 @@ class App extends Component {
   }
 
   render() {
+    const { auth } = this.props;
     const { isStopFlipping, showBar } = this.state;
+    console.log(auth)
 
     // TODO: shake событие
     // launchFlipCoin(0, 0);
@@ -120,6 +123,12 @@ class App extends Component {
               <Route path="/signup" component={SignUp} />
               <Route path="/signin" component={SignIn} />
               <Route path="/promocode/:id" component={ScreenBarGet} />
+
+              {process.env.NODE_ENV === 'development' ||
+              (auth.uid === "RVf4AoGwwxVq0X0YnQeTlpykzpE2")
+                ? <Route path="/admin" component={Admin} />
+                : null
+              }
             </Switch>
 
             : <DesktopScreen />
