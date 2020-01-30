@@ -273,8 +273,9 @@
     &-video {
         height: 100% !important;
         object-fit: cover;
-
         object-position: bottom center;
+        touch-action: none;
+        pointer-events: none;
     }
 
     &-loading-spinner,
