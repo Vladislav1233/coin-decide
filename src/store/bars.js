@@ -1,5 +1,6 @@
 import randomInteger from 'helpers/randomInteger';
 import getRandomObjectKey from 'helpers/getRandomObjectKey';
+import plugForPicture from 'images/plug-for-bar.jpg';
 
 // Note: variables
 const GET_URL_BAR_IMAGE_SUCCESS = 'GET_URL_BAR_IMAGE_SUCCESS',
@@ -34,7 +35,7 @@ export const getBar = (barId) => {
             }, err => {
               dispatch({
                 type: GET_URL_BAR_IMAGE_ERROR,
-                payload: err
+                payload: plugForPicture
               })
             })
         };
@@ -107,6 +108,12 @@ const bars = (state = initialState, action) => {
   switch (action.type) {
 
     case GET_URL_BAR_IMAGE_SUCCESS:
+      return {
+        ...state,
+        barImageUrl: action.payload
+      }
+
+    case GET_URL_BAR_IMAGE_ERROR:
       return {
         ...state,
         barImageUrl: action.payload

@@ -130,6 +130,8 @@ const mapStateToProps = ({ firebase, firestore, bars, users }) => {
     })
     : {};
 
+  console.log(bars)
+
   return {
     auth: firebase.auth,
     bar: Array.isArray(targetBarId) ? targetBarId[0] : targetBarId,
