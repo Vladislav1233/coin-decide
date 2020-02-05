@@ -64,6 +64,11 @@ class SettingList extends Component {
             {
               name: "Список баров",
               description: "Посмотреть бары учавствующие в игре"
+            },
+            {
+              link: "Написать нам",
+              href: "mailto:iamed73@yandex.ru",
+              description: "iAmed73@yandex.ru"
             }
           ]}
         />

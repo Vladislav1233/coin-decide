@@ -14,31 +14,32 @@ class SettingItem extends Component {
 
     return (
       <div className="b-setting-list__item">
-        {!!head &&
+        { !!head &&
           <div className="b-setting-list__head">
-            {!!head.title && <div className="b-setting-list__title">{head.title}</div>}
-            {!!head.additional && <div className="b-setting-list__additional-title">{head.additional}</div>}
+            { !!head.title && <div className="b-setting-list__title">{ head.title }</div> }
+            { !!head.additional && <div className="b-setting-list__additional-title">{ head.additional }</div> }
           </div>
         }
-        {!!content && !!content.length &&
+        { !!content && !!content.length &&
           content.map((item, index) => (
-            !!item.name
-            ? <div key={`settingContent-${index}`} className="b-setting-list__content" onClick={item.onClick ? item.onClick : () => {}}>
-              {!!item.name && <div className="b-setting-list__name">{item.name}</div>}
-              {!!item.description && <div className="b-setting-list__description">{item.description}</div>}
-            </div>
-            : null
+            !!item.name || !!item.link
+              ? <div key={ `settingContent-${index}` } className="b-setting-list__content" onClick={ item.onClick ? item.onClick : () => { } }>
+                { !!item.name && <div className="b-setting-list__name">{ item.name }</div> }
+                { !!item.link && <a href={item.href} className="b-setting-list__name b-setting-list__name--link">{ item.link }</a> }
+                { !!item.description && <div className="b-setting-list__description">{ item.description }</div> }
+              </div>
+              : null
           ))
         }
-        {!!select &&
+        { !!select &&
           <div className="b-setting-list__content">
-            <select name='valueCity' value={valueCity} className="b-setting-list__name b-setting-list__name--select" onChange={this.handleChange}>
+            <select name='valueCity' value={ valueCity } className="b-setting-list__name b-setting-list__name--select" onChange={ this.handleChange }>
               <option value="ulyanovsk">Ульяновск</option>
-              {/* <option value="kharkov">Харьков</option> */}
+              {/* <option value="kharkov">Харьков</option> */ }
               <option value="moscow">Москва</option>
               <option value="saint_petersburg">Санкт-Петербург</option>
             </select>
-            {!!select.description && <div className="b-setting-list__description">{select.description}</div>}
+            { !!select.description && <div className="b-setting-list__description">{ select.description }</div> }
           </div>
         }
       </div>

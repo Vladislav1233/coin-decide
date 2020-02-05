@@ -47,20 +47,17 @@
         transform: translate(-50%, -50%);
         animation-name: swipe-start;
         animation-duration: .5s;
-
-// animation-timing-function: cubic-bezier(.27,.01,.9,.14);
         animation-timing-function: ease;
         animation-delay: 1s;
 
         animation-fill-mode: backwards;
+
         div {
             width: 2px;
             height: 55px;
             margin-left: 63px;
             animation-name: height-line;
             animation-duration: .5s;
-
-// animation-timing-function: cubic-bezier(.27,.01,.9,.14);
             animation-timing-function: ease;
             animation-delay: 1s;
             background-color: #ffffff;
@@ -188,7 +185,7 @@
             border: none;
             border-radius: 50%;
             outline: none;
-            background-color: #96a491;
+            background-color: var(--accent);
         }
 
         .is-coin-toss & {
@@ -219,16 +216,19 @@
 
     &__item {
         display: inline-flex;
-        width: 64px;
+        align-items: center;
+        flex-direction: column;
+        width: auto;
+        min-width: 64px;
         height: 64px;
         margin: 0;
-        padding: 0;
+        padding: 0 8px;
         font-size: 0;
         line-height: 0;
         border: none;
         border-radius: 4px;
-        background: none;
         outline: none;
+        background: none;
 
         &:hover {
             background: rgba($color: #ffffff, $alpha: .1);
@@ -248,7 +248,7 @@
         display: flex;
         align-items: center;
         height: 32px;
-        margin: auto;
+        margin: 5px auto 4px;
         padding: 4px;
 
         img {
@@ -262,6 +262,14 @@
         }
     }
 
+    &__btn-title {
+        font-size: 13px;
+        font-weight: 100;
+        line-height: 1;
+        opacity: .8;
+        color: var(--gray-0);
+    }
+
     &.is-hide {
         transform: translateY(-10vh);
     }
@@ -272,10 +280,11 @@
 
     &-video {
         height: 100% !important;
-        object-fit: cover;
-        object-position: bottom center;
-        touch-action: none;
         pointer-events: none;
+        object-fit: cover;
+        touch-action: none;
+
+        object-position: bottom center;
     }
 
     &-loading-spinner,

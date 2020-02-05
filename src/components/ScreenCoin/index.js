@@ -74,18 +74,18 @@ class ScreenCoin extends Component {
     };
 
     return (
-      <div className={`b-screen-coin ${isCoinToss ? "is-coin-toss" : ""}`}>
-        <Slider ref={c => (this.slider = c)} {...sliderSetting}>
+      <div className={ `b-screen-coin ${isCoinToss ? "is-coin-toss" : ""}` }>
+        <Slider ref={ c => (this.slider = c) } { ...sliderSetting }>
           <div className="b-screen-coin__slide">
             <h2 className="b-screen-coin__title">Настройки</h2>
 
             <div className="b-coin-head">
               <div
                 className="b-coin-head__item b-coin-head__item--right"
-                onClick={this.nextSlide}
+                onClick={ this.nextSlide }
               >
                 <div className="b-coin-head__icon b-coin-head__icon--right">
-                  <img src={arrowSideIcon} alt="" />
+                  <img src={ arrowSideIcon } alt="" />
                 </div>
               </div>
             </div>
@@ -94,56 +94,58 @@ class ScreenCoin extends Component {
           </div>
 
           <div className="b-screen-coin__slide">
-            <div className={`b-coin-head ${isCoinToss ? "is-hide" : ""}`}>
+            <div className={ `b-coin-head ${isCoinToss ? "is-hide" : ""}` }>
               <button
                 className="b-coin-head__item"
                 type="button"
-                onClick={this.previousSlide}
+                onClick={ this.previousSlide }
               >
                 <div className="b-coin-head__icon">
-                  <img src={settingIcon} alt="" />
+                  <img src={ settingIcon } alt="" />
                 </div>
+                <span className="b-coin-head__btn-title">Настройки</span>
               </button>
 
               <button
                 className="b-coin-head__item"
                 type="button"
-                onClick={this.nextSlide}
+                onClick={ this.nextSlide }
               >
                 <div className="b-coin-head__icon">
-                  <img src={list} alt="" />
+                  <img src={ list } alt="" />
                 </div>
+                <span className="b-coin-head__btn-title">Мои коды</span>
               </button>
             </div>
 
             <Swipeable
               className="b-screen-coin__swipeable"
-              onSwipedUp={this.onSwipedUp}
-              preventDefaultTouchmoveEvent={true}
+              onSwipedUp={ this.onSwipedUp }
+              preventDefaultTouchmoveEvent={ true }
             >
               <div
-                className={`b-screen-coin__control-image ${
+                className={ `b-screen-coin__control-image ${
                   isCoinToss ? "is-hide" : ""
-                }`}
+                  }` }
               >
-                <img src={swipeImg} alt="" />
+                <img src={ swipeImg } alt="" />
                 <div></div>
               </div>
 
               <Player
-                ref={player => {
+                ref={ player => {
                   this.player = player;
-                }}
-                fluid={false}
+                } }
+                fluid={ false }
                 width="100%"
                 height="100%"
                 playsInline
                 type='video/mp4'
                 preload="auto"
-                src={v}
+                src={ v }
               >
-                {/* <source src={v} /> */}
-                <ControlBar disableCompletely={true} />
+                {/* <source src={v} /> */ }
+                <ControlBar disableCompletely={ true } />
               </Player>
             </Swipeable>
           </div>
@@ -152,9 +154,9 @@ class ScreenCoin extends Component {
             <h2 className="b-screen-coin__title">Мои промокоды</h2>
 
             <div className="b-coin-head">
-              <div className="b-coin-head__item" onClick={this.previousSlide}>
+              <div className="b-coin-head__item" onClick={ this.previousSlide }>
                 <div className="b-coin-head__icon">
-                  <img src={arrowSideIcon} alt="" />
+                  <img src={ arrowSideIcon } alt="" />
                 </div>
               </div>
             </div>

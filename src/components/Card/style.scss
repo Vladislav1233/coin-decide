@@ -20,6 +20,13 @@
         z-index: 1;
         top: 0;
         left: 0;
+        opacity: 0;
+
+        animation-name: opacityIn;
+        animation-duration: 3s;
+        animation-delay: 2s;
+        animation-iteration-count: 1;
+        animation-fill-mode: both;
 
         &::before {
             content: '';
@@ -28,10 +35,11 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background-color: var(--gray-900);
+            height: 100px;
+            background-image: linear-gradient(180deg, #000000 0%, rgba(0, 0, 0, 0) 100%);;
             opacity: 0.3;
             z-index: 1;
+
         }
 
         &:after {
@@ -41,25 +49,15 @@
             bottom: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0.7) 5%,rgba(0,0,0,0) 15%,rgba(0,0,0,0) 50%,rgba(0,0,0,1) 70%,rgba(0,0,0,1) 100%);
+            height: 200px;
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%,  #000000 100%);
             z-index: 2;
-        }
-
-        .b-screen-enter & {
-            opacity: 0;
-        }
-
-        .b-screen-enter-active & {
-            transition: opacity 0.5s;
-            transition-delay: 1.5s;
-            opacity: 1;
         }
     }
 
     &__image {
         width: 100%;
-        height: 80%;
+        height: 100%;
         display: block;
         object-fit: cover;
     }
@@ -67,6 +65,12 @@
     &__address {
         font-size: 12px;
         line-height: 1.16;
+
+        // animation-name: opacityIn;
+        // animation-duration: .5s;
+        // animation-delay: .5s;
+        // animation-iteration-count: 1;
+        // animation-fill-mode: both;
     }
 
     &__name {
@@ -80,14 +84,31 @@
         margin-bottom: 20px;
 
         .b-screen-enter & {
-            transform: translateX(100vw);
+            animation-name: text-enter;
+            animation-duration: .5s;
+            animation-iteration-count: 1;
         }
+    }
+}
 
-        .b-screen-enter-active & {
-            transform: translateX(0);
-            transition-property: transform;
-            transition-duration: 0.7s;
-            transition-timing-function: cubic-bezier(0.660, 1.650, 0.295, 0.680);
-        }
+@keyframes text-enter {
+    from {
+        transform: translateX(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes opacityIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
     }
 }

@@ -1,38 +1,40 @@
-$screen-bar-offset-top:         80px;
+$screen-bar-offset-top: 80px;
 
 .b-screen-bar {
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
     position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
 
     &__nav {
-        display: flex;
-        align-items: center;
-        padding: 0px 16px;
         position: absolute;
+        z-index: 15;
         top: 0;
         left: 0;
+        display: flex;
+        align-items: center;
         width: 100%;
-        z-index: 15;
+        padding: 0px 16px;
         padding-top: 18px;
 
         .b-screen-enter & {
             opacity: 0;
+            transform: translateY(-100%);
         }
 
         .b-screen-enter-active & {
-            transition: opacity 0.5s;
-            transition-delay: 1.7s;
+            transition: 1s;
+            transition-delay: 1.5s;
             opacity: 1;
+            transform: translateY(0);
         }
     }
 
     &__nav-arrow,
     &__nav-share {
+        flex-shrink: 0;
         font-size: 0;
         line-height: 0;
-        flex-shrink: 0;
     }
 
     &__nav-arrow {
@@ -49,10 +51,9 @@ $screen-bar-offset-top:         80px;
     }
 
     &__tab-content {
-
         &--full {
-            padding-top: $screen-bar-offset-top;
             height: 100%;
+            padding-top: $screen-bar-offset-top;
         }
 
         .b-screen-enter & {
@@ -60,23 +61,23 @@ $screen-bar-offset-top:         80px;
         }
 
         .b-screen-enter-active & {
-            transition: opacity 0.5s;
-            transition-delay: 1.5s;
+            transition: opacity .5s;
+            transition-delay: 1s;
             opacity: 1;
         }
     }
 
     &__tab-title {
+        margin: 0 0 12px;
+        padding: 0 16px;
         font-size: 32px;
         line-height: 37px;
         text-align: left;
-        padding: 0 16px;
-        margin: 0 0 12px;
     }
 
     &__taxi {
-        margin-top: -50px;
         position: relative;
         z-index: 100;
+        margin-top: -50px;
     }
 }
