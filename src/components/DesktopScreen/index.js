@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import phoneImg from "images/phones.png";
-import logo from "images/logo.png";
+// import logo from "images/logo.png";
 import logoNew from "images/LogoNew.svg";
 
 // Note: styles

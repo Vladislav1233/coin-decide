@@ -49,7 +49,7 @@ class Admin extends Component {
       <div>
         <section>
           <h1>Добавить новый бар</h1>
-          <a href="http://joxi.ru/Q2KYQqWCLRxe9r" target="_blank">Пример API</a>
+          <a href="http://joxi.ru/Q2KYQqWCLRxe9r" target="_blank" rel="noopener noreferrer">Пример API</a>
 
           <form onSubmit={this.addBar}>
             <div>

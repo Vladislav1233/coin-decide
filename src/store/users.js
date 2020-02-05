@@ -1,7 +1,5 @@
 // Note: Variables
-const CHANGE_CITY_START = 'CHANGE_CITY_START',
-      CHANGE_CITY_SUCCESS = 'CHANGE_CITY_SUCCESS',
-      CHANGE_CITY_ERROR = 'CHANGE_CITY_ERROR';
+const CHANGE_CITY_SUCCESS = 'CHANGE_CITY_SUCCESS'
 
 // Note: actions
 
@@ -35,8 +33,8 @@ export const changeCity = (name, nameId) => {
 
 // Note: reducer
 const initialState = {
-  nameCity: '',
-  valueCity: ''
+  nameCity: 'Москва',
+  valueCity: 'moscow'
 };
 
 const users = (state = initialState, action) => {

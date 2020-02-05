@@ -31,7 +31,7 @@ class SignUp extends Component {
   };
 
   render() {
-    const { auth, authError } = this.props;
+    // const { auth, authError } = this.props;
     // TODO: включить когда настрою роутинг
     // if (auth.uid) return <Redirect to="/" />
 

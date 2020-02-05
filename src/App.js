@@ -59,12 +59,12 @@ class App extends Component {
   // };
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(pos => {
-      defineCity(pos.coords.latitude, pos.coords.longitude)
-        .then(res => {
-          this.props.changeCity(res.name, res.name_id);
-        });
-    });
+    // navigator.geolocation.getCurrentPosition(pos => {
+    //   defineCity(pos.coords.latitude, pos.coords.longitude)
+    //     .then(res => {
+    //       this.props.changeCity(res.name, res.name_id);
+    //     });
+    // });
     // TODO: shake событие
     // //create a new instance of shake.js.
     // const myShakeEvent = new Shake({
