@@ -17,7 +17,7 @@ import { changeCity } from 'store/users';
 // Note: helpers
 import isEmptyObj from 'helpers/isEmptyObj';
 import randomInteger from 'helpers/randomInteger';
-import defineCity from 'helpers/defineCity';
+// import defineCity from 'helpers/defineCity';
 
 // Note: Components
 import ScreenBar from './ScreenBar';
@@ -32,13 +32,18 @@ class ScreenBarCreate extends Component {
   }
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(pos => {
-      defineCity(pos.coords.latitude, pos.coords.longitude)
-        .then(res => {
-          this.props.getRandomBar(res.name_id);
-          this.props.changeCity(res.name, res.name_id);
-        });
-    });
+    const { dataCity } = this.props;
+
+    this.props.getRandomBar(dataCity.valueCity);
+    this.props.changeCity(dataCity.nameCity, dataCity.valueCity);
+
+    // navigator.geolocation.getCurrentPosition(pos => {
+    //   defineCity(pos.coords.latitude, pos.coords.longitude)
+    //     .then(res => {
+    //       this.props.getRandomBar(res.name_id);
+    //       this.props.changeCity(res.name, res.name_id);
+    //     });
+    // });
   }
 
   componentDidUpdate(prevProps) {
