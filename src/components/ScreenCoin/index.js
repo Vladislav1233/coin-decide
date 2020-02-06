@@ -123,13 +123,16 @@ class ScreenCoin extends Component {
               onSwipedUp={ this.onSwipedUp }
               preventDefaultTouchmoveEvent={ true }
             >
+              {/* <div className="b-screen-coin__promo">
+                <p>BeerCoin</p>
+              </div> */}
               <div
                 className={ `b-screen-coin__control-image ${
                   isCoinToss ? "is-hide" : ""
                   }` }
               >
                 <img src={ swipeImg } alt="" />
-                <div></div>
+                <div className="b-screen-coin___control-image-line"></div>
               </div>
 
               <Player
