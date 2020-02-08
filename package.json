@@ -1,6 +1,6 @@
 {
   "name": "coin-decide",
-  "version": "0.2.2",
+  "version": "0.3.2",
   "dependencies": {
     "@bem-react/classname": "^1.5.6",
     "@material/react-tab-bar": "^0.15.0",
