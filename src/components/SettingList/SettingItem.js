@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class SettingItem extends Component {
 
@@ -21,15 +22,16 @@ class SettingItem extends Component {
           </div>
         }
         { !!content && !!content.length &&
-          content.map((item, index) => (
-            !!item.name || !!item.link
+          content.map((item, index) => {
+            return !!item.name || !!item.link || item.linkTo
               ? <div key={ `settingContent-${index}` } className="b-setting-list__content" onClick={ item.onClick ? item.onClick : () => { } }>
                 { !!item.name && <div className="b-setting-list__name">{ item.name }</div> }
                 { !!item.link && <a href={item.href} className="b-setting-list__name b-setting-list__name--link">{ item.link }</a> }
+                { !!item.linkTo  && <Link className="b-setting-list__name" to={item.href}>{item.linkTo}</Link>}
                 { !!item.description && <div className="b-setting-list__description">{ item.description }</div> }
               </div>
               : null
-          ))
+          })
         }
         { !!select &&
           <div className="b-setting-list__content">

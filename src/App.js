@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import { isMobile } from 'react-device-detect';
 import { Router, Switch, Route } from 'react-router-dom';
 import { history } from 'helpers/history';
-import defineCity from 'helpers/defineCity';
+// import defineCity from 'helpers/defineCity';
 
 // import Shake from 'helpers/shake'; TODO: shake событие
 // import launchFlipCoin from 'helpers/launchFlipCoin';
@@ -18,6 +18,7 @@ import SignUp from 'components/SignUp';
 import SignIn from 'components/SignIn';
 import DesktopScreen from 'components/DesktopScreen';
 import Admin from 'components/Admin';
+import AboutApp from 'components/AboutApp';
 
 import './App.scss';
 
@@ -123,6 +124,7 @@ class App extends Component {
               <Route path="/signup" component={SignUp} />
               <Route path="/signin" component={SignIn} />
               <Route path="/promocode/:id" component={ScreenBarGet} />
+              <Route path="/about" component={AboutApp} />
 
               {process.env.NODE_ENV === 'development' ||
               (auth.uid === "RVf4AoGwwxVq0X0YnQeTlpykzpE2")

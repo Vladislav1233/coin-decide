@@ -57,8 +57,9 @@ class SettingList extends Component {
           }}
           content={[
             {
-              name: "О приложении",
-              description: "v0.3.01-b"
+              description: "v0.3.01-b",
+              linkTo: 'О приложении',
+              href: '/about'
             },
             {
               name: "Список баров",
