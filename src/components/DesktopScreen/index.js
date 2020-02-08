@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import phoneImg from "images/phones.png";
 // import logo from "images/logo.png";
-import logoNew from "images/LogoNew.svg";
+import logoNew from "images/beercoin.svg";
 
 // Note: styles
 import "./style.scss";

@@ -16,9 +16,15 @@
     }
 }
 
-@keyframes height-line {
+@keyframes heightLine {
+    from {
+        height: 20px;
+    }
+    50% {
+        height: 1px;
+    }
     to {
-        height: 0;
+        height: 20px;
     }
 }
 
@@ -32,6 +38,15 @@
         line-height: 16px;
         text-align: center;
         color: #ffffff;
+    }
+
+    &__promo {
+        position: absolute;
+        z-index: 8;
+        top: 150px;
+        left: 50%;
+        font-size: 13px;
+        transform: translate(-50%, -50%);
     }
 
     &__control-image {
@@ -52,23 +67,24 @@
 
         animation-fill-mode: backwards;
 
-        div {
-            width: 2px;
-            height: 55px;
-            margin-left: 63px;
-            animation-name: height-line;
-            animation-duration: .5s;
-            animation-timing-function: ease;
-            animation-delay: 1s;
-            background-color: #ffffff;
-
-            animation-fill-mode: forwards;
-        }
-
         &.is-hide {
             bottom: 60%;
             opacity: 0;
         }
+    }
+
+    &___control-image-line {
+        margin-top: -1px;
+        width: 2px;
+        height: 20px;
+        margin-left: 63px;
+        animation-name: heightLine;
+        animation-duration: 3s;
+        animation-timing-function: ease;
+        animation-delay: 1s;
+        background-color: #ffffff;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
     }
 
     &__text {

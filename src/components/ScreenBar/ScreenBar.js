@@ -8,6 +8,7 @@ import Code from 'components/Code';
 import YMap from 'components/YMap';
 import TaxiButton from 'components/TaxiButton';
 import Review from 'components/Review';
+import arrowSideIcon from "images/arrow-side.svg";
 
 // helpers
 import isEmptyObj from 'helpers/isEmptyObj';
@@ -86,7 +87,7 @@ class ScreenBar extends Component {
         case 2:
           return <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">
             <h2 className="b-screen-bar__tab-title">{name}</h2>
-            <YMap 
+            <YMap
               geo={geo}
             />
             <div className="b-screen-bar__taxi">
@@ -102,9 +103,12 @@ class ScreenBar extends Component {
     return(
       <div className="b-screen-bar">
         <div className="b-screen-bar__nav">
-          <div className="b-screen-bar__nav-arrow">
-            <ArrowTo onClick={backToStartScreen} />
+          <div className="b-coin-head__item" onClick={backToStartScreen}>
+            <div className="b-coin-head__icon">
+              <img src={ arrowSideIcon } alt="" />
+            </div>
           </div>
+
           <div className="b-screen-bar__nav-tab-bar">
             <TabBar
               getTabIndex={this.handleActiveIndexUpdate}
@@ -115,7 +119,13 @@ class ScreenBar extends Component {
               ]}
             />
           </div>
-          <div className="b-screen-bar__nav-share">
+          <div className="b-coin-head__item">
+            <div className="b-coin-head__icon">
+              <img src="" alt="" />
+            </div>
+          </div>
+
+          {/* <div className="b-screen-bar__nav-share">
             <div className="b-screen-bar__share-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fillRule="evenodd" clipRule="evenodd" d="M18 3C16.8954 3 16 3.89543 16 5C16 6.10457 16.8954 7 18 7C19.1046 7 20 6.10457 20 5C20 3.89543 19.1046 3 18 3ZM14 5C14 2.79086 15.7909 1 18 1C20.2091 1 22 2.79086 22 5C22 7.20914 20.2091 9 18 9C15.7909 9 14 7.20914 14 5Z" fill="white"/>
@@ -125,7 +135,7 @@ class ScreenBar extends Component {
                 <path fillRule="evenodd" clipRule="evenodd" d="M16.2737 6.00597C16.5521 6.48297 16.391 7.09532 15.914 7.37369L9.09403 11.3537C8.61703 11.6321 8.00468 11.471 7.72631 10.994C7.44795 10.517 7.60897 9.90468 8.08597 9.62631L14.906 5.64631C15.383 5.36795 15.9953 5.52897 16.2737 6.00597Z" fill="white"/>
               </svg>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <TabContent />
