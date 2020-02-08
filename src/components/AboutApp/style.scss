@@ -1,0 +1,49 @@
+.about {
+    &__nav {
+        display: flex;
+        align-items: flex-start;
+        width: 100%;
+        padding: 0px 16px;
+        padding-top: 12px;
+    }
+
+    &__content {
+        padding: 16px;
+        font-size: 12px;
+        text-align: justify;
+        line-height: 1.5;
+
+        h2 {
+            font-size: 15px;
+            margin: 32px 0 16px;
+        }
+
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    &__title {
+        margin-top: 8px;
+        font-size: 16px;
+        line-height: 16px;
+        text-align: center;
+    }
+
+    &__logo {
+        text-align: center;
+        margin: auto;
+        height: 80px;
+        display: block;
+    }
+
+    &__version {
+        text-align: center;
+        font-weight: 100;
+        color: #7d7d7c;
+    }
+
+    &__slogan {
+        text-align: center;
+    }
+}
