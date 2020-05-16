@@ -131,7 +131,7 @@ const auth = (state = initialState, action) => {
     }
 
     case SIGNUP_SUCCESS: {
-      console.log('SIGNUP_SUCCESS');
+      // console.log('SIGNUP_SUCCESS');
       return {
         ...state,
         authError: null
@@ -139,8 +139,8 @@ const auth = (state = initialState, action) => {
     }
 
     case SIGNUP_ERROR: {
-      console.log('SIGNUP_ERROR');
-      console.log(action.payload.message);
+      // console.log('SIGNUP_ERROR');
+      // console.log(action.payload.message);
       return {
         ...state,
         authError: action.payload.message

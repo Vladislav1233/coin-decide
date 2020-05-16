@@ -135,7 +135,7 @@ const mapStateToProps = ({ firebase, firestore, bars, users }) => {
     })
     : {};
 
-  console.log(bars)
+  // console.log(bars)
 
   return {
     auth: firebase.auth,

@@ -42,7 +42,7 @@ export const getBar = (barId) => {
         const targetBar = getState().firestore.ordered.bars.filter(tarItem => {
           return tarItem.id === barId
         });
-        console.log(targetBar)
+        // console.log(targetBar)
 
         if(!!targetBar.length && targetBar[0].available_prizes) {
           const availablePrizes = targetBar[0].available_prizes,
@@ -90,7 +90,7 @@ export const getRandomBar = (nameCity) => { // TODO: nameCity
         const barsId = targetBarsId[0].content,
               numberBarInCollection = randomInteger(barsId.length - 1),
               barId = barsId[numberBarInCollection].bar_id;
-        console.log(barId)
+        // console.log(barId)
 
         dispatch(getBar(barId));
       })

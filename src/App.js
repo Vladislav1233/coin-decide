@@ -90,7 +90,7 @@ class App extends Component {
   render() {
     const { auth } = this.props;
     const { isStopFlipping, showBar } = this.state;
-    console.log(auth)
+    // console.log(auth)
 
     // TODO: shake событие
     // launchFlipCoin(0, 0);
@@ -145,8 +145,8 @@ class App extends Component {
 const mapStateToProps = ({ firebase, firestore }) => {
   return {
     auth: firebase.auth,
-    userData: !!firestore.ordered.users 
-                && !!firestore.ordered.users.length 
+    userData: !!firestore.ordered.users
+                && !!firestore.ordered.users.length
                 && firestore.ordered.users.filter(item => firebase.auth.uid === item.id)
   }
 };

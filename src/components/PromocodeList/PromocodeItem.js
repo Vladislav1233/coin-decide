@@ -24,7 +24,7 @@ class PromocodeItem extends Component {
           imageUrl: url
         })
       }, err => {
-        console.log('Promocode Item Error Download Image')
+        console.error('Promocode Item Error Download Image')
       })
   }
 
@@ -54,7 +54,7 @@ class PromocodeItem extends Component {
             imageUrl: imageUrl
           }
         }}
-        className="b-promocode-item" 
+        className="b-promocode-item"
         style={{ backgroundImage: `url(${imageUrl})` }}
       >
         {is_check &&

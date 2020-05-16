@@ -27,7 +27,7 @@ export const getPromocodesForUser = (uidUser) => {
         });
       },
       err => {
-        console.log(err);
+        console.error(err);
       }
     )
   }

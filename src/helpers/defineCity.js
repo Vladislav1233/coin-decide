@@ -12,7 +12,7 @@ const defineCity = (latitude, longitude) => {
   }).then(res => {
     return res.json();
   }).then(res => {
-    console.log(res)
+    // console.log(res)
     if(!!res.length) {
       switch (res.suggestions[0].data.city) {
         case 'Ульяновск':
