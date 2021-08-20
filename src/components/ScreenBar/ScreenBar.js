@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import Card from 'components/Card';
 import TabBar from 'components/TabBar';
-import ArrowTo from 'components/ArrowTo';
+// import ArrowTo from 'components/ArrowTo';
 import Code from 'components/Code';
 import YMap from 'components/YMap';
 import TaxiButton from 'components/TaxiButton';
