@@ -20,13 +20,13 @@
         z-index: 1;
         top: 0;
         left: 0;
-        opacity: 0;
 
-        animation-name: opacityIn;
-        animation-duration: 3s;
-        animation-delay: 2s;
-        animation-iteration-count: 1;
-        animation-fill-mode: both;
+        // opacity: 0;
+        // animation-name: opacityIn;
+        // animation-duration: 3s;
+        // animation-delay: 2s;
+        // animation-iteration-count: 1;
+        // animation-fill-mode: both;
 
         &::before {
             content: '';
