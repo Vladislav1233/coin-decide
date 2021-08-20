@@ -14,13 +14,13 @@
     "react-redux": "^5.1.1",
     "react-redux-firebase": "^2.5.1",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.0.1",
+    "react-scripts": "^4.0.3",
     "react-slick": "^0.25.2",
     "react-swipeable": "^5.5.1",
     "react-transition-group": "^4.4.2",
     "react-yandex-maps": "^4.6.0",
     "redux": "^4.1.1",
-    "redux-firestore": "^0.9.0",
+    "redux-firestore": "^0.15.0",
     "redux-thunk": "^2.3.0",
     "video-react": "^0.14.1"
   },
@@ -38,6 +38,7 @@
   "browserslist": {
     "production": [
       ">0.2%",
+      "not ie 11",
       "not dead",
       "not op_mini all"
     ],
