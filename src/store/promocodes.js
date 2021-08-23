@@ -71,7 +71,7 @@ const initialState = {
                     // Храним в store чтобы при авторизации отправить данные в базу.
 }
 
-export default function(state = initialState, action) {
+export default function promocodesFunc(state = initialState, action) {
   switch (action.type) {
     case GET_PROMOCODES_FOR_USER_SUCCESS:
       return {

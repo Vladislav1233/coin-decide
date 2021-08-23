@@ -18,7 +18,7 @@ import auth from './auth';
 import bars from './bars';
 import users from './users';
 
-export default function(initialState = {}) {
+export default function rootReducerFunc(initialState = {}) {
   const rootReducer = combineReducers({
     promocodes,
     auth,
