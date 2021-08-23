@@ -1,46 +1,45 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
-import { isMobile } from 'react-device-detect';
-import { Router, Switch, Route } from 'react-router-dom';
-import { history } from 'helpers/history';
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { CSSTransition } from "react-transition-group";
+import { isMobile } from "react-device-detect";
+import { Router, Switch, Route } from "react-router-dom";
+import ProtectedRoute from "components/ProtectedRoute";
+import { history } from "helpers/history";
 // import defineCity from 'helpers/defineCity';
 
 // import Shake from 'helpers/shake'; TODO: shake событие
 // import launchFlipCoin from 'helpers/launchFlipCoin';
 
 // Note: actions
-import { changeCity } from 'store/users';
+import { changeCity } from "store/users";
 
-import ScreenCoin from 'components/ScreenCoin';
-import { ScreenBarGet, ScreenBarCreate } from 'components/ScreenBar';
-import SignUp from 'components/SignUp';
-import SignIn from 'components/SignIn';
-import DesktopScreen from 'components/DesktopScreen';
-import Admin from 'components/Admin';
-import AboutApp from 'components/AboutApp';
+import ScreenCoin from "components/ScreenCoin";
+import { ScreenBarGet, ScreenBarCreate } from "components/ScreenBar";
+import SignUp from "components/SignUp";
+import SignIn from "components/SignIn";
+import DesktopScreen from "components/DesktopScreen";
+import Admin from "components/Admin";
+import AboutApp from "components/AboutApp";
 
-import './App.scss';
+import "./App.scss";
 
 class App extends Component {
-
   state = {
     isStopFlipping: false,
-    showBar: false
+    showBar: false,
   };
 
   stopFlipping = () => {
     this.setState({
-      isStopFlipping: true
-    })
+      isStopFlipping: true,
+    });
   };
 
   backToStartScreen = () => {
-
     this.setState({
       isStopFlipping: false,
-      showBar: false
-    })
+      showBar: false,
+    });
   };
 
   // TODO: shake событие
@@ -73,24 +72,29 @@ class App extends Component {
     // });
     // // start listening to device motion
     // myShakeEvent.start();
-
     // //shake event callback
     // const shakeEventDidOccur = () => launchFlipCoin(10, -15, this.stopFlipping);
-
     // // register a shake event
     // window.addEventListener('shake', shakeEventDidOccur, false);
   }
 
   componentDidUpdate(prevProps) {
-    if(!this.props.auth.isEmpty && !!this.props.userData.length && !prevProps.userData) {
-      this.props.changeCity(this.props.userData[0].default_city.name, this.props.userData[0].default_city.name_id)
+    if (
+      !this.props.auth.isEmpty &&
+      !!this.props.userData.length &&
+      !prevProps.userData
+    ) {
+      this.props.changeCity(
+        this.props.userData[0].default_city.name,
+        this.props.userData[0].default_city.name_id
+      );
     }
   }
 
   render() {
-    const { auth } = this.props;
+    const { auth, userData } = this.props;
     const { isStopFlipping, showBar } = this.state;
-    // console.log(auth)
+    console.log(auth);
 
     // TODO: shake событие
     // launchFlipCoin(0, 0);
@@ -98,8 +102,8 @@ class App extends Component {
     return (
       <Router history={history}>
         <div className="App">
-          {isMobile
-            ? <Switch>
+          {isMobile ? (
+            <Switch>
               <Route exact path="/">
                 <Fragment>
                   {/* Первый экран: Монетка */}
@@ -107,18 +111,19 @@ class App extends Component {
                     unmountOnExit
                     in={!isStopFlipping}
                     timeout={500}
-                    classNames='b-screen'
+                    classNames="b-screen"
                     onExited={() => this.setState({ showBar: true })}
                   >
                     <Fragment>
-                      <ScreenCoin
-                        stopFlipping={this.stopFlipping}
-                      />
+                      <ScreenCoin stopFlipping={this.stopFlipping} />
                     </Fragment>
                   </CSSTransition>
 
                   {/* Второй экран: Бар, скидка, промокод. */}
-                  <ScreenBarCreate showBar={showBar} backToStartScreen={this.backToStartScreen} />
+                  <ScreenBarCreate
+                    showBar={showBar}
+                    backToStartScreen={this.backToStartScreen}
+                  />
                 </Fragment>
               </Route>
               <Route path="/signup" component={SignUp} />
@@ -126,35 +131,38 @@ class App extends Component {
               <Route path="/promocode/:id" component={ScreenBarGet} />
               <Route path="/about" component={AboutApp} />
 
-              {process.env.NODE_ENV === 'development' ||
-              (auth.uid === "RVf4AoGwwxVq0X0YnQeTlpykzpE2")
-                ? <Route path="/admin" component={Admin} />
-                : null
-              }
+              {/* Note: Админка */}
+              {/* <ProtectedRoute
+                exact
+                path="/admin/add-bar"
+                component={Admin}
+                isAllowed={userData && userData[0].role === "admin"} // TODO: редирект плохо работает. Юзер не успевает сгенериться.
+                redirectTo="/"
+              /> */}
             </Switch>
-
-            : <DesktopScreen />
-          }
+          ) : (
+            <DesktopScreen />
+          )}
         </div>
       </Router>
-    )
-
+    );
   }
 }
 
 const mapStateToProps = ({ firebase, firestore }) => {
   return {
     auth: firebase.auth,
-    userData: !!firestore.ordered.users
-                && !!firestore.ordered.users.length
-                && firestore.ordered.users.filter(item => firebase.auth.uid === item.id)
-  }
+    userData:
+      !!firestore.ordered.users &&
+      !!firestore.ordered.users.length &&
+      firestore.ordered.users.filter((item) => firebase.auth.uid === item.id),
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    changeCity: (name, nameId) => dispatch(changeCity(name, nameId))
-  }
+    changeCity: (name, nameId) => dispatch(changeCity(name, nameId)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
