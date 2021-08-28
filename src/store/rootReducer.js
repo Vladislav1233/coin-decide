@@ -32,9 +32,10 @@ export default function rootReducerFunc(initialState = {}) {
     rootReducer,
     initialState,
     compose(
-      applyMiddleware(thunkMiddleware.withExtraArgument({ getFirebase, getFirestore})),
+      applyMiddleware(thunkMiddleware.withExtraArgument({ getFirebase, getFirestore })),
       reactReduxFirebase(firebaseConfig, { attachAuthIsReady: true }),
-      reduxFirestore(firebaseConfig)
+      reduxFirestore(firebaseConfig),
+      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
   );
 }

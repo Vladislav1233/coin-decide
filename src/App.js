@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 import { isMobile } from "react-device-detect";
 import { Router, Switch, Route } from "react-router-dom";
-import ProtectedRoute from "components/ProtectedRoute";
+// import ProtectedRoute from "components/ProtectedRoute";
 import { history } from "helpers/history";
 // import defineCity from 'helpers/defineCity';
 
@@ -18,7 +18,7 @@ import { ScreenBarGet, ScreenBarCreate } from "components/ScreenBar";
 import SignUp from "components/SignUp";
 import SignIn from "components/SignIn";
 import DesktopScreen from "components/DesktopScreen";
-import Admin from "components/Admin";
+// import Admin from "components/Admin";
 import AboutApp from "components/AboutApp";
 
 import "./App.scss";
@@ -92,7 +92,10 @@ class App extends Component {
   }
 
   render() {
-    const { auth, userData } = this.props;
+    const {
+      auth,
+      // userData = {},
+    } = this.props;
     const { isStopFlipping, showBar } = this.state;
     console.log(auth);
 

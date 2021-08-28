@@ -56,12 +56,12 @@ class ScreenBarCreate extends Component {
       saveWinningPromocodeInStore
     } = this.props;
 
-    if(prevProps.dataCity.valueCity !== this.props.dataCity.valueCity) {
+    if (prevProps.dataCity.valueCity !== this.props.dataCity.valueCity) {
       this.props.getRandomBar(this.props.dataCity.valueCity);
     }
 
-    if(showBar !== prevProps.showBar && showBar) {
-      if(prize && prize.length > 0) {
+    if (showBar !== prevProps.showBar && showBar) {
+      if (prize && prize.length > 0) {
         // Note: Промокод сохраняем только в том случае если он вообще есть.
         // т.е. если есть приз или какая-то скидка в этом баре.
         const promocodeData = {
@@ -74,7 +74,7 @@ class ScreenBarCreate extends Component {
           qr_code: null // TODO
         };
 
-        if(!!auth.uid) {
+        if (!!auth.uid) {
           // Note: Если авторизован юзер то промокод сохраняем сразу в базе.
           savePromocode(auth.uid, promocodeData);
         } else {
@@ -92,39 +92,39 @@ class ScreenBarCreate extends Component {
     const { bar, auth, showBar, prize, barImageUrl, backToStartScreen, reviews } = this.props;
     const { code } = this.state;
 
-      if(typeof(bar) === 'object' && isEmptyObj(bar) && !!prize) {
-        return <div>'Загрузка...'</div>
-      }
+    if (typeof (bar) === 'object' && isEmptyObj(bar) && !!prize) {
+      return <div>'Загрузка...'</div>
+    }
 
-      if(!bar && Array.isArray(bar) && bar.length <= 0) {
-        return <div>'Загрузка...'</div>
-      }
+    if (!bar && Array.isArray(bar) && bar.length <= 0) {
+      return <div>'Загрузка...'</div>
+    }
 
-      if(!bar) {
-        return <div>'Загрузка...'</div>
-      }
+    if (!bar) {
+      return <div>'Загрузка...'</div>
+    }
 
-      return <CSSTransition
-        unmountOnExit
-        in={showBar}
-        timeout={2300}
-        classNames='b-screen'
-      >
-        <ScreenBar
-          isAuth={!!auth.uid}
-          code={code} // TODO: узнать как работать с промокодом. Он будет генериться один на приз или один на пользователя?
-          qrCode={null} // TODO
-          endWorkTime={bar.end_work_time}
-          address={bar.address}
-          geo={bar.geo} // TODO
-          name={bar.name}
-          prize={prize && Array.isArray(prize) && !!prize.length ? prize[0] : {}}
-          urlImage={barImageUrl}
-          backToStartScreen={backToStartScreen}
-          reviews={reviews}
-          barId={bar.id}
-        />
-      </CSSTransition>
+    return <CSSTransition
+      unmountOnExit
+      in={showBar}
+      timeout={2300}
+      classNames='b-screen'
+    >
+      <ScreenBar
+        isAuth={!!auth.uid}
+        code={code} // TODO: узнать как работать с промокодом. Он будет генериться один на приз или один на пользователя?
+        qrCode={null} // TODO
+        endWorkTime={bar.end_work_time}
+        address={bar.address}
+        geo={bar.geo} // TODO
+        name={bar.name}
+        prize={prize && Array.isArray(prize) && !!prize.length ? prize[0] : {}}
+        urlImage={barImageUrl}
+        backToStartScreen={backToStartScreen}
+        reviews={reviews}
+        barId={bar.id}
+      />
+    </CSSTransition>
   }
 }
 
@@ -135,7 +135,6 @@ const mapStateToProps = ({ firebase, firestore, bars, users }) => {
     })
     : {};
 
-  // console.log(bars)
 
   return {
     auth: firebase.auth,
@@ -164,7 +163,7 @@ const mapDispatchToProps = (dispatch) => {
 export default compose(
   firestoreConnect(props => {
     const query = [];
-    if(props.bar && props.bar.id) {
+    if (props.bar && props.bar.id) {
       query.push({ collection: 'reviews', doc: props.bar.id });
     };
     return query
