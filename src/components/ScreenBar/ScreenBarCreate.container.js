@@ -92,6 +92,9 @@ class ScreenBarCreate extends Component {
     const { bar, auth, showBar, prize, barImageUrl, backToStartScreen, reviews } = this.props;
     const { code } = this.state;
 
+    // console.log('this.props', this.props);
+    // console.log('this.state', this.state);
+
     if (typeof (bar) === 'object' && isEmptyObj(bar) && !!prize) {
       return <div>'Загрузка...'</div>
     }
@@ -119,7 +122,8 @@ class ScreenBarCreate extends Component {
         geo={bar.geo} // TODO
         name={bar.name}
         prize={prize && Array.isArray(prize) && !!prize.length ? prize[0] : {}}
-        urlImage={barImageUrl}
+        // urlImage={barImageUrl} // todo: проверить
+        urlImage={bar.photo} // todo: проверить
         backToStartScreen={backToStartScreen}
         reviews={reviews}
         barId={bar.id}

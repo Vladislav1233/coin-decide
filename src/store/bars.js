@@ -3,9 +3,8 @@ import getRandomObjectKey from 'helpers/getRandomObjectKey';
 import plugForPicture from 'images/plug-for-bar.jpg';
 
 // Note: variables
-const GET_URL_BAR_IMAGE_SUCCESS = 'GET_URL_BAR_IMAGE_SUCCESS',
-      GET_URL_BAR_IMAGE_ERROR = 'GET_URL_BAR_IMAGE_ERROR';
-
+const GET_URL_BAR_IMAGE_SUCCESS = 'GET_URL_BAR_IMAGE_SUCCESS';
+const GET_URL_BAR_IMAGE_ERROR = 'GET_URL_BAR_IMAGE_ERROR';
 const SAVE_BAR_ID_QUERY = 'SAVE_BAR_ID_QUERY';
 const SAVE_TYPE_PRIZE = 'SAVE_TYPE_PRIZE';
 
@@ -44,18 +43,18 @@ export const getBar = (barId) => {
         });
         // console.log(targetBar)
 
-        if(!!targetBar.length && targetBar[0].available_prizes) {
+        if (!!targetBar.length && targetBar[0].available_prizes) {
           const availablePrizes = targetBar[0].available_prizes,
-              prizeId = getRandomObjectKey(availablePrizes),
-              typePrize = prizeId.split('_');
-              dispatch({
-                type: SAVE_TYPE_PRIZE,
-                payload: {
-                  typePrize
-                }
-              });
+            prizeId = getRandomObjectKey(availablePrizes),
+            typePrize = prizeId.split('_');
+          dispatch({
+            type: SAVE_TYPE_PRIZE,
+            payload: {
+              typePrize
+            }
+          });
 
-          if(typePrize[0] === 'common') {
+          if (typePrize[0] === 'common') {
             firestore.get({ collection: 'common_prizes', doc: prizeId }).then(() => {
               getImageForThisBar(targetBar[0].photo)
             });
@@ -64,7 +63,7 @@ export const getBar = (barId) => {
               getImageForThisBar(targetBar[0].photo)
             });
           }
-        } else if(!!targetBar.length && !targetBar[0].available_prizes) {
+        } else if (!!targetBar.length && !targetBar[0].available_prizes) {
           getImageForThisBar(targetBar[0].photo);
           dispatch({
             type: SAVE_TYPE_PRIZE,
@@ -88,8 +87,8 @@ export const getRandomBar = (nameCity) => { // TODO: nameCity
           item.id === nameCity
         ));
         const barsId = targetBarsId[0].content,
-              numberBarInCollection = randomInteger(barsId.length - 1),
-              barId = barsId[numberBarInCollection].bar_id;
+          numberBarInCollection = randomInteger(barsId.length - 1),
+          barId = barsId[numberBarInCollection].bar_id;
         // console.log(barId)
 
         dispatch(getBar(barId));
@@ -120,16 +119,16 @@ const bars = (state = initialState, action) => {
       }
 
     case SAVE_BAR_ID_QUERY:
-        return {
-          ...state,
-          targetBarId: action.payload.targetBarId
-        }
+      return {
+        ...state,
+        targetBarId: action.payload.targetBarId
+      }
 
     case SAVE_TYPE_PRIZE:
-        return {
-          ...state,
-          typePrize: action.payload.typePrize
-        }
+      return {
+        ...state,
+        typePrize: action.payload.typePrize
+      }
 
     default:
       return state
