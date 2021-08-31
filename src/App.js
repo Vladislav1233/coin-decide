@@ -18,10 +18,17 @@ import { ScreenBarGet, ScreenBarCreate } from "components/ScreenBar";
 import SignUp from "components/SignUp";
 import SignIn from "components/SignIn";
 import DesktopScreen from "components/DesktopScreen";
-// import Admin from "components/Admin";
+import Admin from "components/Admin";
 import AboutApp from "components/AboutApp";
 
 import "./App.scss";
+
+/**
+ * Временный компонет, который вызывается в админке для получения конкретного бара по id
+ */
+const GetBar = () => {
+  return <ScreenBarCreate showBar={true} backToStartScreen={() => {}} />;
+};
 
 class App extends Component {
   state = {
@@ -92,10 +99,7 @@ class App extends Component {
   }
 
   render() {
-    const {
-      auth,
-      // userData = {},
-    } = this.props;
+    const { auth, userData } = this.props;
     const { isStopFlipping, showBar } = this.state;
     console.log(auth);
 
@@ -142,6 +146,9 @@ class App extends Component {
                 isAllowed={userData && userData[0].role === "admin"} // TODO: редирект плохо работает. Юзер не успевает сгенериться.
                 redirectTo="/"
               /> */}
+              {/* TODO: Закинуть в protected route */}
+              <Route exact path="/admin/get-bar/:id" component={GetBar} />
+              <Route exact path="/admin/add-bar" component={Admin} />
             </Switch>
           ) : (
             <DesktopScreen />

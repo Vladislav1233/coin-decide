@@ -1,6 +1,18 @@
 {
   "projects": {
-    "default": "coin-deside",
-    "production": "beercoin12"
+    "production": "beercoin12",
+    "test": "coin-deside"
+  },
+  "targets": {
+    "beercoin12": {
+      "hosting": {
+        "test": [
+          "coin-deside"
+        ],
+        "production": [
+          "beercoin12"
+        ]
+      }
+    }
   }
 }

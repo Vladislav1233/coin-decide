@@ -17,6 +17,7 @@ import ScreenBar from './ScreenBar';
 class ScreenBarGet extends Component {
   render() {
     const { auth, location, bars, history, reviews } = this.props;
+    console.log(bars)
     const barInfo = !!bars ? bars[location.state.barId] ? bars[location.state.barId] : {} : {};
 
     return <ScreenBar
