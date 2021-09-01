@@ -13,10 +13,10 @@ const firebaseConfig = () => {
   if(process.env.NODE_ENV === 'development') {
     return {
       apiKey: "AIzaSyD9BVzo39gac6wAO4df7cwVxLONypUaArA",
-      authDomain: "coin-deside.firebaseapp.com",
-      databaseURL: "https://coin-deside.firebaseio.com",
-      projectId: "coin-deside",
-      storageBucket: "gs://coin-deside.appspot.com",
+      authDomain: "beercoin12.firebaseapp.com",
+      databaseURL: "https://beercoin12.firebaseio.com",
+      projectId: "beercoin12",
+      storageBucket: "gs://beercoin12.appspot.com",
       messagingSenderId: "969560591836",
       appId: "1:969560591836:web:d7f6536285ceca72bcd319",
       measurementId: "G-YZF710RMCN"

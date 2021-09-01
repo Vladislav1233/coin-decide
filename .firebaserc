@@ -1,13 +1,13 @@
 {
   "projects": {
     "production": "beercoin12",
-    "test": "coin-deside"
+    "test": "beercoin12"
   },
   "targets": {
     "beercoin12": {
       "hosting": {
         "test": [
-          "coin-deside"
+          "beercoin12"
         ],
         "production": [
           "beercoin12"
