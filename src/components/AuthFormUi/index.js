@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import bem from "config/bem";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const bemClass = bem("sign");
 
@@ -8,16 +8,16 @@ class AuthFormUi extends Component {
   render() {
     const { children, link, title } = this.props;
 
-    return(
+    return (
       <main className={bemClass()}>
         <svg
-            className={bemClass("bg", { top: true })}
-            width="353"
-            height="202"
-            viewBox="0 0 353 202"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
+          className={bemClass("bg", { top: true })}
+          width="353"
+          height="202"
+          viewBox="0 0 353 202"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <g clipPath="url(#clip0)">
             <path
               d="M5.58143 186.402C-16.7847 207.411 -42.623 207.145 -52.7464 204.386L-155.265 132.124L8.44741 -126.602L371.796 -86.1431C389.379 -90.0134 418.431 -86.5454 393.968 -41.7113C363.389 14.3314 212.039 12.1655 119.967 39.6799C27.8952 67.1944 33.5391 160.141 5.58143 186.402Z"
@@ -50,9 +50,9 @@ class AuthFormUi extends Component {
 
         {children}
 
-        <Link
-        className={bemClass('backLink')}
-        to="/">Назад</Link>
+        <Link className={bemClass("backLink")} to="/">
+          Назад
+        </Link>
 
         <svg
           className={bemClass("bg", { bottom: true })}
@@ -88,7 +88,7 @@ class AuthFormUi extends Component {
           </defs>
         </svg>
       </main>
-    )
+    );
   }
 }
 

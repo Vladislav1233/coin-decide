@@ -37,7 +37,11 @@ class DesktopScreen extends Component {
           </header> */}
 
           <div className="desktop-screen__center">
-            <img className="desktop-screen__logo-main" src={logoNew} alt="BeerCoin"/>
+            <img
+              className="desktop-screen__logo-main"
+              src={logoNew}
+              alt="BeerCoin"
+            />
             <div className="desktop-screen__left">
               <img className="desktop-screen__img" src={phoneImg} alt="" />
             </div>

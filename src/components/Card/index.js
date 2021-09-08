@@ -1,19 +1,20 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import Sale from 'components/Sale';
+import Sale from "components/Sale";
 
-import './style.scss';
+import "./style.scss";
 
 class Card extends Component {
   render() {
-    const { endWorkTime, address, name, descriptionSale, urlImage } = this.props;
+    const { endWorkTime, address, name, descriptionSale, urlImage } =
+      this.props;
 
-    return(
+    return (
       <div className="b-card">
         <div className="b-card__wrapper">
           <div className="b-card__image-wrapper">
             {/* alt={`Фото ${name}`} */}
-            <img className="b-card__image" src={urlImage} alt='' />
+            <img className="b-card__image" src={urlImage} alt="" />
           </div>
 
           <div className="b-card__info-bar">
@@ -21,14 +22,10 @@ class Card extends Component {
             <div className="b-card__address">{address}</div>
             <h1 className="b-card__name">{name}</h1>
           </div>
-          {!!descriptionSale &&
-            <Sale
-              description={descriptionSale}
-            />
-          }
+          {!!descriptionSale && <Sale description={descriptionSale} />}
         </div>
       </div>
-    )
+    );
   }
 }
 

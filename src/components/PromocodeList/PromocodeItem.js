@@ -1,31 +1,32 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import { getFirebase } from 'react-redux-firebase';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import { getFirebase } from "react-redux-firebase";
 
 // Note: images
-import checkCircle from 'images/check-circle.svg';
+import checkCircle from "images/check-circle.svg";
 
 // Note: styles
-import './promocode-item.scss';
+import "./promocode-item.scss";
 
 class PromocodeItem extends Component {
-
   state = {
-    imageUrl: ''
-  }
+    imageUrl: "",
+  };
 
   componentDidMount() {
     const storageRef = getFirebase().storage().ref();
     const barImageRef = storageRef.child(this.props.photo);
 
-    barImageRef.getDownloadURL()
-      .then((url) => {
+    barImageRef.getDownloadURL().then(
+      (url) => {
         this.setState({
-          imageUrl: url
-        })
-      }, err => {
-        console.error('Promocode Item Error Download Image')
-      })
+          imageUrl: url,
+        });
+      },
+      (err) => {
+        console.error("Promocode Item Error Download Image");
+      }
+    );
   }
 
   render() {
@@ -37,12 +38,12 @@ class PromocodeItem extends Component {
       id,
       bar_id,
       code,
-      qr_code
+      qr_code,
     } = this.props;
 
     const { imageUrl } = this.state;
 
-    return(
+    return (
       <Link
         to={{
           pathname: `/promocode/${id}`,
@@ -51,22 +52,20 @@ class PromocodeItem extends Component {
             code: code,
             qrCode: qr_code,
             prize: prize,
-            imageUrl: imageUrl
-          }
+            imageUrl: imageUrl,
+          },
         }}
         className="b-promocode-item"
         style={{ backgroundImage: `url(${imageUrl})` }}
       >
-        {is_check &&
+        {is_check && (
           <div className="b-promocode-item__check-wrapper">
             <img src={checkCircle} alt="" />
           </div>
-        }
+        )}
 
         <div className="b-promocode-item__head">
-          <div className="b-promocode-item__name-place">
-            {name_bar}
-          </div>
+          <div className="b-promocode-item__name-place">{name_bar}</div>
           <div className="b-promocode-item__name-prize">
             {prize.description}
           </div>
@@ -79,7 +78,7 @@ class PromocodeItem extends Component {
           </div>
         </div>
       </Link>
-    )
+    );
   }
 }
 

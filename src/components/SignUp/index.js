@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { signUp } from 'store/auth';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { signUp } from "store/auth";
 import bem from "config/bem";
 
 // Note: components
-import AuthFormUi from 'components/AuthFormUi';
+import AuthFormUi from "components/AuthFormUi";
 
 // Note: styles
-import './style.scss';
+import "./style.scss";
 
 const bemClass = bem("sign");
 
 class SignUp extends Component {
   state = {
-    email: '',
-    password: '',
-    firstName: '',
-    lastName: ''
+    email: "",
+    password: "",
+    firstName: "",
+    lastName: "",
   };
 
   handleChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value
-    })
+      [e.target.id]: e.target.value,
+    });
   };
 
   handleSubmit = (e) => {
@@ -35,11 +35,11 @@ class SignUp extends Component {
     // TODO: включить когда настрою роутинг
     // if (auth.uid) return <Redirect to="/" />
 
-    return(
+    return (
       <AuthFormUi
         link={{
           to: "/signin",
-          text: "Вход"
+          text: "Вход",
         }}
         title="Регистрация"
       >
@@ -55,7 +55,8 @@ class SignUp extends Component {
             <input
               className={bemClass("input")}
               placeholder="Пароль"
-              type="password" id="password"
+              type="password"
+              id="password"
               onChange={this.handleChange}
             />
             <input
@@ -89,20 +90,20 @@ class SignUp extends Component {
           </button>
         </form>
       </AuthFormUi>
-    )
+    );
   }
 }
 
 const mapStateToProps = ({ firebase }) => {
   return {
-    auth: firebase.auth
-  }
+    auth: firebase.auth,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    signUp: (newUser) => dispatch(signUp(newUser))
-  }
+    signUp: (newUser) => dispatch(signUp(newUser)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

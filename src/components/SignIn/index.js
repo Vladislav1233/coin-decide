@@ -3,9 +3,8 @@ import { connect } from "react-redux";
 import { signIn } from "store/auth";
 import bem from "config/bem";
 
-
 // Note: components
-import AuthFormUi from 'components/AuthFormUi';
+import AuthFormUi from "components/AuthFormUi";
 
 // Note: styles
 import "./style.scss";
@@ -15,16 +14,16 @@ const bemClass = bem("sign");
 class SignIn extends Component {
   state = {
     email: "",
-    password: ""
+    password: "",
   };
 
-  handleChange = e => {
+  handleChange = (e) => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.id]: e.target.value,
     });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     e.preventDefault();
     this.props.signIn(this.state);
   };
@@ -35,7 +34,7 @@ class SignIn extends Component {
       <AuthFormUi
         link={{
           to: "/signup",
-          text: "Регистрация"
+          text: "Регистрация",
         }}
         title="Вход"
       >
@@ -83,13 +82,13 @@ class SignIn extends Component {
 
 const mapStateToProps = ({ auth }) => {
   return {
-    authError: auth.authError
+    authError: auth.authError,
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-    signIn: creds => dispatch(signIn(creds))
+    signIn: (creds) => dispatch(signIn(creds)),
   };
 };
 

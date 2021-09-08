@@ -10,18 +10,18 @@ import "firebase/firestore";
 import "firebase/storage";
 
 const firebaseConfig = () => {
-  if(process.env.NODE_ENV === 'development') {
+  if (process.env.NODE_ENV === "development") {
     return {
       apiKey: "AIzaSyD9BVzo39gac6wAO4df7cwVxLONypUaArA",
-      authDomain: "beercoin12.firebaseapp.com",
-      databaseURL: "https://beercoin12.firebaseio.com",
-      projectId: "beercoin12",
-      storageBucket: "gs://beercoin12.appspot.com",
+      authDomain: "coin-deside.firebaseapp.com",
+      databaseURL: "https://coin-deside.firebaseio.com",
+      projectId: "coin-deside",
+      storageBucket: "gs://coin-deside.appspot.com",
       messagingSenderId: "969560591836",
       appId: "1:969560591836:web:d7f6536285ceca72bcd319",
-      measurementId: "G-YZF710RMCN"
-    }
-  } else if(process.env.NODE_ENV === 'production') {
+      measurementId: "G-YZF710RMCN",
+    };
+  } else if (process.env.NODE_ENV === "production") {
     return {
       apiKey: "AIzaSyDaLdkt15q132Hb88jIVYYPOrfnUaBJHv8",
       authDomain: "beercoin12.firebaseapp.com",
@@ -30,8 +30,8 @@ const firebaseConfig = () => {
       storageBucket: "beercoin12.appspot.com",
       messagingSenderId: "127473982008",
       appId: "1:127473982008:web:4b5d01f7d85f7f477c24cd",
-      measurementId: "G-RM52L3SW37"
-    }
+      measurementId: "G-RM52L3SW37",
+    };
   }
 };
 

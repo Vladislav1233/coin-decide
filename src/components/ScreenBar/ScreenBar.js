@@ -1,19 +1,19 @@
-import React, { Component, Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React, { Component, Fragment } from "react";
+import PropTypes from "prop-types";
 
-import Card from 'components/Card';
-import TabBar from 'components/TabBar';
+import Card from "components/Card";
+import TabBar from "components/TabBar";
 // import ArrowTo from 'components/ArrowTo';
-import Code from 'components/Code';
-import YMap from 'components/YMap';
-import TaxiButton from 'components/TaxiButton';
-import Review from 'components/Review';
+import Code from "components/Code";
+import YMap from "components/YMap";
+import TaxiButton from "components/TaxiButton";
+import Review from "components/Review";
 import arrowSideIcon from "images/arrow-side.svg";
 
 // helpers
-import isEmptyObj from 'helpers/isEmptyObj';
+import isEmptyObj from "helpers/isEmptyObj";
 
-import './index.scss';
+import "./index.scss";
 
 class ScreenBar extends Component {
   static propTypes = {
@@ -22,20 +22,20 @@ class ScreenBar extends Component {
     // geo: PropTypes.array, TODO
     name: PropTypes.string,
     prize: PropTypes.shape({
-      description: PropTypes.string
+      description: PropTypes.string,
     }),
     code: PropTypes.string,
-    isAuth: PropTypes.bool
+    isAuth: PropTypes.bool,
   };
 
   state = {
-    tabIndex: 0
+    tabIndex: 0,
   };
 
   handleActiveIndexUpdate = (activeIndex) => {
     this.setState({
-      tabIndex: activeIndex
-    })
+      tabIndex: activeIndex,
+    });
   };
 
   render() {
@@ -51,7 +51,7 @@ class ScreenBar extends Component {
       reviews,
       urlImage,
       backToStartScreen,
-      barId
+      barId,
     } = this.props;
     const { tabIndex } = this.state;
 
@@ -65,58 +65,59 @@ class ScreenBar extends Component {
           urlImage={urlImage}
         />
         <div className="b-screen-bar__tab-content">
-          {!isEmptyObj(prize)
-            ? <Code isAuth={isAuth} code={code} qrCode={qrCode} />
-            : <div style={{ marginTop: '30px' }}>Тебя уже ждут здесь, приходи!</div>
-          }
+          {!isEmptyObj(prize) ? (
+            <Code isAuth={isAuth} code={code} qrCode={qrCode} />
+          ) : (
+            <div style={{ marginTop: "30px" }}>
+              Тебя уже ждут здесь, приходи!
+            </div>
+          )}
         </div>
       </Fragment>
-    )
+    );
 
     const TabContent = () => {
       switch (tabIndex) {
         case 0:
-          return contentBar()
+          return contentBar();
 
         case 1:
-          return <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">
-            <h2 className="b-screen-bar__tab-title">{name}</h2>
-            <Review reviews={reviews} barId={barId} />
-          </div>
+          return (
+            <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">
+              <h2 className="b-screen-bar__tab-title">{name}</h2>
+              <Review reviews={reviews} barId={barId} />
+            </div>
+          );
 
         case 2:
-          return <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">
-            <h2 className="b-screen-bar__tab-title">{name}</h2>
-            <YMap
-              geo={geo}
-            />
-            <div className="b-screen-bar__taxi">
-              <TaxiButton />
+          return (
+            <div className="b-screen-bar__tab-content b-screen-bar__tab-content--full">
+              <h2 className="b-screen-bar__tab-title">{name}</h2>
+              <YMap geo={geo} />
+              <div className="b-screen-bar__taxi">
+                <TaxiButton />
+              </div>
             </div>
-          </div>
+          );
 
         default:
-          return contentBar()
+          return contentBar();
       }
     };
 
-    return(
+    return (
       <div className="b-screen-bar">
         <div className="b-screen-bar__nav">
           <div className="b-coin-head__item" onClick={backToStartScreen}>
             <div className="b-coin-head__icon">
-              <img src={ arrowSideIcon } alt="" />
+              <img src={arrowSideIcon} alt="" />
             </div>
           </div>
 
           <div className="b-screen-bar__nav-tab-bar">
             <TabBar
               getTabIndex={this.handleActiveIndexUpdate}
-              tabs={[
-                'Код',
-                'Отзывы',
-                'Карта'
-              ]}
+              tabs={["Код", "Отзывы", "Карта"]}
             />
           </div>
           <div className="b-coin-head__item">
@@ -140,7 +141,7 @@ class ScreenBar extends Component {
 
         <TabContent />
       </div>
-    )
+    );
   }
 }
 

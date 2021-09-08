@@ -13,7 +13,7 @@ class Sprite {
     this.width = options.width;
     this.height = options.height;
 
-    this.stopAfterFlipping = options.stopAfterFlipping; 
+    this.stopAfterFlipping = options.stopAfterFlipping;
 
     this.start();
   }
@@ -37,7 +37,7 @@ class Sprite {
     this.ctx.clearRect(0, 0, this.width / this.numberOfFrames, this.height);
     this.ctx.drawImage(
       this.image,
-      this.frameIndex * this.width / this.numberOfFrames,
+      (this.frameIndex * this.width) / this.numberOfFrames,
       0,
       this.width / this.numberOfFrames,
       this.height,
@@ -45,7 +45,7 @@ class Sprite {
       0,
       this.width / this.numberOfFrames,
       this.height
-    )
+    );
   }
 
   start() {
@@ -56,11 +56,11 @@ class Sprite {
       if (this.countLoop <= 20) {
         window.requestAnimationFrame(loop);
       } else {
-        if(this.stopAfterFlipping) {
-          this.stopAfterFlipping() // Функция колбэк после того как остановился flip
+        if (this.stopAfterFlipping) {
+          this.stopAfterFlipping(); // Функция колбэк после того как остановился flip
         }
       }
-    }
+    };
 
     window.requestAnimationFrame(loop);
   }

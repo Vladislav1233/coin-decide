@@ -1,25 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import './style.scss';
+import "./style.scss";
 
 class Button extends Component {
   render() {
     const { children, tagName, onClick } = this.props;
     const TagName = tagName;
 
-    return(
-      <TagName
-        className='b-button'
-        onClick={onClick}
-      >
+    return (
+      <TagName className="b-button" onClick={onClick}>
         {children}
       </TagName>
-    )
+    );
   }
 }
 
 Button.defaultProps = {
-  tagName: 'button'
-}
+  tagName: "button",
+};
 
-export default Button
+export default Button;
