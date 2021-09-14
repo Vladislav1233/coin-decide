@@ -112,7 +112,7 @@ export const getBarList = () => {
     const city = getState().users.valueCity;
 
     db.collection("bars")
-      .where("city", "==", city)
+      .where("city_id", "==", city)
       .get()
       .then((querySnapshot) => {
         const res = [];
