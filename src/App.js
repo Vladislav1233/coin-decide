@@ -20,6 +20,7 @@ import SignIn from "components/SignIn";
 import DesktopScreen from "components/DesktopScreen";
 import Admin from "components/Admin";
 import AboutApp from "components/AboutApp";
+import BarList from "pages/BarList";
 
 import "./App.scss";
 
@@ -149,6 +150,7 @@ class App extends Component {
               {/* TODO: Закинуть в protected route */}
               <Route exact path="/admin/get-bar/:id" component={GetBar} />
               <Route exact path="/admin/add-bar" component={Admin} />
+              <Route exact path="/admin/bar-list" component={BarList} />
             </Switch>
           ) : (
             <DesktopScreen />

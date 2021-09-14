@@ -1,0 +1,22 @@
+.BarList {
+  text-align: left;
+  padding-right: 20px;
+
+  &__item {
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    line-height: 1.5;
+  }
+
+  &__link {
+    display: block;
+  }
+
+  img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    margin-bottom: 12px;
+  }
+}

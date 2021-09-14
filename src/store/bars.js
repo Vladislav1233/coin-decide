@@ -1,12 +1,14 @@
 import randomInteger from "helpers/randomInteger";
 import getRandomObjectKey from "helpers/getRandomObjectKey";
 import plugForPicture from "images/plug-for-bar.jpg";
+import { db } from "config/firebaseConfig";
 
 // Note: variables
 const GET_URL_BAR_IMAGE_SUCCESS = "GET_URL_BAR_IMAGE_SUCCESS";
 const GET_URL_BAR_IMAGE_ERROR = "GET_URL_BAR_IMAGE_ERROR";
 const SAVE_BAR_ID_QUERY = "SAVE_BAR_ID_QUERY";
 const SAVE_TYPE_PRIZE = "SAVE_TYPE_PRIZE";
+const GET_BAR_LIST_SUCCESS = "GET_BAR_LIST_SUCCESS";
 
 // Note: actions
 export const getBar = (barId) => {
@@ -102,15 +104,45 @@ export const getRandomBar = (nameCity, defineBar) => {
   };
 };
 
+/**
+ * Получение списка баров города.
+ */
+export const getBarList = () => {
+  return (dispatch) => {
+    db.collection("bars")
+      .get()
+      .then((querySnapshot) => {
+        const res = [];
+
+        querySnapshot.forEach((doc) => {
+          res.push({ id: doc.id, ...doc.data() });
+        });
+
+        dispatch({
+          type: GET_BAR_LIST_SUCCESS,
+          payload: res,
+        });
+      });
+  };
+};
+
 // Note: reducer
 const initialState = {
   barImageUrl: null,
   targetBarId: null,
   typePrize: "",
+  barList: [],
 };
 
 const bars = (state = initialState, action) => {
   switch (action.type) {
+    case GET_BAR_LIST_SUCCESS: {
+      return {
+        ...state,
+        barList: action.payload,
+      };
+    }
+
     case GET_URL_BAR_IMAGE_SUCCESS:
       return {
         ...state,
