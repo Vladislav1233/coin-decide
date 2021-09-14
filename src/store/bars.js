@@ -108,8 +108,11 @@ export const getRandomBar = (nameCity, defineBar) => {
  * Получение списка баров города.
  */
 export const getBarList = () => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
+    const city = getState().users.valueCity;
+
     db.collection("bars")
+      .where("city", "==", city)
       .get()
       .then((querySnapshot) => {
         const res = [];
