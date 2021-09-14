@@ -28,7 +28,14 @@ import "./App.scss";
  * Временный компонет, который вызывается в админке для получения конкретного бара по id
  */
 const GetBar = () => {
-  return <ScreenBarCreate showBar={true} backToStartScreen={() => {}} />;
+  return (
+    <ScreenBarCreate
+      showBar={true}
+      backToStartScreen={() => {
+        history.goBack();
+      }}
+    />
+  );
 };
 
 class App extends Component {
