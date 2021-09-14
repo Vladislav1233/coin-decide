@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { addBarAdmin, addBarIdAdmin } from "store/admin";
 import firebase from "config/firebaseConfig";
-import { getBarList } from "store/bars";
-import { db } from "config/firebaseConfig";
 class Admin extends Component {
   state = {
     addBar_id: "",
@@ -16,19 +14,6 @@ class Admin extends Component {
     addBar_city: "",
     addBar_id_city: "",
   };
-
-  componentDidMount() {
-    // this.props.getBarList();
-    console.log(db);
-    db.collection("bars")
-      .get()
-      .then((querySnapshot) => {
-        // console.log(querySnapshot.);
-        querySnapshot.forEach((doc) => {
-          console.log(`${doc.id} => ${doc.data()}`);
-        });
-      });
-  }
 
   addBar = (event) => {
     event.preventDefault();
@@ -169,7 +154,6 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(addBarAdmin(collection, doc, data)),
     addBarIdAdmin: (collection, doc, data) =>
       dispatch(addBarIdAdmin(collection, doc, data)),
-    getBarList: () => dispatch(getBarList),
   };
 };
 
